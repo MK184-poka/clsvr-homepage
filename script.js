@@ -1,6 +1,9 @@
 const bookingForm = document.getElementById("booking-form");
 const bookingMessage = document.getElementById("booking-message");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
+const bookingChoiceButtons = document.querySelectorAll("[data-booking-choice]");
+const bookingMenuNumber = document.getElementById("booking-menu-number");
+const bookingAreaNumber = document.getElementById("booking-area-number");
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
 const floatingConsult = document.querySelector(".floating-consult");
@@ -45,6 +48,10 @@ let catLogoTapTimer;
 let pawTimer;
 let catBubbleTimer;
 let scrollTicking = false;
+const bookingSelection = {
+  menu: "",
+  area: ""
+};
 
 const formatDate = (value) => {
   if (!value) return "未選択";
@@ -61,29 +68,23 @@ const buildBookingMessage = () => {
   if (!bookingForm) return "";
 
   const formData = new FormData(bookingForm);
-  const firstDate = formatDate(formData.get("firstDate"));
-  const secondDate = formatDate(formData.get("secondDate"));
-  const firstTime = fieldValue(formData, "firstTime");
-  const secondTime = fieldValue(formData, "secondTime");
+  const preferredDateTime = formData.get("preferredDateTime")?.toString().trim() || "";
+  const name = formData.get("name")?.toString().trim() || "";
 
   return [
-    "CLSVR予約希望です。",
-    "",
-    `・お名前：${fieldValue(formData, "name")}`,
-    `・ご希望のメニュー：${fieldValue(formData, "menu")}`,
-    `・第1希望日時：${firstDate} ${firstTime}`,
-    `・第2希望日時：${secondDate} ${secondTime}`,
-    `・お住まいの地域：${fieldValue(formData, "area")}`,
-    `・お支払い方法：${fieldValue(formData, "payment")}`,
-    `・備考：${fieldValue(formData, "memo")}`,
-    "",
-    "内容をご確認のうえ、ご連絡をお願いいたします。"
+    "予約希望です",
+    `メニュー：${bookingSelection.menu}`,
+    `エリア：${bookingSelection.area}`,
+    `希望日時：${preferredDateTime}`,
+    `お名前：${name}`
   ].join("\n");
 };
 
 const updateMessage = () => {
   if (!bookingMessage) return;
   bookingMessage.innerText = buildBookingMessage();
+  if (bookingMenuNumber) bookingMenuNumber.innerText = bookingSelection.menu;
+  if (bookingAreaNumber) bookingAreaNumber.innerText = bookingSelection.area;
 };
 
 const copyText = async (text, button) => {
@@ -335,6 +336,21 @@ copyButtons.forEach((button) => {
   });
 });
 
+bookingChoiceButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const choiceType = button.dataset.bookingChoice;
+    if (!choiceType || !(choiceType in bookingSelection)) return;
+
+    bookingSelection[choiceType] = button.dataset.value || "";
+    bookingChoiceButtons.forEach((choiceButton) => {
+      if (choiceButton.dataset.bookingChoice !== choiceType) return;
+      choiceButton.classList.toggle("is-selected", choiceButton === button);
+      choiceButton.setAttribute("aria-pressed", choiceButton === button ? "true" : "false");
+    });
+    updateMessage();
+  });
+});
+
 if (bookingForm) {
   const today = new Date().toISOString().slice(0, 10);
   dateInputs.forEach((input) => {
@@ -344,6 +360,12 @@ if (bookingForm) {
   bookingForm.addEventListener("input", updateMessage);
   bookingForm.addEventListener("change", updateMessage);
   bookingForm.addEventListener("reset", () => {
+    bookingSelection.menu = "";
+    bookingSelection.area = "";
+    bookingChoiceButtons.forEach((button) => {
+      button.classList.remove("is-selected");
+      button.setAttribute("aria-pressed", "false");
+    });
     setTimeout(updateMessage, 0);
   });
 }
