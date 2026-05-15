@@ -763,9 +763,9 @@ h3 {
 }
 
 .hero-reception-art {
-  right: clamp(18px, 5vw, 44px);
-  bottom: clamp(22px, 5vw, 48px);
-  width: min(42%, 260px);
+  right: clamp(10px, 3.5vw, 30px);
+  bottom: clamp(12px, 3.5vw, 32px);
+  width: min(34%, 218px);
   height: auto;
   border-radius: 8px;
   box-shadow: 0 22px 48px rgba(103, 68, 37, 0.22);
@@ -1990,9 +1990,9 @@ pre {
   }
 
   .hero-reception-art {
-    right: 14px;
-    bottom: 18px;
-    width: min(50%, 178px);
+    right: 10px;
+    bottom: 12px;
+    width: min(42%, 152px);
   }
 
   .hero-request-art {
