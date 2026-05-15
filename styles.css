@@ -1552,7 +1552,7 @@ pre {
 
 .footer {
   justify-content: space-between;
-  padding: 28px clamp(18px, 5vw, 64px);
+  padding: 28px clamp(18px, 5vw, 64px) clamp(92px, 10vw, 124px);
   background: var(--ink);
   color: var(--white);
 }
