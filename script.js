@@ -23,9 +23,9 @@ const logoVariantSources = [
 const secretLogoSources = ["logo-secret-calico.webp"];
 const catStaffLines = {
   "logo-black.webp": ["疲れてニャいかニャ？", "少し休んでいくニャ"],
-  "logo-lightgray.webp": ["今日は休んでもいいニャ", "ゆっくりモードだニャ"],
+  "logo-lightgray.webp": ["今日は休んでもいいニャ", "今日はゆっくりモードだニャ"],
   "logo-beige.webp": ["お茶でも飲むニャ", "深呼吸するニャ"],
-  "logo-bluegray.webp": ["深呼吸してる？", "肩の力をぬくニャ"],
+  "logo-bluegray.webp": ["深呼吸するニャ", "肩の力をぬくニャ"],
   "logo-brown.webp": ["その作業、預けてもいいニャ", "無理しすぎ注意ニャ"],
   "logo-orange.webp": ["いい日になる気がするニャ", "今日はゆっくり進むニャ"],
   "logo-gray.webp": ["頑張りすぎ注意ニャ", "ちゃんと休むニャ"],
@@ -42,6 +42,7 @@ let logoEffectTimer;
 let logoSwitchTimer;
 let logoDrawUnlockTimer;
 let logoDrawActive = false;
+let nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
 let pawTimer;
 let catBubbleTimer;
 let scrollTicking = false;
@@ -107,7 +108,7 @@ const setSecretLogo = (source) => {
 
 const rememberLogoSource = (source) => {
   try {
-    localStorage.setItem(logoStorageKey, source);
+    sessionStorage.setItem(logoStorageKey, source);
   } catch {
     // Storage can be unavailable in strict private browsing modes.
   }
@@ -115,7 +116,7 @@ const rememberLogoSource = (source) => {
 
 const readRememberedLogoSource = () => {
   try {
-    const source = localStorage.getItem(logoStorageKey);
+    const source = sessionStorage.getItem(logoStorageKey);
     return allLogoSources.includes(source) ? source : defaultLogoSource;
   } catch {
     return defaultLogoSource;
@@ -163,7 +164,7 @@ const showCatStaffLine = (source, isSecret) => {
 };
 
 const drawLogoSource = () => {
-  const secretRate = secretTapCount >= 100 ? 0.03 : 0.003;
+  const secretRate = secretTapCount >= 100 ? 0.05 : 0.015;
   const isSecret = Math.random() < secretRate;
 
   if (isSecret) {
@@ -183,6 +184,7 @@ const activateLogoDraw = () => {
   if (logoDrawActive) return;
 
   logoDrawActive = true;
+  nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
   window.clearTimeout(logoEffectTimer);
   window.clearTimeout(logoDrawUnlockTimer);
 
@@ -217,8 +219,9 @@ const handleSecretLogoTap = (event) => {
   secretTapCount += 1;
   window.clearTimeout(secretResetTimer);
 
-  if (secretTapCount >= 20 && secretTapCount % 20 === 0) {
+  if (secretTapCount >= nextLogoDrawCount) {
     activateLogoDraw();
+    secretTapCount = 0;
     return;
   }
 
