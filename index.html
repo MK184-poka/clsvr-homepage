@@ -262,15 +262,52 @@
           </section>
         </div>
 
-        <section class="booking-steps" aria-label="予約時の入力内容">
-          <h4>ご予約時の入力内容</h4>
+        <section class="booking-steps interactive-steps" aria-label="予約時の入力内容">
+          <div class="steps-heading">
+            <h4>ご予約時の入力内容</h4>
+            <p>上から順番に選ぶだけニャ。迷ったら「相談」を選んで、そのままLINEへ送ってください。</p>
+          </div>
           <div class="booking-step-grid">
-            <div><strong>1</strong><span>メニュー</span><small>例：2</small></div>
-            <div><strong>2</strong><span>エリア</span><small>例：1</small></div>
-            <label><strong>3</strong><span>希望日時</span><input type="text" name="preferredDateTime" placeholder="例：5/25 10:00〜"></label>
-            <div><strong>4</strong><span>お住まい</span><small>市町村名もLINEへ</small></div>
-            <div><strong>5</strong><span>備考</span><small>症状・作業詳細など</small></div>
-            <label><strong>6</strong><span>お名前</span><input type="text" name="name" placeholder="例：山田 太郎" autocomplete="name"></label>
+            <div class="booking-step-card">
+              <strong>1</strong>
+              <span>メニュー</span>
+              <div class="step-choice-row">
+                <button type="button" data-booking-choice="menu" data-value="2">もみ60分</button>
+                <button type="button" data-booking-choice="menu" data-value="5">軽作業</button>
+                <button type="button" data-booking-choice="menu" data-value="8">相談</button>
+              </div>
+            </div>
+            <div class="booking-step-card">
+              <strong>2</strong>
+              <span>エリア</span>
+              <div class="step-choice-row compact">
+                <button type="button" data-booking-choice="area" data-value="1">1</button>
+                <button type="button" data-booking-choice="area" data-value="2">2</button>
+                <button type="button" data-booking-choice="area" data-value="3">3</button>
+                <button type="button" data-booking-choice="area" data-value="4">4</button>
+                <button type="button" data-booking-choice="area" data-value="5">5</button>
+              </div>
+            </div>
+            <label class="booking-step-card">
+              <strong>3</strong>
+              <span>希望日時</span>
+              <input type="text" name="preferredDateTime" placeholder="例：5/25 午前">
+            </label>
+            <label class="booking-step-card">
+              <strong>4</strong>
+              <span>お住まい</span>
+              <input type="text" name="residence" placeholder="例：周南市">
+            </label>
+            <label class="booking-step-card">
+              <strong>5</strong>
+              <span>備考</span>
+              <input type="text" name="memo" placeholder="例：肩こり、庭の草抜きなど">
+            </label>
+            <label class="booking-step-card">
+              <strong>6</strong>
+              <span>お名前</span>
+              <input type="text" name="name" placeholder="例：山田 太郎" autocomplete="name">
+            </label>
           </div>
         </section>
 

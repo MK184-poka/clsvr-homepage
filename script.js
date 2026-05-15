@@ -67,6 +67,8 @@ const buildBookingMessage = () => {
 
   const formData = new FormData(bookingForm);
   const preferredDateTime = formData.get("preferredDateTime")?.toString().trim() || "";
+  const residence = formData.get("residence")?.toString().trim() || "";
+  const memo = formData.get("memo")?.toString().trim() || "";
   const name = formData.get("name")?.toString().trim() || "";
 
   return [
@@ -74,6 +76,8 @@ const buildBookingMessage = () => {
     `メニュー：${bookingSelection.menu}`,
     `エリア：${bookingSelection.area}`,
     `希望日時：${preferredDateTime}`,
+    `お住まい：${residence}`,
+    `備考：${memo}`,
     `お名前：${name}`
   ].join("\n");
 };
@@ -343,8 +347,9 @@ bookingChoiceButtons.forEach((button) => {
     bookingSelection[choiceType] = button.dataset.value || "";
     bookingChoiceButtons.forEach((choiceButton) => {
       if (choiceButton.dataset.bookingChoice !== choiceType) return;
-      choiceButton.classList.toggle("is-selected", choiceButton === button);
-      choiceButton.setAttribute("aria-pressed", choiceButton === button ? "true" : "false");
+      const isSelected = choiceButton.dataset.value === bookingSelection[choiceType];
+      choiceButton.classList.toggle("is-selected", isSelected);
+      choiceButton.setAttribute("aria-pressed", isSelected ? "true" : "false");
     });
     updateMessage();
   });
