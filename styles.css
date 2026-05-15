@@ -1247,6 +1247,8 @@ ul {
   position: relative;
   margin-top: 24px;
   padding: 24px;
+  width: 100%;
+  min-width: 0;
 }
 
 .booking-form {
@@ -1473,9 +1475,11 @@ ul {
   display: grid;
   grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
   gap: 16px;
+  min-width: 0;
 }
 
 .booking-board-panel {
+  min-width: 0;
   padding: 14px;
   background: rgba(255, 255, 255, 0.82);
   border: 2px solid rgba(13, 116, 48, 0.28);
@@ -1704,6 +1708,7 @@ ul {
 }
 
 .booking-steps {
+  min-width: 0;
   padding: 16px;
   background: rgba(255, 255, 255, 0.78);
   border: 2px solid rgba(13, 116, 48, 0.22);
@@ -1738,6 +1743,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  min-width: 0;
 }
 
 .booking-step-card {
@@ -1752,6 +1758,7 @@ ul {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 8px;
+  min-width: 0;
 }
 
 .booking-step-grid strong {
@@ -1906,6 +1913,7 @@ pre {
   margin: 0;
   padding: 12px 14px;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   color: var(--ink);
   background: rgba(255, 253, 248, 0.7);
   border: 1px solid rgba(232, 201, 162, 0.45);
@@ -2668,6 +2676,10 @@ pre {
     opacity: 0.12;
   }
 
+  .booking {
+    overflow: visible;
+  }
+
   .deco-strip {
     width: 92vw;
     bottom: 78px;
@@ -2839,11 +2851,22 @@ pre {
   .booking-board-title {
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
+    padding-inline: 0;
+  }
+
+  .booking-board-title h3 {
+    font-size: clamp(1.6rem, 9vw, 2.15rem);
+  }
+
+  .booking-board-title p {
+    max-width: none;
+    font-size: 0.92rem;
   }
 
   .booking-board-panel,
   .booking-steps {
-    padding: 12px;
+    padding: 14px;
   }
 
   .board-panel-heading {
@@ -2873,23 +2896,47 @@ pre {
   .steps-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+  }
+
+  .steps-heading p {
+    max-width: none;
+    font-size: 0.84rem;
   }
 
   .booking-step-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .booking-step-card {
+    grid-template-columns: 32px minmax(0, 1fr);
     min-height: 0;
+    padding: 14px 12px;
+  }
+
+  .booking-step-grid strong {
+    width: 32px;
+    height: 32px;
+  }
+
+  .booking-step-grid input {
+    min-height: 48px;
+    font-size: 1rem;
   }
 
   .step-choice-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .step-choice-row.compact {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .step-choice-row button {
+    min-height: 48px;
+    padding: 9px 6px;
+    font-size: 0.9rem;
   }
 
   .number-card {
@@ -2897,11 +2944,12 @@ pre {
   }
 
   .booking-form {
-    padding: 24px 16px 18px;
+    padding: 26px 14px 22px;
+    overflow: visible;
   }
 
   .booking {
-    padding-bottom: 112px;
+    padding-bottom: 156px;
   }
 
   input,
@@ -2911,7 +2959,7 @@ pre {
   }
 
   .message-preview {
-    padding: 16px;
+    padding: 16px 12px;
   }
 
   .preview-heading {
