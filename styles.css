@@ -1423,7 +1423,14 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+.preview-actions .copy-button {
+  min-width: min(100%, 240px);
+  min-height: 44px;
+  padding-inline: 22px;
 }
 
 .copy-source {
@@ -1805,8 +1812,8 @@ textarea:focus {
 }
 
 .message-preview {
-  margin-top: 22px;
-  padding: 18px;
+  margin-top: 18px;
+  padding: 20px;
   background:
     repeating-linear-gradient(0deg, rgba(255, 241, 214, 0.96) 0 31px, rgba(232, 201, 162, 0.36) 31px 32px);
   border: 1px solid #e8c9a2;
@@ -1824,19 +1831,26 @@ textarea:focus {
 
 .preview-heading {
   margin-bottom: 12px;
+  justify-content: center;
+  text-align: center;
 }
 
 .preview-note {
-  margin: -2px 0 12px;
+  margin: -2px auto 14px;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.65;
+  text-align: center;
 }
 
 pre {
   margin: 0;
+  padding: 12px 14px;
   white-space: pre-wrap;
   color: var(--ink);
+  background: rgba(255, 253, 248, 0.7);
+  border: 1px solid rgba(232, 201, 162, 0.45);
+  border-radius: 8px;
   font: inherit;
 }
 

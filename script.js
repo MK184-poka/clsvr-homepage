@@ -2,8 +2,6 @@ const bookingForm = document.getElementById("booking-form");
 const bookingMessage = document.getElementById("booking-message");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
 const bookingChoiceButtons = document.querySelectorAll("[data-booking-choice]");
-const bookingMenuNumber = document.getElementById("booking-menu-number");
-const bookingAreaNumber = document.getElementById("booking-area-number");
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
 const floatingConsult = document.querySelector(".floating-consult");
@@ -83,20 +81,21 @@ const buildBookingMessage = () => {
 const updateMessage = () => {
   if (!bookingMessage) return;
   bookingMessage.innerText = buildBookingMessage();
-  if (bookingMenuNumber) bookingMenuNumber.innerText = bookingSelection.menu;
-  if (bookingAreaNumber) bookingAreaNumber.innerText = bookingSelection.area;
 };
 
 const copyText = async (text, button) => {
   try {
     await navigator.clipboard.writeText(text);
     const originalText = button.innerText;
-    button.innerText = "コピー済み";
+    button.innerText = "コピーできたニャ";
+    setTimeout(() => {
+      button.innerText = "LINEへ貼り付けるニャ";
+    }, 900);
     setTimeout(() => {
       button.innerText = originalText;
-    }, 1800);
+    }, 2400);
   } catch {
-    button.innerText = "選択してコピー";
+    button.innerText = "もう一度コピーするニャ";
   }
 };
 
