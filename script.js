@@ -8,6 +8,7 @@ const secretLogos = document.querySelectorAll(".js-secret-logo");
 const floatingConsult = document.querySelector(".floating-consult");
 const catLogoButton = document.querySelector(".cat-logo-button");
 const catStaffBubble = document.getElementById("cat-staff-bubble");
+const logoStorageKey = "clsvr-logo-gacha-source";
 const logoVariantSources = [
   "logo-black.webp",
   "logo-lightgray.webp",
@@ -21,18 +22,19 @@ const logoVariantSources = [
 ];
 const secretLogoSources = ["logo-secret-calico.webp"];
 const catStaffLines = {
-  "logo-black.webp": "疲れてニャいかニャ？",
-  "logo-lightgray.webp": "今日は休んでもいいニャ",
-  "logo-beige.webp": "お茶でも飲むニャ",
-  "logo-bluegray.webp": "深呼吸してる？",
-  "logo-brown.webp": "その作業、預けてもいいニャ",
-  "logo-orange.webp": "いい日になる気がするニャ",
-  "logo-gray.webp": "頑張りすぎ注意ニャ",
-  "logo-darkbrown.webp": "ちょっと肩の力ぬくニャ",
-  "logo-orange-black.webp": "自分時間、忘れてニャい？",
-  "logo-secret-calico.webp": "三毛猫レアだニャ！今日はラッキーだニャ"
+  "logo-black.webp": ["疲れてニャいかニャ？", "少し休んでいくニャ"],
+  "logo-lightgray.webp": ["今日は休んでもいいニャ", "ゆっくりモードだニャ"],
+  "logo-beige.webp": ["お茶でも飲むニャ", "深呼吸するニャ"],
+  "logo-bluegray.webp": ["深呼吸してる？", "肩の力をぬくニャ"],
+  "logo-brown.webp": ["その作業、預けてもいいニャ", "無理しすぎ注意ニャ"],
+  "logo-orange.webp": ["いい日になる気がするニャ", "今日はゆっくり進むニャ"],
+  "logo-gray.webp": ["頑張りすぎ注意ニャ", "ちゃんと休むニャ"],
+  "logo-darkbrown.webp": ["ちょっと肩の力ぬくニャ", "焦らなくていいニャ"],
+  "logo-orange-black.webp": ["自分時間、忘れてニャい？", "その用事、分けてもいいニャ"],
+  "logo-secret-calico.webp": ["今日はラッキーだニャ", "秘密の三毛猫だニャ", "自分時間をプレゼントだニャ"]
 };
 const defaultLogoSource = logoVariantSources[0];
+const allLogoSources = [...logoVariantSources, ...secretLogoSources];
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 let secretTapCount = 0;
 let secretResetTimer;
@@ -103,6 +105,28 @@ const setSecretLogo = (source) => {
   });
 };
 
+const rememberLogoSource = (source) => {
+  try {
+    localStorage.setItem(logoStorageKey, source);
+  } catch {
+    // Storage can be unavailable in strict private browsing modes.
+  }
+};
+
+const readRememberedLogoSource = () => {
+  try {
+    const source = localStorage.getItem(logoStorageKey);
+    return allLogoSources.includes(source) ? source : defaultLogoSource;
+  } catch {
+    return defaultLogoSource;
+  }
+};
+
+const pickCatStaffLine = (source) => {
+  const lines = catStaffLines[source] || ["少し休んでいくニャ。"];
+  return lines[Math.floor(Math.random() * lines.length)];
+};
+
 const switchLogoSource = (source, isSecret) => {
   window.clearTimeout(logoSwitchTimer);
   document.body.classList.add("logo-switching");
@@ -110,6 +134,7 @@ const switchLogoSource = (source, isSecret) => {
   logoSwitchTimer = window.setTimeout(
     () => {
       setSecretLogo(source);
+      rememberLogoSource(source);
       window.requestAnimationFrame(() => {
         document.body.classList.remove("logo-switching");
         document.body.classList.add("hidden-mode");
@@ -124,7 +149,7 @@ const showCatStaffLine = (source, isSecret) => {
   if (!catStaffBubble) return;
 
   window.clearTimeout(catBubbleTimer);
-  catStaffBubble.textContent = catStaffLines[source] || "少し休んでいくニャ。";
+  catStaffBubble.textContent = pickCatStaffLine(source);
   catStaffBubble.classList.remove("is-visible", "is-rare");
 
   window.requestAnimationFrame(() => {
@@ -326,3 +351,6 @@ if (lineButton) {
 }
 
 updateMessage();
+const rememberedLogoSource = readRememberedLogoSource();
+setSecretLogo(rememberedLogoSource);
+document.body.classList.toggle("secret-rare-mode", secretLogoSources.includes(rememberedLogoSource));
