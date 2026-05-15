@@ -1,7 +1,5 @@
-const LINE_OFFICIAL_ID = "@171ltzff";
 const bookingForm = document.getElementById("booking-form");
 const bookingMessage = document.getElementById("booking-message");
-const lineButton = document.getElementById("send-line");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
@@ -335,21 +333,6 @@ if (bookingForm) {
   bookingForm.addEventListener("change", updateMessage);
   bookingForm.addEventListener("reset", () => {
     setTimeout(updateMessage, 0);
-  });
-}
-
-if (lineButton) {
-  lineButton.addEventListener("click", async () => {
-    const message = buildBookingMessage();
-
-    if (!LINE_OFFICIAL_ID) {
-      await navigator.clipboard.writeText(message);
-      alert("公式LINE IDが未設定のため、予約メッセージをコピーしました。script.jsのLINE_OFFICIAL_IDに公式LINE IDを入れると、直接LINEへ送れます。");
-      return;
-    }
-
-    const url = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_OFFICIAL_ID)}/?${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener");
   });
 }
 

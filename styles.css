@@ -1153,6 +1153,7 @@ ul {
 }
 
 .booking {
+  padding-bottom: clamp(78px, 9vw, 118px);
   background:
     linear-gradient(90deg, rgba(169, 111, 69, 0.035) 1px, transparent 1px),
     radial-gradient(circle at 24px 24px, rgba(223, 132, 107, 0.08) 0 2px, transparent 2.5px),
@@ -1339,6 +1340,13 @@ textarea:focus {
   margin-bottom: 12px;
 }
 
+.preview-note {
+  margin: -2px 0 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
 pre {
   margin: 0;
   white-space: pre-wrap;
@@ -1368,11 +1376,6 @@ pre {
 .booking-actions {
   justify-content: flex-start;
   margin-top: 22px;
-}
-
-.line-button {
-  min-width: 190px;
-  background: #4f8f45;
 }
 
 .warning {
@@ -2193,6 +2196,10 @@ pre {
     padding: 24px 16px 18px;
   }
 
+  .booking {
+    padding-bottom: 112px;
+  }
+
   input,
   select,
   textarea {
@@ -2201,6 +2208,14 @@ pre {
 
   .message-preview {
     padding: 16px;
+  }
+
+  .preview-heading {
+    align-items: flex-start;
+  }
+
+  .preview-note {
+    font-size: 0.86rem;
   }
 
   .hero-actions,
