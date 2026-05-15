@@ -41,6 +41,7 @@ let logoSwitchTimer;
 let logoDrawUnlockTimer;
 let logoDrawActive = false;
 let nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
+let catLogoTapTimer;
 let pawTimer;
 let catBubbleTimer;
 let scrollTicking = false;
@@ -211,6 +212,17 @@ const activateLogoDraw = () => {
 const handleSecretLogoTap = (event) => {
   event.preventDefault();
   event.stopPropagation();
+
+  if (catLogoButton && !motionQuery.matches) {
+    window.clearTimeout(catLogoTapTimer);
+    catLogoButton.classList.remove("is-tapped");
+    // Force a reflow so rapid taps restart the soft press animation.
+    void catLogoButton.offsetWidth;
+    catLogoButton.classList.add("is-tapped");
+    catLogoTapTimer = window.setTimeout(() => {
+      catLogoButton.classList.remove("is-tapped");
+    }, 520);
+  }
 
   if (logoDrawActive) return;
 

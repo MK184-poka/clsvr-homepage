@@ -1701,7 +1701,19 @@ pre {
   border-color: rgba(169, 111, 69, 0.26);
   box-shadow: 0 18px 34px rgba(103, 68, 37, 0.18);
   transform: translateY(-2px);
-  outline: none;
+}
+
+.cat-logo-button:focus-visible {
+  outline: 3px solid rgba(111, 143, 87, 0.28);
+  outline-offset: 4px;
+}
+
+.cat-logo-button.is-tapped {
+  animation: catLogoBounce 520ms cubic-bezier(0.2, 0.9, 0.24, 1) both;
+}
+
+.cat-logo-button.is-tapped .cat-logo-button-img {
+  animation: catLogoImageBounce 520ms cubic-bezier(0.2, 0.9, 0.24, 1) both;
 }
 
 .cat-logo-button-img {
@@ -1772,6 +1784,42 @@ pre {
     0 18px 36px rgba(223, 132, 107, 0.18),
     0 0 0 5px rgba(255, 241, 214, 0.9),
     0 0 26px rgba(243, 196, 93, 0.32);
+}
+
+@keyframes catLogoBounce {
+  0% {
+    transform: scale(1);
+  }
+  28% {
+    transform: scale(0.88);
+  }
+  55% {
+    transform: scale(1.08);
+  }
+  76% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes catLogoImageBounce {
+  0% {
+    transform: scale(1);
+  }
+  28% {
+    transform: scale(0.9);
+  }
+  55% {
+    transform: scale(1.05);
+  }
+  76% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes cat-bubble {
