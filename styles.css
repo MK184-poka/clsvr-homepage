@@ -3808,3 +3808,134 @@ pre {
     opacity: 0.16;
   }
 }
+
+/* Hero balance pass */
+.hero {
+  align-items: center;
+  min-height: calc(100svh - 72px);
+  padding: clamp(42px, 7vw, 92px) clamp(18px, 7vw, 96px) clamp(64px, 8vw, 104px);
+}
+
+.hero::before {
+  background:
+    linear-gradient(90deg, rgba(255, 248, 236, 0.94) 0%, rgba(255, 248, 236, 0.7) 43%, rgba(255, 248, 236, 0.42) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 241, 214, 0.38));
+}
+
+.hero::after {
+  background-size: cover;
+  background-position: 62% bottom;
+  opacity: 0.78;
+  filter: saturate(0.94) contrast(0.97) brightness(1.04);
+}
+
+.hero-copy {
+  width: min(720px, 62vw);
+  padding-top: 0;
+}
+
+.hero-logo {
+  position: static;
+  justify-self: start;
+  width: clamp(82px, 7vw, 104px);
+  margin: 0 0 clamp(18px, 2vw, 24px);
+  padding: 8px 10px;
+  opacity: 0.94;
+  background: rgba(255, 253, 248, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.hero .eyebrow {
+  margin-bottom: clamp(12px, 1.6vw, 18px);
+}
+
+.hero h1 {
+  max-width: 8.3em;
+  margin-bottom: clamp(16px, 2.2vw, 24px);
+  font-size: clamp(4rem, 8vw, 7.2rem);
+}
+
+.hero .lead {
+  max-width: 32rem;
+  margin-bottom: 10px;
+}
+
+.hero .shop-note {
+  max-width: 33rem;
+  margin-bottom: 26px;
+}
+
+.hero-actions {
+  gap: 12px;
+}
+
+@media (max-width: 920px) {
+  .hero {
+    min-height: calc(100svh - 126px);
+    padding: 34px clamp(16px, 5vw, 34px) 210px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 236, 0.92) 0%, rgba(255, 248, 236, 0.74) 58%, rgba(255, 248, 236, 0.9) 100%),
+      linear-gradient(90deg, rgba(255, 248, 236, 0.94), rgba(255, 248, 236, 0.48));
+  }
+
+  .hero::after {
+    background-size: auto 260px;
+    background-position: center bottom 12px;
+    opacity: 0.72;
+  }
+
+  .hero-copy {
+    width: min(100%, 620px);
+  }
+
+  .hero-logo {
+    width: 78px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    max-width: 8.1em;
+    font-size: clamp(3.2rem, 12vw, 5.5rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    min-height: calc(100svh - 138px);
+    padding: 28px 15px 196px;
+  }
+
+  .hero::after {
+    background-size: auto 214px;
+    background-position: center bottom 10px;
+  }
+
+  .hero-logo {
+    width: 68px;
+    margin-bottom: 14px;
+    padding: 6px 7px;
+  }
+
+  .hero .eyebrow {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    margin-bottom: 14px;
+    font-size: clamp(2.9rem, 12.6vw, 3.8rem);
+    line-height: 1.04;
+  }
+
+  .hero .lead {
+    font-size: clamp(1.02rem, 4.1vw, 1.18rem);
+  }
+
+  .hero .shop-note {
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+  }
+}
