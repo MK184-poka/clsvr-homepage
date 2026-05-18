@@ -2118,10 +2118,12 @@ pre {
 }
 
 .footer {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(360px, 1.2fr);
+  justify-content: initial;
   align-items: flex-start;
-  gap: 24px;
-  padding: 28px clamp(18px, 5vw, 64px) clamp(92px, 10vw, 124px);
+  gap: clamp(28px, 6vw, 84px);
+  padding: 34px clamp(18px, 5vw, 64px) clamp(132px, 13vw, 178px);
   background: var(--ink);
   color: var(--white);
 }
@@ -2210,24 +2212,29 @@ pre {
 
 .footer-contact {
   display: grid;
-  gap: 12px;
-  justify-items: end;
-  max-width: min(100%, 420px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 24px;
+  justify-items: start;
+  align-items: center;
+  width: min(100%, 620px);
+  max-width: none;
 }
 
 .footer-contact-title {
+  grid-column: 1 / -1;
   font-weight: 800;
 }
 
 .footer-contact-note {
+  grid-column: 1 / -1;
   font-size: 0.86rem;
 }
 
 .footer-social-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 .footer-social-button {
@@ -2248,6 +2255,44 @@ pre {
   line-height: 1;
   touch-action: manipulation;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.footer-social-button svg {
+  position: relative;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-social-button.facebook svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-social-button.line svg {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-social-button.line svg path:first-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-social-button.line svg path:last-child {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 1.35;
+}
+
+.footer-social-button.phone svg {
+  width: 24px;
+  height: 24px;
 }
 
 .footer-social-button:nth-child(2) {
@@ -2334,7 +2379,7 @@ pre {
 .footer-phone {
   display: grid;
   gap: 8px;
-  justify-items: end;
+  justify-items: start;
 }
 
 .footer-phone p {
@@ -3159,13 +3204,14 @@ pre {
 
   .footer {
     align-items: flex-start;
-    flex-direction: column;
-    padding-bottom: 156px;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-bottom: 178px;
   }
 
-  .footer-contact,
-  .footer-phone {
-    justify-items: start;
+  .footer-contact {
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .footer-social-links {
@@ -3176,6 +3222,10 @@ pre {
   .footer-social-button {
     width: 54px;
     height: 54px;
+  }
+
+  .footer-phone {
+    justify-items: start;
   }
 
   .floating-consult {
