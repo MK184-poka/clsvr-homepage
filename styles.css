@@ -2123,7 +2123,7 @@ pre {
   justify-content: initial;
   align-items: center;
   gap: clamp(24px, 5vw, 72px);
-  padding: 28px clamp(18px, 5vw, 64px) clamp(96px, 9vw, 126px);
+  padding: 26px clamp(18px, 5vw, 64px) clamp(86px, 8vw, 112px);
   background: var(--ink);
   color: var(--white);
 }
@@ -2295,21 +2295,12 @@ pre {
   stroke-width: 1.35;
 }
 
-.footer-social-button.phone svg {
-  width: 24px;
-  height: 24px;
-}
-
 .footer-social-button:nth-child(2) {
   transform: translateY(7px);
 }
 
 .footer-social-button:nth-child(3) {
   transform: translateY(-3px);
-}
-
-.footer-social-button:nth-child(4) {
-  transform: translateY(6px);
 }
 
 .footer-social-button::before,
@@ -2352,11 +2343,6 @@ pre {
   transform: translateY(-6px) scale(1.04);
 }
 
-.footer-social-button:nth-child(4):hover,
-.footer-social-button:nth-child(4):focus-visible {
-  transform: translateY(3px) scale(1.04);
-}
-
 .footer-social-button:hover,
 .footer-social-button:focus-visible,
 .footer-social-button:active {
@@ -2374,11 +2360,6 @@ pre {
 .footer-social-button.line {
   color: #3f8f45;
   font-size: 0.7rem;
-}
-
-.footer-social-button.phone {
-  color: var(--wood);
-  font-size: 0.72rem;
 }
 
 .footer-phone {
@@ -3213,7 +3194,7 @@ pre {
     grid-template-columns: 1fr;
     gap: 18px;
     padding-top: 24px;
-    padding-bottom: 150px;
+    padding-bottom: 138px;
   }
 
   .footer-contact {
