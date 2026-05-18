@@ -7,6 +7,8 @@ const secretLogos = document.querySelectorAll(".js-secret-logo");
 const floatingConsult = document.querySelector(".floating-consult");
 const catLogoButton = document.querySelector(".cat-logo-button");
 const catStaffBubble = document.getElementById("cat-staff-bubble");
+const contactLinks = window.CLSVR_CONTACT_LINKS || {};
+const contactLinkAnchors = document.querySelectorAll("[data-contact-link]");
 const logoStorageKey = "clsvr-logo-gacha-source";
 const logoVariantSources = [
   "logo-black.webp",
@@ -50,6 +52,13 @@ const bookingSelection = {
   menu: "",
   area: ""
 };
+
+contactLinkAnchors.forEach((anchor) => {
+  const linkKey = anchor.dataset.contactLink;
+  if (linkKey && contactLinks[linkKey]) {
+    anchor.href = contactLinks[linkKey];
+  }
+});
 
 const formatDate = (value) => {
   if (!value) return "未選択";
