@@ -5319,3 +5319,23 @@ pre {
       0 10px 24px rgba(87, 52, 28, 0.22);
   }
 }
+
+/* Mobile hero background readability tuning */
+@media (max-width: 620px) {
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 236, 0.8) 0%, rgba(255, 248, 236, 0.52) 40%, rgba(255, 248, 236, 0.76) 100%),
+      radial-gradient(ellipse at 44% 36%, rgba(255, 255, 255, 0.42), transparent 54%);
+  }
+
+  .hero::after {
+    opacity: 0.76;
+    filter: saturate(0.98) contrast(0.96) brightness(1.08);
+  }
+}
+
+@media (max-width: 400px) {
+  .hero::after {
+    opacity: 0.74;
+  }
+}
