@@ -4522,6 +4522,64 @@ pre {
   }
 }
 
+/* Hero responsive background alignment */
+@media (min-width: 621px) and (max-width: 920px) {
+  .hero {
+    min-height: calc(100svh - 126px);
+    padding-bottom: clamp(92px, 14vw, 140px);
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 236, 0.8) 0%, rgba(255, 248, 236, 0.48) 46%, rgba(255, 248, 236, 0.76) 100%),
+      linear-gradient(90deg, rgba(255, 248, 236, 0.88), rgba(255, 248, 236, 0.34));
+  }
+
+  .hero::after {
+    background-size: auto min(64vh, 560px);
+    background-position: 54% 48%;
+    opacity: 0.82;
+    filter: saturate(1) contrast(0.98) brightness(1.03);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    min-height: calc(100svh - 118px);
+    padding: 24px 15px 86px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 236, 0.74) 0%, rgba(255, 248, 236, 0.42) 40%, rgba(255, 248, 236, 0.7) 100%),
+      radial-gradient(ellipse at 44% 36%, rgba(255, 255, 255, 0.34), transparent 52%);
+  }
+
+  .hero::after {
+    background-size: auto min(72vh, 520px);
+    background-position: 55% 42%;
+    opacity: 0.86;
+    filter: saturate(1.02) contrast(0.98) brightness(1.02);
+  }
+
+  .hero-copy {
+    width: min(100%, 430px);
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    padding-bottom: 76px;
+  }
+
+  .hero::after {
+    background-size: auto min(70vh, 490px);
+    background-position: 56% 39%;
+    opacity: 0.84;
+  }
+}
+
 /* Wooden product shelf menu */
 .service-shop-shelf {
   position: relative;
