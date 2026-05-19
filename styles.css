@@ -5275,3 +5275,47 @@ pre {
     font-size: 0.84rem;
   }
 }
+
+/* Gentle hero title typography */
+.hero h1 {
+  color: #3f2f24;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Yu Gothic", Meiryo, serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.08;
+  text-shadow:
+    0 2px 0 rgba(255, 253, 248, 0.82),
+    0 12px 30px rgba(87, 52, 28, 0.2);
+}
+
+.hero h1 span {
+  position: relative;
+  display: inline-block;
+  color: #5b3b25;
+  text-shadow:
+    0 2px 0 rgba(255, 253, 248, 0.86),
+    0 12px 28px rgba(87, 52, 28, 0.18);
+}
+
+.hero h1 span::after {
+  content: "";
+  position: absolute;
+  left: 0.04em;
+  right: 0.04em;
+  bottom: 0.04em;
+  z-index: -1;
+  height: 0.24em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(243, 196, 93, 0.54), rgba(237, 244, 223, 0.62));
+  box-shadow: 0 3px 10px rgba(103, 68, 37, 0.08);
+}
+
+@media (max-width: 620px) {
+  .hero h1 {
+    font-size: clamp(2.7rem, 12.2vw, 3.55rem);
+    line-height: 1.1;
+    text-shadow:
+      0 2px 0 rgba(255, 253, 248, 0.86),
+      0 10px 24px rgba(87, 52, 28, 0.22);
+  }
+}
