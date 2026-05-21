@@ -302,7 +302,7 @@ if (bookingForm) {
 
 if (!motionQuery.matches && "IntersectionObserver" in window) {
   const revealTargets = document.querySelectorAll(
-    ".section, .quick-links, .line-contact, .booking-form, .notice, .price-card, .area-card, .service-examples > div"
+    ".section, .quick-links, .line-contact, .booking-contact-card, .booking-form, .notice, .price-card, .area-card, .service-examples > div"
   );
 
   revealTargets.forEach((target) => target.classList.add("reveal-on-scroll"));
@@ -326,3 +326,4 @@ if (!motionQuery.matches && "IntersectionObserver" in window) {
 
 setLogoSource(getStoredLogoSource());
 updateMessage();
+

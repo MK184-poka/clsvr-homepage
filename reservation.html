@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CLSVRの予約フォームです。メニュー、出張エリア、希望日時を入力して公式LINEへ送信できます。">
+  <title>CLSVR | 予約フォーム</title>
+  <link rel="stylesheet" href="styles.css?v=20260521-reservation">
+</head>
+<body class="reservation-page">
+  <header class="site-header">
+    <a class="brand" href="index.html#top" aria-label="CLSVR トップへ">
+      <img class="brand-logo" src="logo-black.webp" alt="CLSVR ロゴ" width="56" height="38">
+      <span>
+        <strong>CLSVR</strong>
+        <small>予約フォーム</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="予約ページメニュー">
+      <a href="index.html#price">料金</a>
+      <a href="index.html#area">エリア</a>
+      <a href="index.html#booking">戻る</a>
+    </nav>
+  </header>
+
+  <main class="reservation-page-main">
+    <section class="reservation-page-head">
+      <p class="section-label">CLSVR 予約フォーム</p>
+      <h1>ご希望内容を入力してください</h1>
+      <p>入力後、公式LINEに送る予約メッセージを作成します。内容を確認して送信してください。</p>
+    </section>
+
+    <form class="reservation-form" id="line-reservation-form">
+      <section class="reservation-section">
+        <div class="reservation-heading">
+          <span>1</span>
+          <div>
+            <h3>メニューを選ぶ</h3>
+            <p>料金は目安です。内容確認後に正式な金額をご案内します。</p>
+          </div>
+        </div>
+        <div class="reservation-menu-grid">
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="もみほぐし45分" data-price="3500" required>
+            <span><strong>もみほぐし45分</strong><small>短時間でリフレッシュ</small></span>
+            <b>3,500円</b>
+          </label>
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="もみほぐし60分" data-price="4500">
+            <span><strong>もみほぐし60分</strong><small>一番人気の基本コース</small></span>
+            <b>4,500円</b>
+          </label>
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="もみほぐし90分" data-price="6500">
+            <span><strong>もみほぐし90分</strong><small>しっかりケア</small></span>
+            <b>6,500円</b>
+          </label>
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="軽作業 1時間" data-price="3000">
+            <span><strong>軽作業</strong><small>暮らしのお手伝い</small></span>
+            <b>3,000円〜</b>
+          </label>
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="重作業 1時間" data-price="4000">
+            <span><strong>重作業</strong><small>家具移動など</small></span>
+            <b>4,000円〜</b>
+          </label>
+          <label class="reservation-choice">
+            <input type="radio" name="menu" value="ハチ駆除" data-price="10000">
+            <span><strong>ハチ駆除</strong><small>状況確認後にご案内</small></span>
+            <b>10,000円〜</b>
+          </label>
+        </div>
+      </section>
+
+      <section class="reservation-section reservation-fields">
+        <div class="reservation-heading">
+          <span>2</span>
+          <div>
+            <h3>エリア・希望日時</h3>
+            <p>第2希望まであると調整しやすくなります。</p>
+          </div>
+        </div>
+        <label>
+          出張エリア
+          <select name="area" id="reservation-area" required>
+            <option value="" data-fee="0">選択してください</option>
+            <option value="周南市（徳山・新南陽） / 出張料500円" data-fee="500">周南市（徳山・新南陽） / 500円</option>
+            <option value="周南市（熊毛・鹿野）・下松市 / 出張料1,000円" data-fee="1000">周南市（熊毛・鹿野）・下松市 / 1,000円</option>
+            <option value="光市・防府市 / 出張料1,500円" data-fee="1500">光市・防府市 / 1,500円</option>
+            <option value="山口市・岩国市・柳井市・田布施町・平生町 / 出張料3,000円" data-fee="3000">山口市・岩国市・柳井市・田布施町・平生町 / 3,000円</option>
+            <option value="遠方エリア / 出張料5,000円〜" data-fee="5000">遠方エリア / 5,000円〜</option>
+            <option value="その他エリア / 要相談" data-fee="0">その他エリア / 要相談</option>
+          </select>
+        </label>
+        <div class="reservation-field-grid">
+          <label>
+            第1希望
+            <input type="datetime-local" name="date1" required>
+          </label>
+          <label>
+            第2希望
+            <input type="datetime-local" name="date2">
+          </label>
+        </div>
+      </section>
+
+      <section class="reservation-section reservation-fields">
+        <div class="reservation-heading">
+          <span>3</span>
+          <div>
+            <h3>お客様情報</h3>
+            <p>連絡に必要な内容だけ入力してください。</p>
+          </div>
+        </div>
+        <div class="reservation-field-grid">
+          <label>
+            お名前
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            電話番号
+            <input type="tel" name="phone" autocomplete="tel" placeholder="例：090-1234-5678" required>
+          </label>
+        </div>
+        <label>
+          住所・目印
+          <input type="text" name="address" autocomplete="street-address" placeholder="例：周南市〇〇町、駐車場あり" required>
+        </label>
+        <label>
+          備考
+          <input type="text" name="note" placeholder="例：肩こり、庭の草抜き、駐車場の有無など">
+        </label>
+      </section>
+
+      <section class="reservation-summary" aria-live="polite">
+        <div>
+          <span>メニュー</span>
+          <strong id="reservation-menu-price">未選択</strong>
+        </div>
+        <div>
+          <span>出張料</span>
+          <strong id="reservation-travel-fee">未選択</strong>
+        </div>
+        <div>
+          <span>合計目安</span>
+          <strong id="reservation-total-price">メニューとエリアを選択</strong>
+        </div>
+        <p>遠方で高速道路を利用する場合は、往復実費を100円単位で精算します。</p>
+      </section>
+
+      <p class="reservation-status" id="reservation-status" aria-live="polite"></p>
+      <div class="reservation-actions">
+        <button class="button primary" type="submit">公式LINEへ送る</button>
+        <a class="button secondary" href="tel:09083622386">電話で予約する</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="reservation.js?v=20260521-reservation"></script>
+</body>
+</html>

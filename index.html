@@ -187,176 +187,40 @@
       <div>
         <p class="section-label">05 予約案内</p>
         <h2>LINEでかんたん予約</h2>
-        <p>メニュー番号とエリア番号を選ぶだけで、LINEに送る予約メッセージを作れます。迷ったら「相談」として送っていただいても大丈夫です。</p>
+        <p>予約フォーム、公式LINE、お電話からご予約・ご相談いただけます。迷ったらLINEで写真を送るだけでも大丈夫です。</p>
       </div>
 
-      <div class="line-contact booking-line-guide">
+      <div class="booking-contact-panel">
+        <article class="booking-contact-card primary-card">
+          <span>おすすめ</span>
+          <h3>予約フォームから送る</h3>
+          <p>メニュー、エリア、希望日時をまとめて送れます。スマホでも入力しやすい専用フォームです。</p>
+          <a class="button primary" href="reservation.html">予約フォームへ進む</a>
+        </article>
+        <article class="booking-contact-card">
+          <span>LINE</span>
+          <h3>公式LINEで相談する</h3>
+          <p>写真で見積もり、空き時間の確認、ちょっとした相談はこちらからどうぞ。</p>
+          <a class="button secondary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">公式LINEを開く</a>
+        </article>
+        <article class="booking-contact-card phone-card">
+          <span>電話</span>
+          <h3>電話でも予約できます</h3>
+          <p>急ぎのご相談や、入力が面倒なときはお電話ください。</p>
+          <a class="phone-booking-link" data-contact-link="phone" href="tel:09083622386">090-8362-2386</a>
+        </article>
+      </div>
+
+      <div class="line-contact booking-line-guide compact-line-guide">
         <div class="qr-card">
           <img src="line-qr.png" alt="CLSVR公式LINEのQRコード" width="220" height="220">
         </div>
         <div>
-          <h3>LINEで番号を送るだけ</h3>
-          <p>スマホの方は右下のLINEボタンへ。番号カードを押すと下のテンプレに反映されるので、コピーしてそのまま公式LINEへ送れます。</p>
+          <h3>QRコードからもLINEを追加できます</h3>
+          <p>パソコンで見ている方は、スマホでQRコードを読み取って公式LINEへ進めます。</p>
           <a class="button secondary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">公式LINEを開く</a>
         </div>
       </div>
-
-      <form class="booking-form number-booking booking-board" id="booking-form">
-        <div class="booking-board-title">
-          <div>
-            <p class="booking-mini-label">番号を送るだけの予約フォーム</p>
-            <h3>ご予約のご案内</h3>
-          </div>
-          <p>以下の番号をコピーして、公式LINEへ送信してください。内容を確認後、ムラオカより確定メッセージをお送りします。</p>
-        </div>
-
-        <div class="booking-board-grid">
-          <section class="booking-board-panel menu-board" aria-labelledby="menu-board-title">
-            <div class="board-panel-heading">
-              <span aria-hidden="true">♨</span>
-              <h4 id="menu-board-title">メニューを選ぶ</h4>
-              <small>番号を送信</small>
-            </div>
-
-            <div class="menu-category massage-category">
-              <h5>もみほぐし</h5>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="1">
-                <strong>1</strong><span>45分</span><b>3,500円</b>
-              </button>
-              <button class="menu-line-card popular" type="button" data-booking-choice="menu" data-value="2">
-                <strong>2</strong><span>60分（一番人気）</span><b>4,500円</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="3">
-                <strong>3</strong><span>90分</span><b>6,500円</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="4">
-                <strong>4</strong><span>延長15分</span><b>1,000円</b>
-              </button>
-            </div>
-
-            <div class="menu-category support-category">
-              <h5>暮らしのお手伝い</h5>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="5">
-                <strong>5</strong><span>軽作業（1時間）</span><b>3,000円〜</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="6">
-                <strong>6</strong><span>重作業（1時間）</span><b>4,000円〜</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="7">
-                <strong>7</strong><span>ハチ駆除</span><b>10,000円〜</b>
-              </button>
-            </div>
-
-            <div class="menu-category gift-category">
-              <h5>お得なセットプラン</h5>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="8">
-                <strong>8</strong><span>自分時間30分プラン</span><b>4,500円</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="9">
-                <strong>9</strong><span>自分時間60分プラン</span><b>7,000円</b>
-              </button>
-              <button class="menu-line-card" type="button" data-booking-choice="menu" data-value="10">
-                <strong>10</strong><span>全力フルサポートプラン</span><b>13,500円</b>
-              </button>
-            </div>
-            <p class="board-footnote">すべて税込価格です。別途、出張料金（エリア料金）がかかります。</p>
-          </section>
-
-          <section class="booking-board-panel area-board" aria-labelledby="area-board-title">
-            <div class="board-panel-heading">
-              <span aria-hidden="true">🚗</span>
-              <h4 id="area-board-title">エリアを選ぶ</h4>
-              <small>番号を送信</small>
-            </div>
-
-            <button class="area-line-card area-1" type="button" data-booking-choice="area" data-value="1">
-              <strong>1</strong><span><b>500円エリア</b><small>周南市（徳山・新南陽）</small></span>
-            </button>
-            <button class="area-line-card area-2" type="button" data-booking-choice="area" data-value="2">
-              <strong>2</strong><span><b>1,000円エリア</b><small>周南市（熊毛・鹿野）・下松市</small></span>
-            </button>
-            <button class="area-line-card area-3" type="button" data-booking-choice="area" data-value="3">
-              <strong>3</strong><span><b>1,500円エリア</b><small>光市、防府市</small></span>
-            </button>
-            <button class="area-line-card area-4" type="button" data-booking-choice="area" data-value="4">
-              <strong>4</strong><span><b>3,000円エリア</b><small>山口市、岩国市、柳井市、田布施町、平生町</small></span>
-            </button>
-            <button class="area-line-card area-5" type="button" data-booking-choice="area" data-value="5">
-              <strong>5</strong><span><b>5,000円〜エリア</b><small>下関市、長門市、萩市、宇部市、山陽小野田市、美祢市、阿武町</small></span>
-            </button>
-
-            <div class="toll-note">
-              <strong>高速料金の精算について</strong>
-              <p>遠方エリアで高速道路を利用した場合は、往復の実費を100円単位で精算します。迷う場合は事前にご相談ください。</p>
-            </div>
-          </section>
-        </div>
-
-        <section class="booking-steps interactive-steps" aria-label="予約時の入力内容">
-          <div class="steps-heading">
-            <h4>ご予約時の入力内容</h4>
-            <p>上から順番に選ぶだけで送信用の文面が作れます。迷ったら「相談」を選んで、そのままLINEへ送ってください。</p>
-          </div>
-          <div class="booking-step-grid">
-            <div class="booking-step-card">
-              <strong>1</strong>
-              <span>メニュー</span>
-              <div class="step-choice-row">
-                <button type="button" data-booking-choice="menu" data-value="2">もみ60分</button>
-                <button type="button" data-booking-choice="menu" data-value="5">軽作業</button>
-                <button type="button" data-booking-choice="menu" data-value="8">相談</button>
-              </div>
-            </div>
-            <div class="booking-step-card">
-              <strong>2</strong>
-              <span>エリア</span>
-              <div class="step-choice-row compact">
-                <button type="button" data-booking-choice="area" data-value="1">1</button>
-                <button type="button" data-booking-choice="area" data-value="2">2</button>
-                <button type="button" data-booking-choice="area" data-value="3">3</button>
-                <button type="button" data-booking-choice="area" data-value="4">4</button>
-                <button type="button" data-booking-choice="area" data-value="5">5</button>
-              </div>
-            </div>
-            <label class="booking-step-card">
-              <strong>3</strong>
-              <span>希望日時</span>
-              <input type="text" name="preferredDateTime" placeholder="例：5/25 午前">
-            </label>
-            <label class="booking-step-card">
-              <strong>4</strong>
-              <span>お住まい</span>
-              <input type="text" name="residence" placeholder="例：周南市">
-            </label>
-            <label class="booking-step-card">
-              <strong>5</strong>
-              <span>備考</span>
-              <input type="text" name="memo" placeholder="例：肩こり、庭の草抜きなど">
-            </label>
-            <label class="booking-step-card">
-              <strong>6</strong>
-              <span>お名前</span>
-              <input type="text" name="name" placeholder="例：山田 太郎" autocomplete="name">
-            </label>
-          </div>
-        </section>
-
-        <div class="message-preview">
-          <div class="preview-heading">
-            <strong>LINE送信用テンプレ</strong>
-            <div class="preview-actions">
-              <button class="copy-button inline" type="button" data-copy-target="booking-message">テンプレをコピー</button>
-            </div>
-          </div>
-          <p class="preview-note">コピー後は、右下のLINEボタンからそのまま送信できます。</p>
-          <pre id="booking-message"></pre>
-        </div>
-
-        <div class="booking-actions">
-          <a class="button primary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">LINEで送る</a>
-          <button class="button secondary" type="reset">選び直す</button>
-        </div>
-      </form>
 
       <div class="notice warning">
         <strong>キャンセルについて</strong>
@@ -527,3 +391,4 @@
   <script src="script.js?v=20260515-bounce"></script>
 </body>
 </html>
+
