@@ -5528,7 +5528,6 @@ body {
 .booking::after,
 .page-decorations,
 .section-decoration,
-.cat-logo-button,
 .cat-staff-bubble {
   display: none !important;
 }
@@ -5627,6 +5626,26 @@ body {
 .floating-paw,
 .paw-float {
   display: none !important;
+}
+
+.cat-logo-button {
+  display: grid !important;
+}
+
+.cat-staff-bubble.is-visible {
+  display: block !important;
+}
+
+.secret-rare-mode .cat-logo-button {
+  display: grid !important;
+}
+
+.secret-rare-mode .cat-staff-bubble.is-visible {
+  display: block !important;
+}
+
+.secret-rare-mode .paw-float {
+  display: block !important;
 }
 
 .footer {
