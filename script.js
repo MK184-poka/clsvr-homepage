@@ -4,13 +4,12 @@ const copyButtons = document.querySelectorAll("[data-copy-target]");
 const bookingChoiceButtons = document.querySelectorAll("[data-booking-choice]");
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
-const floatingConsult = document.querySelector(".floating-consult");
-const catLogoButton = document.querySelector(".cat-logo-button");
-const catStaffBubble = document.getElementById("cat-staff-bubble");
 const contactLinks = window.CLSVR_CONTACT_LINKS || {};
 const contactLinkAnchors = document.querySelectorAll("[data-contact-link]");
-const logoStorageKey = "clsvr-logo-gacha-source";
-const logoVariantSources = [
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+const logoStorageKey = "clsvr-logo-source";
+const logoSources = [
   "logo-black.webp",
   "logo-lightgray.webp",
   "logo-beige.webp",
@@ -19,35 +18,10 @@ const logoVariantSources = [
   "logo-orange.webp",
   "logo-gray.webp",
   "logo-darkbrown.webp",
-  "logo-orange-black.webp"
+  "logo-orange-black.webp",
+  "logo-secret-calico.webp"
 ];
-const secretLogoSources = ["logo-secret-calico.webp"];
-const catStaffLines = {
-  "logo-black.webp": ["疲れてニャいかニャ？", "少し休んでいくニャ"],
-  "logo-lightgray.webp": ["今日は休んでもいいニャ", "今日はゆっくりモードだニャ"],
-  "logo-beige.webp": ["お茶でも飲むニャ", "深呼吸するニャ"],
-  "logo-bluegray.webp": ["深呼吸するニャ", "肩の力をぬくニャ"],
-  "logo-brown.webp": ["その作業、預けてもいいニャ", "無理しすぎ注意ニャ"],
-  "logo-orange.webp": ["いい日になる気がするニャ", "今日はゆっくり進むニャ"],
-  "logo-gray.webp": ["頑張りすぎ注意ニャ", "ちゃんと休むニャ"],
-  "logo-darkbrown.webp": ["ちょっと肩の力ぬくニャ", "焦らなくていいニャ"],
-  "logo-orange-black.webp": ["自分時間、忘れてニャい？", "その用事、分けてもいいニャ"],
-  "logo-secret-calico.webp": ["今日はラッキーだニャ", "秘密の三毛猫だニャ", "自分時間をプレゼントだニャ"]
-};
-const defaultLogoSource = logoVariantSources[0];
-const allLogoSources = [...logoVariantSources, ...secretLogoSources];
-const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-let secretTapCount = 0;
-let secretResetTimer;
-let logoEffectTimer;
-let logoSwitchTimer;
-let logoDrawUnlockTimer;
-let logoDrawActive = false;
-let nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
-let catLogoTapTimer;
-let pawTimer;
-let catBubbleTimer;
-let scrollTicking = false;
+
 const bookingSelection = {
   menu: "",
   area: ""
@@ -60,30 +34,58 @@ contactLinkAnchors.forEach((anchor) => {
   }
 });
 
-const formatDate = (value) => {
-  if (!value) return "未選択";
-  const date = new Date(`${value}T00:00:00`);
-  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+const setLogoSource = (source) => {
+  secretLogos.forEach((logo) => {
+    logo.src = source;
+  });
 };
 
-const fieldValue = (formData, key) => {
-  const value = formData.get(key);
-  return value && value.toString().trim() ? value.toString().trim() : "未入力";
+const getStoredLogoSource = () => {
+  try {
+    const source = sessionStorage.getItem(logoStorageKey);
+    return logoSources.includes(source) ? source : logoSources[0];
+  } catch {
+    return logoSources[0];
+  }
 };
+
+const storeLogoSource = (source) => {
+  try {
+    sessionStorage.setItem(logoStorageKey, source);
+  } catch {
+    // Storage may be unavailable in private browsing modes.
+  }
+};
+
+const rotateLogo = (event) => {
+  event.preventDefault();
+  const currentSource = secretLogos[0]?.getAttribute("src") || logoSources[0];
+  const currentIndex = logoSources.indexOf(currentSource);
+  const nextSource = logoSources[(currentIndex + 1) % logoSources.length];
+  setLogoSource(nextSource);
+  storeLogoSource(nextSource);
+};
+
+secretLogos.forEach((logo) => {
+  logo.addEventListener("click", rotateLogo);
+  logo.addEventListener("error", () => setLogoSource(logoSources[0]));
+});
 
 const buildBookingMessage = () => {
   if (!bookingForm) return "";
 
   const formData = new FormData(bookingForm);
-  const preferredDateTime = formData.get("preferredDateTime")?.toString().trim() || "";
-  const residence = formData.get("residence")?.toString().trim() || "";
-  const memo = formData.get("memo")?.toString().trim() || "";
-  const name = formData.get("name")?.toString().trim() || "";
+  const preferredDateTime = formData.get("preferredDateTime")?.toString().trim() || "未入力";
+  const residence = formData.get("residence")?.toString().trim() || "未入力";
+  const memo = formData.get("memo")?.toString().trim() || "未入力";
+  const name = formData.get("name")?.toString().trim() || "未入力";
+  const menu = bookingSelection.menu || "未選択";
+  const area = bookingSelection.area || "未選択";
 
   return [
-    "予約希望です",
-    `メニュー：${bookingSelection.menu}`,
-    `エリア：${bookingSelection.area}`,
+    "予約・相談希望です。",
+    `メニュー番号：${menu}`,
+    `エリア番号：${area}`,
     `希望日時：${preferredDateTime}`,
     `お住まい：${residence}`,
     `備考：${memo}`,
@@ -92,189 +94,80 @@ const buildBookingMessage = () => {
 };
 
 const updateMessage = () => {
-  if (!bookingMessage) return;
-  bookingMessage.innerText = buildBookingMessage();
+  if (bookingMessage) {
+    bookingMessage.innerText = buildBookingMessage();
+  }
 };
 
 const copyText = async (text, button) => {
+  const originalText = button.innerText;
+
   try {
     await navigator.clipboard.writeText(text);
-    const originalText = button.innerText;
-    button.innerText = "コピーできたニャ";
-    setTimeout(() => {
-      button.innerText = "LINEへ貼り付けるニャ";
-    }, 900);
-    setTimeout(() => {
-      button.innerText = originalText;
-    }, 2400);
+    button.innerText = "コピーしました";
   } catch {
-    button.innerText = "もう一度コピーするニャ";
-  }
-};
-
-const setSecretLogo = (source) => {
-  secretLogos.forEach((logo) => {
-    logo.src = source;
-  });
-};
-
-const rememberLogoSource = (source) => {
-  try {
-    sessionStorage.setItem(logoStorageKey, source);
-  } catch {
-    // Storage can be unavailable in strict private browsing modes.
-  }
-};
-
-const readRememberedLogoSource = () => {
-  try {
-    const source = sessionStorage.getItem(logoStorageKey);
-    return allLogoSources.includes(source) ? source : defaultLogoSource;
-  } catch {
-    return defaultLogoSource;
-  }
-};
-
-const pickCatStaffLine = (source) => {
-  const lines = catStaffLines[source] || ["少し休んでいくニャ。"];
-  return lines[Math.floor(Math.random() * lines.length)];
-};
-
-const switchLogoSource = (source, isSecret) => {
-  window.clearTimeout(logoSwitchTimer);
-  document.body.classList.add("logo-switching");
-
-  logoSwitchTimer = window.setTimeout(
-    () => {
-      setSecretLogo(source);
-      rememberLogoSource(source);
-      window.requestAnimationFrame(() => {
-        document.body.classList.remove("logo-switching");
-        document.body.classList.add("hidden-mode");
-        document.body.classList.toggle("secret-rare-mode", isSecret);
-      });
-    },
-    motionQuery.matches ? 0 : 150
-  );
-};
-
-const showCatStaffLine = (source, isSecret) => {
-  if (!catStaffBubble) return;
-
-  window.clearTimeout(catBubbleTimer);
-  catStaffBubble.textContent = pickCatStaffLine(source);
-  catStaffBubble.classList.remove("is-visible", "is-rare");
-
-  window.requestAnimationFrame(() => {
-    catStaffBubble.classList.toggle("is-rare", isSecret);
-    catStaffBubble.classList.add("is-visible");
-  });
-
-  catBubbleTimer = window.setTimeout(() => {
-    catStaffBubble.classList.remove("is-visible", "is-rare");
-  }, isSecret ? 4600 : 3600);
-};
-
-const drawLogoSource = () => {
-  const secretRate = secretTapCount >= 100 ? 0.05 : 0.015;
-  const isSecret = Math.random() < secretRate;
-
-  if (isSecret) {
-    return {
-      isSecret,
-      source: secretLogoSources[0]
-    };
+    button.innerText = "コピーできませんでした";
   }
 
-  return {
-    isSecret,
-    source: logoVariantSources[Math.floor(Math.random() * logoVariantSources.length)]
-  };
+  window.setTimeout(() => {
+    button.innerText = originalText;
+  }, 1800);
 };
 
-const activateLogoDraw = () => {
-  if (logoDrawActive) return;
-
-  logoDrawActive = true;
-  nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
-  window.clearTimeout(logoEffectTimer);
-  window.clearTimeout(logoDrawUnlockTimer);
-
-  const result = drawLogoSource();
-  document.body.classList.remove("hidden-mode");
-  document.body.classList.remove("secret-rare-mode");
-  switchLogoSource(result.source, result.isSecret);
-  showCatStaffLine(result.source, result.isSecret);
-
-  if (result.isSecret) {
-    createFloatingPaw();
-    window.setTimeout(createFloatingPaw, 240);
-    window.setTimeout(createFloatingPaw, 520);
-  }
-
-  logoDrawUnlockTimer = window.setTimeout(() => {
-    logoDrawActive = false;
-  }, 720);
-
-  logoEffectTimer = window.setTimeout(() => {
-    document.body.classList.remove("hidden-mode");
-    document.body.classList.remove("secret-rare-mode");
-  }, result.isSecret ? 8200 : 6200);
-};
-
-const handleSecretLogoTap = (event) => {
-  event.preventDefault();
-  event.stopPropagation();
-
-  if (catLogoButton && !motionQuery.matches) {
-    window.clearTimeout(catLogoTapTimer);
-    catLogoButton.classList.remove("is-tapped");
-    // Force a reflow so rapid taps restart the soft press animation.
-    void catLogoButton.offsetWidth;
-    catLogoButton.classList.add("is-tapped");
-    catLogoTapTimer = window.setTimeout(() => {
-      catLogoButton.classList.remove("is-tapped");
-    }, 520);
-  }
-
-  if (logoDrawActive) return;
-
-  secretTapCount += 1;
-  window.clearTimeout(secretResetTimer);
-
-  if (secretTapCount >= nextLogoDrawCount) {
-    activateLogoDraw();
-    secretTapCount = 0;
-    return;
-  }
-
-  secretResetTimer = window.setTimeout(() => {
-    secretTapCount = 0;
-  }, 1400);
-};
-
-secretLogos.forEach((logo) => {
-  logo.addEventListener("pointerup", handleSecretLogoTap);
-  logo.addEventListener("click", (event) => {
-    event.preventDefault();
-  });
-  logo.addEventListener("error", () => {
-    logo.src = defaultLogoSource;
+copyButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const target = document.getElementById(button.dataset.copyTarget);
+    if (target) {
+      await copyText(target.innerText, button);
+    }
   });
 });
 
-if (catLogoButton) {
-  catLogoButton.addEventListener("pointerup", handleSecretLogoTap);
-  catLogoButton.addEventListener("click", (event) => {
-    event.preventDefault();
+bookingChoiceButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+
+  button.addEventListener("click", () => {
+    const choiceType = button.dataset.bookingChoice;
+    if (!choiceType || !(choiceType in bookingSelection)) return;
+
+    bookingSelection[choiceType] = button.dataset.value || "";
+
+    bookingChoiceButtons.forEach((choiceButton) => {
+      if (choiceButton.dataset.bookingChoice !== choiceType) return;
+      const isSelected = choiceButton.dataset.value === bookingSelection[choiceType];
+      choiceButton.classList.toggle("is-selected", isSelected);
+      choiceButton.setAttribute("aria-pressed", isSelected ? "true" : "false");
+    });
+
+    updateMessage();
+  });
+});
+
+if (bookingForm) {
+  const today = new Date().toISOString().slice(0, 10);
+
+  dateInputs.forEach((input) => {
+    input.min = today;
+  });
+
+  bookingForm.addEventListener("input", updateMessage);
+  bookingForm.addEventListener("change", updateMessage);
+  bookingForm.addEventListener("reset", () => {
+    bookingSelection.menu = "";
+    bookingSelection.area = "";
+    bookingChoiceButtons.forEach((button) => {
+      button.classList.remove("is-selected");
+      button.setAttribute("aria-pressed", "false");
+    });
+    window.setTimeout(updateMessage, 0);
   });
 }
 
-const revealTargets = document.querySelectorAll(
-  ".section, .quick-links, .time-gift, .line-contact, .booking-form, .notice, .price-card, .area-card, .service-examples > div, .hero-reception-art, .hero-request-art, .hero-soft-panel, .counter-card, .memo-pin, .service-menu-showcase"
-);
-
 if (!motionQuery.matches && "IntersectionObserver" in window) {
+  const revealTargets = document.querySelectorAll(
+    ".section, .quick-links, .line-contact, .booking-form, .notice, .price-card, .area-card, .service-examples > div"
+  );
+
   revealTargets.forEach((target) => target.classList.add("reveal-on-scroll"));
 
   const revealObserver = new IntersectionObserver(
@@ -292,98 +185,7 @@ if (!motionQuery.matches && "IntersectionObserver" in window) {
   );
 
   revealTargets.forEach((target) => revealObserver.observe(target));
-} else {
-  revealTargets.forEach((target) => target.classList.add("is-visible"));
 }
 
-const createFloatingPaw = () => {
-  if (motionQuery.matches) return;
-
-  const paw = document.createElement("span");
-  paw.className = "paw-float";
-  paw.setAttribute("aria-hidden", "true");
-  document.body.appendChild(paw);
-  paw.addEventListener("animationend", () => paw.remove(), { once: true });
-};
-
-const scheduleFloatingPaw = () => {
-  if (motionQuery.matches) return;
-
-  window.clearTimeout(pawTimer);
-  pawTimer = window.setTimeout(() => {
-    createFloatingPaw();
-    scheduleFloatingPaw();
-  }, 11000 + Math.random() * 7000);
-};
-
-if (floatingConsult) {
-  floatingConsult.addEventListener("pointerup", createFloatingPaw);
-  scheduleFloatingPaw();
-}
-
-const updateShopScroll = () => {
-  const drift = Math.min(window.scrollY * 0.08, 42).toFixed(2);
-  document.documentElement.style.setProperty("--shop-scroll", `${drift}px`);
-  scrollTicking = false;
-};
-
-if (!motionQuery.matches) {
-  updateShopScroll();
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      window.requestAnimationFrame(updateShopScroll);
-    },
-    { passive: true }
-  );
-}
-
-copyButtons.forEach((button) => {
-  button.addEventListener("click", async () => {
-    const target = document.getElementById(button.dataset.copyTarget);
-    if (!target) return;
-    await copyText(target.innerText, button);
-  });
-});
-
-bookingChoiceButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const choiceType = button.dataset.bookingChoice;
-    if (!choiceType || !(choiceType in bookingSelection)) return;
-
-    bookingSelection[choiceType] = button.dataset.value || "";
-    bookingChoiceButtons.forEach((choiceButton) => {
-      if (choiceButton.dataset.bookingChoice !== choiceType) return;
-      const isSelected = choiceButton.dataset.value === bookingSelection[choiceType];
-      choiceButton.classList.toggle("is-selected", isSelected);
-      choiceButton.setAttribute("aria-pressed", isSelected ? "true" : "false");
-    });
-    updateMessage();
-  });
-});
-
-if (bookingForm) {
-  const today = new Date().toISOString().slice(0, 10);
-  dateInputs.forEach((input) => {
-    input.min = today;
-  });
-
-  bookingForm.addEventListener("input", updateMessage);
-  bookingForm.addEventListener("change", updateMessage);
-  bookingForm.addEventListener("reset", () => {
-    bookingSelection.menu = "";
-    bookingSelection.area = "";
-    bookingChoiceButtons.forEach((button) => {
-      button.classList.remove("is-selected");
-      button.setAttribute("aria-pressed", "false");
-    });
-    setTimeout(updateMessage, 0);
-  });
-}
-
+setLogoSource(getStoredLogoSource());
 updateMessage();
-const rememberedLogoSource = readRememberedLogoSource();
-setSecretLogo(rememberedLogoSource);
-document.body.classList.toggle("secret-rare-mode", secretLogoSources.includes(rememberedLogoSource));
