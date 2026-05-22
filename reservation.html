@@ -40,36 +40,58 @@
           </div>
         </div>
         <div class="reservation-menu-grid">
-          <label class="reservation-choice">
+          <label class="reservation-choice reservation-choice-bodycare">
             <input type="radio" name="menu" value="もみほぐし45分" data-price="3500" required>
             <span><strong>もみほぐし45分</strong><small>短時間でリフレッシュ</small></span>
             <b>3,500円</b>
           </label>
-          <label class="reservation-choice">
+          <label class="reservation-choice reservation-choice-bodycare">
             <input type="radio" name="menu" value="もみほぐし60分" data-price="4500">
             <span><strong>もみほぐし60分</strong><small>一番人気の基本コース</small></span>
             <b>4,500円</b>
           </label>
-          <label class="reservation-choice">
+          <label class="reservation-choice reservation-choice-bodycare">
             <input type="radio" name="menu" value="もみほぐし90分" data-price="6500">
             <span><strong>もみほぐし90分</strong><small>しっかりケア</small></span>
             <b>6,500円</b>
           </label>
-          <label class="reservation-choice">
-            <input type="radio" name="menu" value="軽作業 1時間" data-price="3000">
-            <span><strong>軽作業</strong><small>暮らしのお手伝い</small></span>
+          <label class="reservation-choice reservation-choice-life">
+            <input type="radio" name="menu" value="暮らしサポート" data-price="3000">
+            <span><strong>暮らしサポート</strong><small>草抜き・庭まわり・掃除・片付け・家具移動など<br>内容により追加料金あり</small></span>
             <b>3,000円〜</b>
           </label>
-          <label class="reservation-choice">
-            <input type="radio" name="menu" value="重作業 1時間" data-price="4000">
-            <span><strong>重作業</strong><small>家具移動など</small></span>
-            <b>4,000円〜</b>
-          </label>
-          <label class="reservation-choice">
+          <label class="reservation-choice reservation-choice-wasp">
             <input type="radio" name="menu" value="ハチ駆除" data-price="10000">
             <span><strong>ハチ駆除</strong><small>状況確認後にご案内</small></span>
             <b>10,000円〜</b>
           </label>
+          <label class="reservation-choice reservation-choice-set">
+            <input type="radio" name="menu" value="自分時間30分プラン" data-price="4500">
+            <span><strong>自分時間30分プラン</strong><small>お得なセットプラン</small></span>
+            <b>4,500円</b>
+          </label>
+          <label class="reservation-choice reservation-choice-set">
+            <input type="radio" name="menu" value="自分時間60分プラン" data-price="7000">
+            <span><strong>自分時間60分プラン</strong><small>お得なセットプラン</small></span>
+            <b>7,000円</b>
+          </label>
+          <label class="reservation-choice reservation-choice-set">
+            <input type="radio" name="menu" value="全力フルサポートプラン" data-price="13500">
+            <span><strong>全力フルサポートプラン</strong><small>お得なセットプラン</small></span>
+            <b>13,500円</b>
+          </label>
+        </div>
+        <div class="reservation-extension" id="bodycare-extension" hidden>
+          <div>
+            <strong>延長時間</strong>
+            <small>15分ごとに +1,000円。もみほぐしメニューのみ選べます。</small>
+          </div>
+          <div class="reservation-extension-stepper" role="group" aria-label="延長時間">
+            <button type="button" id="extension-minus" aria-label="延長時間を15分減らす">−</button>
+            <output id="extension-time" name="extensionLabel" aria-live="polite">0分</output>
+            <button type="button" id="extension-plus" aria-label="延長時間を15分増やす">＋</button>
+          </div>
+          <span id="extension-price">延長なし</span>
         </div>
       </section>
 

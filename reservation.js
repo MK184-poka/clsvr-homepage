@@ -4,12 +4,26 @@ const menuPrice = document.getElementById("reservation-menu-price");
 const travelFee = document.getElementById("reservation-travel-fee");
 const totalPrice = document.getElementById("reservation-total-price");
 const statusText = document.getElementById("reservation-status");
+const extensionBox = document.getElementById("bodycare-extension");
+const extensionMinus = document.getElementById("extension-minus");
+const extensionPlus = document.getElementById("extension-plus");
+const extensionTime = document.getElementById("extension-time");
+const extensionPrice = document.getElementById("extension-price");
 const lineOfficialAccountId = "%40171ltzff";
+const extensionUnitMinutes = 15;
+const extensionUnitPrice = 1000;
+const extensionMaxMinutes = 60;
+let extensionMinutes = 0;
 
 const yen = (value) => `${Number(value).toLocaleString("ja-JP")}円`;
 
 const selectedMenu = () => form?.querySelector('input[name="menu"]:checked');
 const selectedArea = () => areaSelect?.selectedOptions[0];
+const isBodycareMenu = (menu) => menu?.value?.startsWith("もみほぐし");
+const extensionFee = () => (extensionMinutes / extensionUnitMinutes) * extensionUnitPrice;
+const extensionLabel = () => (
+  extensionMinutes ? `${extensionMinutes}分（+${yen(extensionFee())}）` : "なし"
+);
 
 const formatDateTime = (value) => {
   if (!value) return "未入力";
@@ -30,9 +44,10 @@ const totalLabel = () => {
   const menu = selectedMenu();
   const area = selectedArea();
   const basePrice = menu ? Number(menu.dataset.price) : 0;
+  const optionPrice = isBodycareMenu(menu) ? extensionFee() : 0;
   const fee = area ? Number(area.dataset.fee) : 0;
 
-  if (basePrice && fee) return `${yen(basePrice + fee)}〜`;
+  if (basePrice && fee) return `${yen(basePrice + optionPrice + fee)}〜`;
   if (basePrice && area?.value) return "LINEで確認";
   return "メニューとエリアを選択";
 };
@@ -41,9 +56,21 @@ const updateSummary = () => {
   const menu = selectedMenu();
   const area = selectedArea();
   const basePrice = menu ? Number(menu.dataset.price) : 0;
+  const optionPrice = isBodycareMenu(menu) ? extensionFee() : 0;
   const fee = area ? Number(area.dataset.fee) : 0;
+  const showExtension = isBodycareMenu(menu);
 
-  menuPrice.textContent = menu ? `${menu.value} / ${yen(basePrice)}〜` : "未選択";
+  if (!showExtension && extensionMinutes) {
+    extensionMinutes = 0;
+  }
+
+  if (extensionBox) extensionBox.hidden = !showExtension;
+  if (extensionTime) extensionTime.textContent = `${extensionMinutes}分`;
+  if (extensionPrice) extensionPrice.textContent = extensionMinutes ? `+${yen(extensionFee())}` : "延長なし";
+  if (extensionMinus) extensionMinus.disabled = !showExtension || extensionMinutes <= 0;
+  if (extensionPlus) extensionPlus.disabled = !showExtension || extensionMinutes >= extensionMaxMinutes;
+
+  menuPrice.textContent = menu ? `${menu.value} / ${yen(basePrice + optionPrice)}〜` : "未選択";
   travelFee.textContent = area?.value ? (fee ? yen(fee) : "要相談") : "未選択";
   totalPrice.textContent = totalLabel();
 };
@@ -61,6 +88,7 @@ const buildMessage = (data) => {
     "",
     "■メニュー",
     menu?.value || "未選択",
+    `延長：${isBodycareMenu(menu) ? extensionLabel() : "なし"}`,
     "",
     "■料金目安",
     data.total,
@@ -81,6 +109,16 @@ const buildMessage = (data) => {
     data.note || "なし"
   ].join("\n");
 };
+
+extensionMinus?.addEventListener("click", () => {
+  extensionMinutes = Math.max(0, extensionMinutes - extensionUnitMinutes);
+  updateSummary();
+});
+
+extensionPlus?.addEventListener("click", () => {
+  extensionMinutes = Math.min(extensionMaxMinutes, extensionMinutes + extensionUnitMinutes);
+  updateSummary();
+});
 
 form?.addEventListener("change", updateSummary);
 form?.addEventListener("input", updateSummary);
