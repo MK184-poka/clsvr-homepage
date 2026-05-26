@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 578 372" role="img" aria-labelledby="title">
+  <title id="title">CLSVR request paper</title>
+  <rect x="38" y="22" width="502" height="328" rx="18" fill="#fffaf0"/>
+  <path d="M86 92h360M86 152h410M86 212h380M86 272h320" stroke="#e4d5bd" stroke-width="8" stroke-linecap="round"/>
+  <rect x="102" y="40" width="184" height="52" rx="10" fill="#8a603d"/>
+  <text x="194" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#fff8ec">依頼書</text>
+  <circle cx="456" cy="72" r="38" fill="#e9f1dc"/>
+  <path d="M442 78c24-16 38-34 42-56 16 30 8 58-20 76z" fill="#56713f"/>
+</svg>

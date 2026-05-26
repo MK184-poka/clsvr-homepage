@@ -135,7 +135,7 @@ form?.addEventListener("submit", (event) => {
 
   const message = buildMessage(data);
   const lineUrl = `https://line.me/R/oaMessage/${lineOfficialAccountId}/?${encodeURIComponent(message)}`;
-  setStatus("公式LINEを開きます。内容を確認して送信してください。", "is-success");
+  setStatus("相談内容を送信しています…。公式LINEで内容を確認してください。", "is-success");
   window.location.href = lineUrl;
 });
 

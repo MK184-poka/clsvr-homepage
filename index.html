@@ -3,11 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CLSVRは山口県周南市・下松市周辺で、もみほぐしと暮らしのお手伝いを行う出張サービスです。無料見積もり、LINE予約、現地調査に対応しています。">
+  <meta name="description" content="CLSVRは山口県内で、もみほぐしと暮らしのお手伝いを行う出張サービスです。周南市を拠点に、無料見積もり、LINE予約、現地調査に対応しています。">
   <title>CLSVR | もみほぐし・暮らしのお手伝い</title>
-  <link rel="stylesheet" href="styles.css?v=20260515-bounce">
+  <link rel="stylesheet" href="styles.css?v=20260526-entry">
 </head>
 <body>
+  <div class="store-entry" id="store-entry" aria-label="CLSVRの入口">
+    <img class="store-entry-bg" src="public/images/entrance/entrance-main.png" alt="CLSVRの小さな依頼所の入口" width="1536" height="1024">
+    <img class="store-entry-open-bg" src="public/images/entrance/entrance-open.png" alt="" width="1536" height="1024" aria-hidden="true">
+    <button class="store-entry-door" type="button" aria-label="CLSVRへ入る">
+      <span class="store-entry-door-panel" aria-hidden="true"></span>
+    </button>
+    <div class="store-entry-copy" aria-hidden="true">
+      <span>CLSVR</span>
+      <strong>小さな依頼所へ</strong>
+    </div>
+    <p class="store-entry-guide">入口をタップして入店</p>
+    <p class="store-entry-open-greeting" id="store-entry-open-greeting"></p>
+  </div>
+
   <header class="site-header">
     <a class="brand" href="#top" aria-label="CLSVR トップへ">
       <img class="brand-logo js-secret-logo" src="logo-black.webp" alt="CLSVR ロゴ" width="56" height="38">
@@ -28,22 +42,57 @@
     <section class="hero">
       <div class="hero-copy">
         <img class="hero-logo js-secret-logo" src="logo-black.webp" alt="CLSVR ロゴ" width="132" height="88">
-        <p class="eyebrow">周南市・下松市周辺の出張サポート</p>
-        <h1><span class="hero-title-line">身体のことも、</span><span class="hero-title-line"><span>暮らしの用事</span>も。</span></h1>
-        <p class="lead">もみほぐし、草刈り、家具移動、ハチ駆除まで。<br>一人では少し大変なことを、LINEから気軽にご相談いただけます。</p>
+        <p class="eyebrow">山口県内対応・周南市拠点の小さな依頼所</p>
+        <h1><span class="hero-title-line">今日は少し、</span><span class="hero-title-line"><span>自分の時間</span>を。</span></h1>
+        <p class="lead">暮らしサポート、もみほぐし、蜂対応、ホームページ制作まで。<br>LINEで気軽に相談できる、地域の小さな出張依頼所です。</p>
         <div class="hero-reassurance" aria-label="対応内容">
           <span>見積もり無料</span>
           <span>写真相談OK</span>
           <span>作業前に料金案内</span>
         </div>
-        <p class="shop-note">内容を確認してから料金をお伝えします。まだ依頼内容が固まっていなくても大丈夫です。</p>
+        <p class="shop-note">少しでもラクになる時間を届けたい。そんな想いで、地域の「ちょっと困った」を受け取ります。</p>
         <div class="hero-actions">
           <a class="button primary" href="#booking">LINE予約へ進む</a>
           <a class="button secondary" href="#estimate">無料見積もり</a>
         </div>
       </div>
       <div class="hero-visual" aria-label="CLSVRのサービスイメージ">
-        <img class="hero-store-art" src="assets/hero-store.png" alt="" width="1536" height="485" aria-hidden="true">
+        <img class="hero-store-art" src="public/images/inside/shop-inside.png" alt="木と植物に囲まれたCLSVRの店内" width="1536" height="1024">
+      </div>
+    </section>
+
+    <section class="world-section section" aria-labelledby="world-title">
+      <div class="world-photo">
+        <img src="public/images/inside/shop-inside.png" alt="CLSVRの店内。木の棚と植物、あたたかい照明のある小さな相談場所" width="1536" height="1024">
+      </div>
+      <div class="world-copy">
+        <p class="section-label">About CLSVR</p>
+        <h2 id="world-title">地域のそばで、小さな困りごとを受け取ります</h2>
+        <p>CLSVRは、山口県内の暮らしに寄り添う小さな依頼所です。拠点は周南市。近くの地域ほど動きやすいですが、県内のご相談を受け取ります。人とのつながりを大切にしながら、無理のない形を一緒に考えます。</p>
+      </div>
+    </section>
+
+    <section class="values-section section" aria-labelledby="values-title">
+      <div>
+        <p class="section-label">大切にしていること</p>
+        <h2 id="values-title">頼みやすさも、届けるもののひとつです</h2>
+      </div>
+      <div class="values-grid">
+        <article>
+          <span>01</span>
+          <h3>地域密着</h3>
+          <p>山口県内に対応。周南市を拠点に、近い地域ほど小回りよく動けます。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>相談しやすさ</h3>
+          <p>内容がまとまっていなくても大丈夫。写真1枚、ひと言の相談から始められます。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>人が中心</h3>
+          <p>AIは情報整理やアイディア出しの補助役。最後は人の目で、空気感まで整えます。</p>
+        </article>
       </div>
     </section>
 
@@ -96,8 +145,8 @@
       </div>
       <div class="panel">
         <div class="check-item">
-          <strong>周南市・下松市周辺</strong>
-          <p>現地調査・お見積もりは無料です。必要な時間と作業量を確認してから、料金をご案内します。</p>
+          <strong>山口県内対応</strong>
+          <p>周南市を拠点に伺います。必要な時間と作業量、移動距離を確認してから料金をご案内します。</p>
         </div>
         <div class="check-item">
           <strong>LINE写真見積もり</strong>
@@ -107,10 +156,21 @@
       </div>
     </section>
 
+    <section class="visit-section section" aria-labelledby="visit-title">
+      <div class="visit-copy">
+        <p class="section-label">出張サポート</p>
+        <h2 id="visit-title">必要な場所まで、こちらから伺います</h2>
+        <p>小さな依頼所の空気はそのままに、山口県内へ出張します。周南市を拠点に、草抜き、荷物移動、蜂対応、暮らしの手伝いまで、作業前の料金案内を大切にしています。</p>
+      </div>
+      <div class="visit-photo">
+        <img src="public/images/car/clsvr-car.png" alt="CLSVRの車が店舗前に停まっている出張サポートのイメージ" width="1536" height="1024">
+      </div>
+    </section>
+
     <section id="area" class="section">
       <p class="section-label">02 出張エリア案内</p>
       <h2>出張エリアと料金</h2>
-      <p class="section-intro">CLSVRの出張エリア案内です。お客様の時間を預かるため、移動距離と時間を考慮して、エリア別に出張料金を設定しています。</p>
+      <p class="section-intro">CLSVRは山口県内に対応しています。周南市を拠点にしているため、近い地域ほど伺いやすく、移動距離と時間に応じて出張料金を設定しています。</p>
       <div class="area-grid">
         <article class="area-card">
           <span>500円</span>
@@ -160,30 +220,31 @@
     <section id="consultation" class="section two-column">
       <div>
         <p class="section-label">04 相談カウンター</p>
-        <h2>ムラオカに相談する</h2>
-        <p>「こんなこと頼める？」「料金はいくらくらい？」など、小さなことでもお気軽にどうぞ。できることを確認しながら、無理のない形でご案内します。</p>
+        <h2>小さなことから相談できます</h2>
+        <p>「これ頼める？」「まず見てもらえる？」くらいの温度で大丈夫です。できること、難しいこと、別の方法がよさそうなことまで、無理なくお伝えします。</p>
       </div>
       <div class="service-examples">
         <div>
           <h3>暮らしの時間を増やすお手伝い</h3>
           <ul>
-            <li>重い家具を移動して、片づけの時間を短くしたい</li>
-            <li>庭の草刈りを任せて、休日を休む日にしたい</li>
-            <li>作業中はゆっくり過ごしたい</li>
+            <li>草抜きや庭まわりを任せたい</li>
+            <li>重い荷物や家具を動かしたい</li>
+            <li>蜂のトラブルを早めに相談したい</li>
           </ul>
         </div>
         <div>
-          <h3>自分の時間を取り戻すもみほぐし</h3>
+          <h3>お店や活動の見せ方も相談できます</h3>
           <ul>
-            <li>肩こりや腰のつらさをほぐしてほしい</li>
-            <li>疲れをリセットして、また自分のペースに戻りたい</li>
+            <li>スマホで見やすいホームページにしたい</li>
+            <li>LINEへ相談が届く流れを作りたい</li>
+            <li>言葉や写真の整理を手伝ってほしい</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="booking" class="section booking">
-      <img class="section-decoration booking-paper-art" src="assets/request-paper.png" alt="" width="578" height="372" aria-hidden="true">
+      <img class="section-decoration booking-paper-art" src="public/images/ui/request-paper.svg" alt="" width="578" height="372" aria-hidden="true">
       <div>
         <p class="section-label">05 予約案内</p>
         <h2>LINEでかんたん予約</h2>
@@ -232,9 +293,10 @@
     <section id="price" class="section">
       <p class="section-label">06 できることメニュー</p>
       <h2>できることメニュー</h2>
-      <p class="section-intro">作業を選ぶだけでなく、「その時間を何に使いたいか」まで一緒に考えられるメニューです。</p>
+      <p class="section-intro">作業を選ぶだけでなく、「空いた時間を何に使いたいか」まで一緒に考えられるメニューです。</p>
       <div class="service-shop-shelf" aria-label="できることメニュー一覧">
         <a class="shelf-product product-massage" href="#booking">
+          <img class="product-photo" src="public/images/services/massage.png" alt="" width="663" height="319" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">手</span>
           <span class="product-tag">休息メニュー</span>
           <strong>もみほぐし</strong>
@@ -242,6 +304,7 @@
           <b>3,500円から</b>
         </a>
         <a class="shelf-product product-support" href="#booking">
+          <img class="product-photo" src="public/images/services/lifestyle-tools.png" alt="" width="1536" height="864" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">家</span>
           <span class="product-tag">暮らしサポート</span>
           <strong>暮らしのお手伝い</strong>
@@ -249,6 +312,7 @@
           <b>3,000円から</b>
         </a>
         <a class="shelf-product product-wasp" href="#booking">
+          <img class="product-photo" src="public/images/services/wasp-trouble.png" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">蜂</span>
           <span class="product-tag">困った時に</span>
           <strong>ハチ駆除</strong>
@@ -256,6 +320,7 @@
           <b>10,000円から</b>
         </a>
         <a class="shelf-product product-clean" href="#booking">
+          <img class="product-photo" src="public/images/services/cleaning.png" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">箒</span>
           <span class="product-tag">整える</span>
           <strong>掃除</strong>
@@ -263,6 +328,7 @@
           <b>内容相談</b>
         </a>
         <a class="shelf-product product-move" href="#booking">
+          <img class="product-photo" src="public/images/services/furniture-move.png" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">箱</span>
           <span class="product-tag">力仕事</span>
           <strong>家具移動</strong>
@@ -270,11 +336,12 @@
           <b>見積もり</b>
         </a>
         <a class="shelf-product product-consult" href="#consultation">
+          <img class="product-photo" src="public/images/services/web-support.png" alt="" width="712" height="932" loading="lazy" aria-hidden="true">
           <span class="product-icon" aria-hidden="true">話</span>
-          <span class="product-tag">店番へ</span>
-          <strong>ちょっと相談</strong>
-          <small>頼めるか迷うことも、写真1枚から</small>
-          <b>無料相談</b>
+          <span class="product-tag">Webサポート</span>
+          <strong>ホームページ制作</strong>
+          <small>地域のお店らしさを伝える、Web改善と制作</small>
+          <b>相談OK</b>
         </a>
       </div>
       <div class="price-detail-heading">
@@ -301,13 +368,13 @@
           </ul>
         </article>
         <article class="price-card accent">
-          <h3>お得なセットプラン</h3>
+          <h3>ホームページ制作・Webサポート</h3>
           <ul>
-            <li><span>自分時間30分プラン</span><strong>4,500円</strong></li>
-            <li><span>自分時間60分プラン</span><strong>7,000円</strong></li>
-            <li><span>全力フルサポートプラン</span><strong>13,500円</strong></li>
+            <li><span>小さなお店のページ制作</span><strong>相談見積もり</strong></li>
+            <li><span>LINE導線・文章整理</span><strong>相談OK</strong></li>
+            <li><span>AIを使った整理補助</span><strong>必要な分だけ</strong></li>
           </ul>
-          <p>すべて税込。別途、出張料金500円からがかかります。預けた時間を、休息や好きなことに使ってください。</p>
+          <p>制作会社らしさより、その人らしさを大切に。AIは情報整理やデザイン補助に使い、最後は人の目で整えます。</p>
         </article>
       </div>
     </section>
@@ -315,20 +382,20 @@
     <section id="auto-reply" class="section auto-reply">
       <p class="section-label">07 受付メモ</p>
       <h2>受付メモだけでもどうぞ</h2>
-      <p>作業中などで、すぐにお返事できない場合があります。料金や対応エリアなどを確認したい方は、以下のキーワードをチャットでお送りください。</p>
+      <p>作業中などで、すぐにお返事できない場合があります。料金や対応エリア、Web相談などを確認したい方は、以下のキーワードをチャットでお送りください。</p>
       <div class="keyword-grid">
         <span>料金</span>
         <span>予約</span>
         <span>エリア</span>
         <span>見積もり</span>
         <span>支払い</span>
-        <span>相談</span>
+        <span>Web相談</span>
       </div>
     </section>
   </main>
 
   <div class="page-decorations" aria-hidden="true">
-    <img class="deco-strip" src="assets/decoration-parts.png" alt="" width="1536" height="152">
+    <img class="deco-strip" src="public/images/ui/decoration-strip.svg" alt="" width="1536" height="152">
     <span class="deco-paw deco-paw-one"></span>
     <span class="deco-paw deco-paw-two"></span>
   </div>
@@ -388,7 +455,7 @@
       phone: "tel:09083622386"
     };
   </script>
-  <script src="script.js?v=20260515-bounce"></script>
+  <script src="script.js?v=20260527-greeting"></script>
 </body>
 </html>
 

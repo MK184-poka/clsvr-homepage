@@ -6,6 +6,24 @@ const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
 const catLogoButton = document.querySelector(".cat-logo-button");
 const catStaffBubble = document.getElementById("cat-staff-bubble");
+const storeEntry = document.getElementById("store-entry");
+const storeEntryGuide = storeEntry?.querySelector(".store-entry-guide");
+const storeEntryOpenGreeting = document.getElementById("store-entry-open-greeting");
+const greetings = [
+  "今日はどうされましたか。<br>あなたの自分時間を、今日もお届けします。",
+  "暮らしのお困りごと、<br>今日もお手伝いします。",
+  "少しでもラクになる時間を。<br>本日もサポートにうかがいます。",
+  "今日は少し、<br>自分の時間をつくりませんか。",
+  "小さなお困りごとも、<br>気軽にご相談ください。",
+  "本日も、<br>暮らしサポート受付中です。"
+];
+const fallbackImageSources = {
+  "store-entry-bg": "public/images/entrance/entrance-main.png",
+  "store-entry-open-bg": "public/images/entrance/entrance-open.png",
+  "hero-store-art": "public/images/inside/shop-inside.png",
+  "world-photo": "public/images/inside/shop-inside.png",
+  "visit-photo": "public/images/car/clsvr-car.png"
+};
 const contactLinks = window.CLSVR_CONTACT_LINKS || {};
 const contactLinkAnchors = document.querySelectorAll("[data-contact-link]");
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -26,16 +44,16 @@ const secretLogoSources = ["logo-secret-calico.webp"];
 const allLogoSources = [...logoVariantSources, ...secretLogoSources];
 const defaultLogoSource = logoVariantSources[0];
 const logoMessages = {
-  "logo-black.webp": ["\u5c11\u3057\u4f11\u3093\u3067\u3044\u304d\u307e\u305b\u3093\u304b", "\u7121\u7406\u306a\u304f\u9032\u3081\u307e\u3057\u3087\u3046"],
-  "logo-lightgray.webp": ["\u4eca\u65e5\u306f\u3086\u3063\u304f\u308a\u6574\u3048\u307e\u3057\u3087\u3046", "\u4f11\u3080\u6642\u9593\u3082\u5927\u5207\u3067\u3059"],
-  "logo-beige.webp": ["\u3072\u3068\u606f\u3064\u3044\u3066\u304b\u3089\u3067\u5927\u4e08\u592b\u3067\u3059", "\u6df1\u547c\u5438\u3057\u3066\u3044\u304d\u307e\u3057\u3087\u3046"],
-  "logo-bluegray.webp": ["\u80a9\u306e\u529b\u3092\u629c\u3044\u3066\u304f\u3060\u3055\u3044", "\u6df1\u547c\u5438\u3057\u3066\u3044\u304d\u307e\u3057\u3087\u3046"],
-  "logo-brown.webp": ["\u305d\u306e\u4f5c\u696d\u3001\u3054\u76f8\u8ac7\u304f\u3060\u3055\u3044", "\u7121\u7406\u3057\u3059\u304e\u306a\u3044\u3067\u304f\u3060\u3055\u3044"],
-  "logo-orange.webp": ["\u3044\u3044\u4e00\u65e5\u306b\u306a\u308a\u307e\u3059\u3088\u3046\u306b", "\u4eca\u65e5\u306f\u3086\u3063\u304f\u308a\u9032\u3081\u307e\u3057\u3087\u3046"],
-  "logo-gray.webp": ["\u9811\u5f35\u308a\u3059\u304e\u306b\u3054\u6ce8\u610f\u304f\u3060\u3055\u3044", "\u3061\u3083\u3093\u3068\u4f11\u3080\u6642\u9593\u3092"],
-  "logo-darkbrown.webp": ["\u5c11\u3057\u80a9\u306e\u529b\u3092\u629c\u304d\u307e\u3057\u3087\u3046", "\u7126\u3089\u306a\u304f\u3066\u5927\u4e08\u592b\u3067\u3059"],
-  "logo-orange-black.webp": ["\u81ea\u5206\u306e\u6642\u9593\u3082\u5927\u5207\u306b", "\u305d\u306e\u7528\u4e8b\u3001\u5206\u3051\u3066\u3082\u5927\u4e08\u592b\u3067\u3059"],
-  "logo-secret-calico.webp": ["\u4eca\u65e5\u306f\u30e9\u30c3\u30ad\u30fc\u3067\u3059", "\u79d8\u5bc6\u306e\u30ed\u30b4\u3067\u3059", "\u81ea\u5206\u6642\u9593\u3092\u5c11\u3057\u5897\u3084\u3057\u307e\u3057\u3087\u3046"]
+  "logo-black.webp": ["少し休んでいくニャ", "無理しすぎないでニャ"],
+  "logo-lightgray.webp": ["今日はゆっくり整えるニャ", "休む時間も大切だニャ"],
+  "logo-beige.webp": ["ひと息ついてからで大丈夫ニャ", "深呼吸していくニャ"],
+  "logo-bluegray.webp": ["肩の力を抜くニャ", "あせらなくて大丈夫ニャ"],
+  "logo-brown.webp": ["その作業、相談してニャ", "小さな困りごとも聞くニャ"],
+  "logo-orange.webp": ["いい一日になりますようにニャ", "今日は少し運がいいニャ"],
+  "logo-gray.webp": ["ちゃんと休む時間を作るニャ", "頑張りすぎ注意だニャ"],
+  "logo-darkbrown.webp": ["秘密基地へようこそニャ", "また来てほしいニャ"],
+  "logo-orange-black.webp": ["自分時間も大切にするニャ", "用事は分けても大丈夫ニャ"],
+  "logo-secret-calico.webp": ["レア演出だニャ", "秘密を見つけたニャ", "今日は運がいいニャ"]
 };
 
 let secretTapCount = 0;
@@ -46,6 +64,98 @@ let logoDrawActive = false;
 let nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
 let catLogoTapTimer;
 let catBubbleTimer;
+let storeEntryTimer;
+const storeEntrySeenKey = "clsvr-store-entry-seen";
+
+const rememberStoreEntry = () => {
+  try {
+    sessionStorage.setItem(storeEntrySeenKey, "1");
+  } catch {
+    // Ignore storage errors; the entrance still works without persistence.
+  }
+};
+
+const hasSeenStoreEntry = () => {
+  try {
+    return sessionStorage.getItem(storeEntrySeenKey) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const setStoreEntryOpenGreeting = (target = storeEntryOpenGreeting) => {
+  if (!target || target.dataset.greetingReady === "true") return;
+
+  target.innerHTML = greetings[Math.floor(Math.random() * greetings.length)];
+  target.dataset.greetingReady = "true";
+};
+
+const initStoreEntryOpenGreeting = () => {
+  setStoreEntryOpenGreeting(document.getElementById("store-entry-open-greeting"));
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initStoreEntryOpenGreeting, { once: true });
+} else {
+  initStoreEntryOpenGreeting();
+}
+
+const enterStore = () => {
+  if (!storeEntry || storeEntry.classList.contains("is-opening")) return;
+
+  window.clearTimeout(storeEntryTimer);
+  rememberStoreEntry();
+  if (storeEntryGuide) storeEntryGuide.textContent = "入口を開けています…";
+  initStoreEntryOpenGreeting();
+  storeEntry.classList.add("is-opening");
+  document.body.classList.add("store-is-entering");
+
+  window.setTimeout(() => {
+    storeEntry.classList.add("is-hidden");
+    document.body.classList.remove("store-entry-active", "store-is-entering");
+    document.body.classList.add("store-entered");
+  }, motionQuery.matches ? 80 : 4200);
+};
+
+if (storeEntry) {
+  const shouldSkipStoreEntry = hasSeenStoreEntry() || window.location.hash.length > 0;
+  initStoreEntryOpenGreeting();
+
+  storeEntry.querySelectorAll("img").forEach((image) => {
+    image.addEventListener("error", () => {
+      image.src = image.classList.contains("store-entry-bg")
+        ? fallbackImageSources["store-entry-bg"]
+        : image.classList.contains("store-entry-open-bg")
+          ? fallbackImageSources["store-entry-open-bg"]
+          : fallbackImageSources["store-entry-bg"];
+    }, { once: true });
+  });
+
+  if (shouldSkipStoreEntry) {
+    storeEntry.classList.add("is-hidden");
+    document.body.classList.add("store-entered");
+  } else {
+    document.body.classList.add("store-entry-active");
+    storeEntry.addEventListener("click", enterStore);
+    storeEntry.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        enterStore();
+      }
+    });
+    storeEntryTimer = window.setTimeout(enterStore, motionQuery.matches ? 1200 : 10000);
+  }
+}
+
+document.querySelectorAll(".hero-store-art, .world-photo img, .visit-photo img").forEach((image) => {
+  image.addEventListener("error", () => {
+    if (image.classList.contains("hero-store-art") || image.closest(".world-photo")) {
+      image.src = fallbackImageSources["hero-store-art"];
+      return;
+    }
+    image.src = fallbackImageSources["visit-photo"];
+  }, { once: true });
+});
 
 const bookingSelection = {
   menu: "",

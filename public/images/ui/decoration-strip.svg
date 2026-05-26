@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 152" role="img" aria-labelledby="title">
+  <title id="title">CLSVR leaf decoration strip</title>
+  <rect width="1536" height="152" fill="none"/>
+  <path d="M0 106c160-80 300 20 462-52 160-72 300 36 452-28 174-74 336 54 622-2" fill="none" stroke="#5f7b47" stroke-width="10" stroke-linecap="round" opacity=".36"/>
+  <g fill="#6d8a54" opacity=".52">
+    <ellipse cx="128" cy="80" rx="18" ry="44" transform="rotate(-42 128 80)"/>
+    <ellipse cx="250" cy="74" rx="16" ry="38" transform="rotate(44 250 74)"/>
+    <ellipse cx="432" cy="58" rx="18" ry="44" transform="rotate(-36 432 58)"/>
+    <ellipse cx="650" cy="62" rx="17" ry="40" transform="rotate(38 650 62)"/>
+    <ellipse cx="824" cy="50" rx="18" ry="44" transform="rotate(-42 824 50)"/>
+    <ellipse cx="1048" cy="64" rx="17" ry="40" transform="rotate(38 1048 64)"/>
+    <ellipse cx="1260" cy="56" rx="18" ry="44" transform="rotate(-42 1260 56)"/>
+    <ellipse cx="1430" cy="44" rx="16" ry="38" transform="rotate(44 1430 44)"/>
+  </g>
+</svg>
