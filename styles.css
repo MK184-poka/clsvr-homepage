@@ -7282,3 +7282,560 @@ body {
     max-height: 150px;
   }
 }
+
+/* Clear price board renewal */
+.clear-price-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.8vw, 28px);
+  padding: clamp(16px, 3vw, 30px);
+  border: 1px solid rgba(139, 83, 44, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.34), rgba(255, 248, 236, 0.66)),
+    url("public/images/ui/price-wood-bg.png") center / cover no-repeat;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48), 0 22px 58px rgba(103, 68, 37, 0.12);
+}
+
+.clear-price-card {
+  --card-accent: #d985a2;
+  --card-soft: #fff0f5;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 2px solid color-mix(in srgb, var(--card-accent) 34%, white);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 253, 248, 0.84)),
+    linear-gradient(135deg, var(--card-soft), rgba(255, 255, 255, 0));
+  box-shadow: 0 16px 34px rgba(103, 68, 37, 0.11);
+}
+
+.clear-price-card.price-area,
+.clear-price-card.price-set {
+  grid-column: 1 / -1;
+}
+
+.price-massage {
+  --card-accent: #e783a8;
+  --card-soft: #fff0f6;
+}
+
+.price-life {
+  --card-accent: #5797c7;
+  --card-soft: #edf7ff;
+}
+
+.price-wasp {
+  --card-accent: #e8b93f;
+  --card-soft: #fff8d9;
+}
+
+.price-area {
+  --card-accent: #72a86e;
+  --card-soft: #eef8e9;
+}
+
+.price-set {
+  --card-accent: #9fc94c;
+  --card-soft: #f3fad9;
+}
+
+.clear-price-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+
+.clear-price-icon {
+  display: grid;
+  width: clamp(58px, 8vw, 76px);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--card-accent);
+  color: #fffdf8;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: inset 0 -5px 0 rgba(63, 43, 24, 0.12), 0 12px 22px rgba(103, 68, 37, 0.14);
+}
+
+.clear-price-head small {
+  display: block;
+  margin-bottom: 4px;
+  color: color-mix(in srgb, var(--card-accent) 72%, #49382a);
+  font-weight: 900;
+}
+
+.clear-price-head h3 {
+  margin: 0;
+  color: #2f2a24;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: 0;
+}
+
+.clear-price-list,
+.clear-note-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clear-price-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card-soft) 68%, white);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 22%, white);
+}
+
+.clear-price-list span,
+.main-price span,
+.set-plan-grid span,
+.area-fee span {
+  color: #5a4a3d;
+  font-weight: 800;
+}
+
+.clear-price-list strong,
+.main-price strong,
+.set-plan-grid strong,
+.area-fee strong {
+  color: #2f2a24;
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  white-space: nowrap;
+}
+
+.main-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 8px;
+  background: var(--card-accent);
+  color: #fffdf8;
+}
+
+.main-price span,
+.main-price strong {
+  color: #fffdf8;
+}
+
+.support-chip-grid,
+.area-fee-grid,
+.set-plan-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.support-chip-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.support-chip-grid span {
+  padding: 12px 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card-soft) 76%, white);
+  color: #355a78;
+  font-weight: 900;
+  text-align: center;
+}
+
+.clear-note-list li,
+.clear-price-card p {
+  margin: 0;
+  color: #5a4a3d;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.clear-note-list li {
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.clear-note-list li::before {
+  position: absolute;
+  left: 0;
+  color: var(--card-accent);
+  content: "・";
+}
+
+.area-fee-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.area-fee,
+.set-plan-grid div {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fffdf8;
+  border: 2px solid rgba(114, 168, 110, 0.18);
+}
+
+.fee-500 {
+  background: #eef8e9;
+}
+
+.fee-1000 {
+  background: #e0f3df;
+}
+
+.fee-1500 {
+  background: #d0ebd2;
+}
+
+.fee-3000 {
+  background: #eee6f3;
+}
+
+.fee-9000 {
+  background: #fae6e6;
+  grid-column: 1 / -1;
+}
+
+.fee-far {
+  background: #f5f0d7;
+}
+
+.set-plan-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.set-plan-grid div {
+  border-color: rgba(159, 201, 76, 0.24);
+  background: #f7fbdf;
+}
+
+@media (max-width: 820px) {
+  .clear-price-board,
+  .clear-price-card.price-area,
+  .clear-price-card.price-set {
+    grid-template-columns: 1fr;
+  }
+
+  .clear-price-card.price-area,
+  .clear-price-card.price-set {
+    grid-column: auto;
+  }
+
+  .support-chip-grid,
+  .area-fee-grid,
+  .set-plan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .clear-price-board {
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .clear-price-card {
+    gap: 16px;
+    padding: 18px 14px;
+  }
+
+  .clear-price-head {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .clear-price-icon {
+    width: 56px;
+    font-size: 1.8rem;
+  }
+
+  .clear-price-list li,
+  .main-price {
+    padding: 13px 12px;
+  }
+
+  .support-chip-grid,
+  .area-fee-grid,
+  .set-plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clear-price-list li,
+  .main-price {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .clear-price-list strong,
+  .main-price strong,
+  .set-plan-grid strong,
+  .area-fee strong {
+    white-space: normal;
+  }
+}
+
+/* CLSVR natural tone refinements for price board and reservation form */
+.clear-price-board {
+  gap: clamp(16px, 2.6vw, 26px);
+  padding: clamp(18px, 3vw, 32px);
+  border-color: rgba(116, 86, 56, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.72), rgba(248, 240, 226, 0.78)),
+    url("public/images/ui/price-wood-bg.png") center / cover no-repeat;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 18px 44px rgba(78, 54, 34, 0.11);
+}
+
+.clear-price-card {
+  --card-accent: #8f7a55;
+  --card-soft: #fbf3e6;
+  --card-ink: #4a3628;
+  border-width: 1px;
+  border-color: color-mix(in srgb, var(--card-accent) 26%, #fffaf1);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(250, 244, 234, 0.9)),
+    linear-gradient(140deg, color-mix(in srgb, var(--card-soft) 72%, white), rgba(255, 255, 255, 0));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 14px 30px rgba(78, 54, 34, 0.09);
+}
+
+.price-massage {
+  --card-accent: #c77c91;
+  --card-soft: #fbecf0;
+}
+
+.price-life {
+  --card-accent: #6f97a7;
+  --card-soft: #edf4f2;
+}
+
+.price-wasp {
+  --card-accent: #c89b43;
+  --card-soft: #fbf1d8;
+}
+
+.price-area {
+  --card-accent: #7f9b66;
+  --card-soft: #eef4e6;
+}
+
+.price-set {
+  --card-accent: #8aa760;
+  --card-soft: #f1f5df;
+}
+
+.clear-price-icon {
+  width: clamp(54px, 7vw, 68px);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 42%, white);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--card-accent) 18%, white), rgba(255, 253, 248, 0.96));
+  color: color-mix(in srgb, var(--card-accent) 78%, #3c2b20);
+  font-size: clamp(1.55rem, 3.3vw, 2.15rem);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 8px 18px rgba(78, 54, 34, 0.09);
+}
+
+.clear-price-head small {
+  color: color-mix(in srgb, var(--card-accent) 66%, #5a4636);
+  font-weight: 800;
+}
+
+.clear-price-head h3 {
+  color: #3d3027;
+}
+
+.clear-price-list li,
+.area-fee,
+.set-plan-grid div,
+.support-chip-grid span {
+  border-color: color-mix(in srgb, var(--card-accent) 18%, #fffaf1);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.9), color-mix(in srgb, var(--card-soft) 74%, white));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+.clear-price-list strong,
+.main-price strong,
+.set-plan-grid strong,
+.area-fee strong {
+  color: #3d3027;
+}
+
+.main-price {
+  border: 1px solid color-mix(in srgb, var(--card-accent) 24%, #fffaf1);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--card-accent) 20%, #fffdf8), color-mix(in srgb, var(--card-soft) 72%, #fffdf8));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
+}
+
+.main-price span,
+.main-price strong {
+  color: #3d3027;
+}
+
+.support-chip-grid span {
+  color: #426978;
+}
+
+.fee-500 {
+  background: linear-gradient(180deg, #fbfdf7, #edf5e4);
+}
+
+.fee-1000 {
+  background: linear-gradient(180deg, #fbfdf7, #e8f1df);
+}
+
+.fee-1500 {
+  background: linear-gradient(180deg, #fbfdf7, #e1ecd8);
+}
+
+.fee-3000 {
+  background: linear-gradient(180deg, #fffdf8, #eee6f3);
+}
+
+.fee-9000 {
+  background: linear-gradient(180deg, #fffdf8, #fae6e6);
+}
+
+.fee-far {
+  background: linear-gradient(180deg, #fffdf8, #f4ecd9);
+}
+
+.clear-note-list li::before {
+  color: color-mix(in srgb, var(--card-accent) 70%, #6b533e);
+}
+
+.reservation-page {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.74), rgba(248, 240, 226, 0.8)),
+    var(--paper);
+}
+
+.reservation-page-head,
+.reservation-page .reservation-form,
+.reservation-section,
+.reservation-summary {
+  border-color: rgba(116, 86, 56, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.94), rgba(250, 244, 234, 0.88));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 14px 32px rgba(78, 54, 34, 0.09);
+}
+
+.reservation-choice {
+  border-color: rgba(116, 86, 56, 0.15);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(250, 244, 234, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.reservation-choice:hover,
+.reservation-choice:focus-within {
+  border-color: rgba(95, 122, 79, 0.34);
+  box-shadow: 0 10px 22px rgba(78, 54, 34, 0.08);
+}
+
+.reservation-choice:has(input:checked) {
+  border-color: rgba(95, 122, 79, 0.52);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(235, 242, 224, 0.9));
+  box-shadow:
+    inset 0 0 0 1px rgba(95, 122, 79, 0.22),
+    0 10px 20px rgba(78, 54, 34, 0.07);
+}
+
+.reservation-choice-bodycare {
+  border-color: rgba(199, 124, 145, 0.2);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 236, 240, 0.66));
+}
+
+.reservation-choice-bodycare strong {
+  color: #8f5364;
+}
+
+.reservation-choice-bodycare:has(input:checked) {
+  border-color: rgba(176, 105, 126, 0.42);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(248, 225, 232, 0.82));
+}
+
+.reservation-choice-life {
+  border-color: rgba(111, 151, 167, 0.22);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(237, 244, 242, 0.76));
+}
+
+.reservation-choice-life strong {
+  color: #4f7481;
+}
+
+.reservation-choice-life:has(input:checked) {
+  border-color: rgba(111, 151, 167, 0.44);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(225, 237, 234, 0.86));
+}
+
+.reservation-choice-set {
+  border-color: rgba(138, 167, 96, 0.24);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(241, 245, 223, 0.78));
+}
+
+.reservation-choice-set strong {
+  color: #5f7745;
+}
+
+.reservation-choice-set:has(input:checked) {
+  border-color: rgba(123, 154, 82, 0.48);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(231, 239, 207, 0.9));
+}
+
+.reservation-choice-wasp {
+  border-color: rgba(200, 155, 67, 0.26);
+  background:
+    radial-gradient(circle at 90% 16%, rgba(234, 197, 114, 0.18), transparent 27%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 241, 216, 0.78));
+}
+
+.reservation-choice-wasp::after {
+  color: #7b5a28;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.95), rgba(244, 224, 174, 0.88));
+  border-color: rgba(200, 155, 67, 0.3);
+  box-shadow: 0 6px 12px rgba(78, 54, 34, 0.08);
+}
+
+.reservation-choice-wasp strong {
+  color: #85652b;
+}
+
+.reservation-choice-wasp:has(input:checked) {
+  border-color: rgba(184, 135, 45, 0.48);
+  background:
+    radial-gradient(circle at 90% 16%, rgba(234, 197, 114, 0.24), transparent 28%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(247, 232, 191, 0.9));
+}
+
+.reservation-form input,
+.reservation-form select {
+  border-color: rgba(116, 86, 56, 0.18);
+  background: rgba(255, 253, 248, 0.92);
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+  border-color: rgba(95, 122, 79, 0.52);
+  box-shadow: 0 0 0 4px rgba(95, 122, 79, 0.12);
+}
