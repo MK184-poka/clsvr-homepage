@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clsvr-homepage.vercel.app/sitemap.xml
