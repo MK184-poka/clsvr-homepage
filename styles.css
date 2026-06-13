@@ -7690,6 +7690,8 @@ body {
 
 .support-chip-grid span {
   color: #426978;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .fee-500 {
@@ -7838,4 +7840,379 @@ body {
 .reservation-form select:focus {
   border-color: rgba(95, 122, 79, 0.52);
   box-shadow: 0 0 0 4px rgba(95, 122, 79, 0.12);
+}
+
+/* CLSVR homepage: stronger hero photo and warmer service cards */
+.hero {
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 760px);
+  align-items: center;
+  width: 100%;
+  min-height: min(860px, 94svh);
+  overflow: hidden;
+  color: #fffdf8;
+}
+
+.hero::before {
+  background:
+    linear-gradient(90deg, rgba(24, 38, 28, 0.82) 0%, rgba(28, 44, 31, 0.66) 44%, rgba(28, 44, 31, 0.2) 100%),
+    linear-gradient(180deg, rgba(30, 46, 34, 0.38), rgba(22, 34, 25, 0.58));
+}
+
+.hero::after {
+  opacity: 0.18;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  color: #fffdf8;
+  text-shadow: 0 12px 36px rgba(6, 18, 11, 0.36);
+}
+
+.hero .eyebrow,
+.hero .lead,
+.hero .shop-note {
+  color: rgba(255, 253, 248, 0.94);
+  text-shadow: 0 8px 28px rgba(4, 16, 10, 0.42);
+}
+
+.hero .lead,
+.hero .shop-note {
+  max-width: 680px;
+  font-weight: 800;
+}
+
+.hero-reassurance span {
+  color: #213426;
+  background: rgba(255, 253, 248, 0.88);
+  border-color: rgba(255, 253, 248, 0.58);
+}
+
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  min-height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: #1b2b20;
+  box-shadow: none;
+}
+
+.hero-visual::before {
+  background:
+    radial-gradient(circle at 80% 18%, rgba(255, 214, 138, 0.15), transparent 28%),
+    linear-gradient(90deg, rgba(10, 25, 15, 0.44), rgba(10, 25, 15, 0.12) 58%, rgba(10, 25, 15, 0.04));
+}
+
+.hero-store-art {
+  width: 100%;
+  height: 100%;
+  display: block !important;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.18) contrast(1.08) brightness(0.94);
+  transform: scale(1.035);
+}
+
+.hero .hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.values-grid article {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(247, 251, 242, 0.9));
+  border-color: rgba(95, 123, 71, 0.18);
+  box-shadow: 0 14px 30px rgba(58, 82, 45, 0.08);
+}
+
+.values-grid span {
+  color: #0f7d74;
+}
+
+.popular-menu {
+  overflow: hidden;
+}
+
+.popular-menu-grid {
+  align-items: stretch;
+}
+
+.popular-menu-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(95, 123, 71, 0.18);
+  background: rgba(255, 253, 248, 0.94);
+}
+
+.popular-menu-photo {
+  position: relative;
+  min-height: clamp(150px, 18vw, 220px);
+  margin: 0;
+  overflow: hidden;
+  background: #e9efe3;
+}
+
+.popular-menu-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 34, 22, 0.02), rgba(14, 34, 22, 0.22));
+  pointer-events: none;
+}
+
+.popular-menu-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.06) contrast(1.02);
+  transition: transform 500ms ease, filter 500ms ease;
+}
+
+.popular-menu-card:hover .popular-menu-photo img {
+  transform: scale(1.035);
+  filter: saturate(1.12) contrast(1.05);
+}
+
+.popular-menu-body {
+  display: grid;
+  gap: 10px;
+  padding: clamp(18px, 2.6vw, 26px);
+}
+
+.popular-menu-card span {
+  width: fit-content;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #0f7d74;
+  background: rgba(15, 125, 116, 0.1);
+}
+
+.popular-menu-card h3 {
+  margin: 0;
+  max-width: none;
+  line-height: 1.32;
+}
+
+.popular-menu-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.popular-menu-card strong {
+  width: fit-content;
+  margin-top: 2px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #263326;
+  background: linear-gradient(180deg, rgba(236, 244, 226, 0.96), rgba(219, 234, 205, 0.88));
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (min-width: 921px) {
+  .hero {
+    padding-block: clamp(96px, 11vw, 156px);
+  }
+}
+
+@media (max-width: 920px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: min(820px, 92svh);
+  }
+
+  .hero-store-art {
+    object-position: 57% center;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    min-height: auto;
+    padding-block: 86px 54px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(22, 36, 27, 0.72), rgba(22, 36, 27, 0.58) 44%, rgba(22, 36, 27, 0.78)),
+      linear-gradient(90deg, rgba(12, 24, 16, 0.24), rgba(12, 24, 16, 0.08));
+  }
+
+  .hero-store-art {
+    object-position: 62% center;
+    filter: saturate(1.12) contrast(1.04) brightness(0.92);
+    transform: scale(1.02);
+  }
+
+  .hero .lead,
+  .hero .shop-note {
+    max-width: 100%;
+    color: rgba(255, 253, 248, 0.95);
+  }
+
+  .popular-menu-card {
+    grid-template-rows: auto auto;
+  }
+
+  .popular-menu-photo {
+    min-height: 170px;
+  }
+}
+
+/* CLSVR homepage: softer hero title and photo-based price icons */
+.hero h1 {
+  width: fit-content;
+  max-width: min(100%, 780px);
+  padding: clamp(14px, 2vw, 22px) clamp(16px, 2.8vw, 28px);
+  border: 1px solid rgba(255, 253, 244, 0.58);
+  border-radius: clamp(18px, 2.4vw, 28px);
+  color: #183522;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 244, 0.9), rgba(255, 241, 206, 0.76)),
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.72), transparent 42%);
+  box-shadow: 0 22px 52px rgba(7, 22, 12, 0.24);
+  text-shadow: none;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+  backdrop-filter: blur(5px);
+}
+
+.hero h1 .hero-title-line,
+.hero h1 .hero-title-line > span {
+  color: inherit;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+}
+
+.hero h1 .hero-title-line::after,
+.hero h1 span::after {
+  display: none;
+}
+
+.hero h1 .hero-title-line > span {
+  color: #0f7d74;
+}
+
+.clear-price-icon.clear-price-photo {
+  padding: 0;
+  overflow: hidden;
+  background: #fffdf8;
+  border: 2px solid rgba(255, 253, 248, 0.9);
+  box-shadow: 0 10px 24px rgba(40, 64, 35, 0.16);
+}
+
+.clear-price-icon.clear-price-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.clear-price-icon.clear-price-photo.is-contain img {
+  width: 72%;
+  height: 72%;
+  margin: 14%;
+  object-fit: contain;
+}
+
+@media (max-width: 620px) {
+  .hero h1 {
+    max-width: 100%;
+    padding: 12px 14px;
+    border-radius: 18px;
+  }
+}
+
+/* CLSVR homepage: brand social icons in header and footer */
+.header-social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.header-social-button {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(234, 223, 206, 0.82);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 8px 18px rgba(41, 37, 33, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.header-social-button img,
+.footer-social-button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.header-social-button:hover,
+.header-social-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(41, 37, 33, 0.12);
+}
+
+.footer-social-button::before,
+.footer-social-button::after {
+  display: none;
+}
+
+.footer-social-button img {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+
+.footer-social-button.instagram,
+.footer-social-button.facebook,
+.footer-social-button.line {
+  color: inherit;
+  background: rgba(255, 253, 248, 0.98);
+}
+
+@media (max-width: 920px) {
+  .header-social-links {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    gap: 10px;
+  }
+
+  .header-social-links {
+    gap: 10px;
+  }
+
+  .header-social-button {
+    width: 42px;
+    height: 42px;
+  }
 }

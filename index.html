@@ -107,6 +107,14 @@
       <a href="#price">料金</a>
       <a href="#booking">予約</a>
     </nav>
+    <div class="header-social-links" aria-label="SNS">
+      <a class="header-social-button" data-contact-link="instagram" href="https://www.instagram.com/MURAOKA184/" target="_blank" rel="noopener" aria-label="Instagram @MURAOKA184">
+        <img src="public/images/icons/instagram.svg" alt="">
+      </a>
+      <a class="header-social-button" data-contact-link="facebook" href="https://www.facebook.com/share/17HUpYhaP9/" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="public/images/icons/facebook.svg" alt="">
+      </a>
+    </div>
   </header>
 
   <main id="top">
@@ -115,13 +123,13 @@
         <img class="hero-logo js-secret-logo" src="logo-black.webp" alt="CLSVR ロゴ" width="132" height="88">
         <p class="eyebrow">山口県内対応・周南市拠点の小さな依頼所</p>
         <h1><span class="hero-title-line">今日は少し、</span><span class="hero-title-line"><span>自分の時間</span>を。</span></h1>
-        <p class="lead">暮らしサポート、もみほぐし、蜂対応、ホームページ制作まで。<br>LINEで気軽に相談できる、地域の小さな出張依頼所です。</p>
+        <p class="lead">働きすぎた日も、家の困りごとが重なった日も。<br>もみほぐし、暮らしサポート、蜂対応まで、LINEで気軽に話せる地域の出張サポートです。</p>
         <div class="hero-reassurance" aria-label="対応内容">
           <span>見積もり無料</span>
           <span>写真相談OK</span>
           <span>作業前に料金案内</span>
         </div>
-        <p class="shop-note">少しでもラクになる時間を届けたい。そんな想いで、地域の「ちょっと困った」を受け取ります。</p>
+        <p class="shop-note">依頼するか決まっていなくても大丈夫。写真1枚、ひと言の相談、困りごとの整理だけでも受け取ります。</p>
         <div class="hero-actions">
           <a class="button primary" href="#booking">LINE予約へ進む</a>
           <a class="button secondary" href="#estimate">無料見積もり</a>
@@ -146,23 +154,23 @@
     <section class="values-section section" aria-labelledby="values-title">
       <div>
         <p class="section-label">大切にしていること</p>
-        <h2 id="values-title">頼みやすさも、届けるもののひとつです</h2>
+        <h2 id="values-title">まずは話すだけでも大丈夫です</h2>
       </div>
       <div class="values-grid">
         <article>
           <span>01</span>
-          <h3>地域密着</h3>
-          <p>山口県内に対応。周南市を拠点に、近い地域ほど小回りよく動けます。</p>
+          <h3>近くで動ける</h3>
+          <p>周南市を拠点に、山口県内のご相談を受け取ります。近い地域ほど小回りよく動けます。</p>
         </article>
         <article>
           <span>02</span>
-          <h3>相談しやすさ</h3>
+          <h3>小さく相談</h3>
           <p>内容がまとまっていなくても大丈夫。写真1枚、ひと言の相談から始められます。</p>
         </article>
         <article>
           <span>03</span>
-          <h3>人が中心</h3>
-          <p>AIは情報整理やアイディア出しの補助役。最後は人の目で、空気感まで整えます。</p>
+          <h3>時間を返す</h3>
+          <p>片付け、草抜き、体のケア。無理して抱えていることを少し減らし、自分の時間を戻します。</p>
         </article>
       </div>
     </section>
@@ -187,24 +195,42 @@
       </div>
       <div class="popular-menu-grid">
         <article class="popular-menu-card">
-          <span>一番人気</span>
-          <h3>もみほぐし60分</h3>
-          <strong>4,500円</strong>
+          <figure class="popular-menu-photo">
+            <img src="public/images/services/massage.png" alt="落ち着いた空間で受けるもみほぐしサービスのイメージ" width="1792" height="1024">
+          </figure>
+          <div class="popular-menu-body">
+            <span>一番人気</span>
+            <h3>もみほぐし60分</h3>
+            <p>疲れた体をゆるめて、休む時間をつくります。</p>
+            <strong>4,500円</strong>
+          </div>
         </article>
         <article class="popular-menu-card">
-          <span>暮らしサポート</span>
-          <h3>軽作業1時間</h3>
-          <strong>3,000円〜</strong>
+          <figure class="popular-menu-photo">
+            <img src="public/images/services/lifestyle-tools.png" alt="暮らしの小さな作業を手伝う道具のイメージ" width="1792" height="1024">
+          </figure>
+          <div class="popular-menu-body">
+            <span>暮らしサポート</span>
+            <h3>軽作業1時間</h3>
+            <p>荷物運び、片付け、草抜きなどを相談できます。</p>
+            <strong>3,000円〜</strong>
+          </div>
         </article>
         <article class="popular-menu-card">
-          <span>困った時に</span>
-          <h3>ハチ駆除</h3>
-          <strong>10,000円〜</strong>
+          <figure class="popular-menu-photo">
+            <img src="public/images/services/wasp-trouble.png" alt="蜂の巣トラブルに対応する蜂駆除サービスのイメージ" width="1792" height="1024">
+          </figure>
+          <div class="popular-menu-body">
+            <span>困った時に</span>
+            <h3>ハチ駆除</h3>
+            <p>巣の写真を送って、状況確認から始められます。</p>
+            <strong>10,000円〜</strong>
+          </div>
         </article>
       </div>
       <div class="popular-line-cta">
         <p>迷ったらLINEで写真を送るだけ。<br>無料で概算見積もりします。</p>
-        <a class="button primary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">LINEで相談する</a>
+        <a class="button primary" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener">LINEで相談する</a>
       </div>
     </section>
 
@@ -333,7 +359,7 @@
           <span>LINE</span>
           <h3>公式LINEで相談する</h3>
           <p>写真で見積もり、空き時間の確認、ちょっとした相談はこちらからどうぞ。</p>
-          <a class="button secondary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">公式LINEを開く</a>
+          <a class="button secondary" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener">公式LINEを開く</a>
         </article>
         <article class="booking-contact-card phone-card">
           <span>電話</span>
@@ -350,7 +376,7 @@
         <div>
           <h3>QRコードからもLINEを追加できます</h3>
           <p>パソコンで見ている方は、スマホでQRコードを読み取って公式LINEへ進めます。</p>
-          <a class="button secondary" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">公式LINEを開く</a>
+          <a class="button secondary" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener">公式LINEを開く</a>
         </div>
       </div>
 
@@ -368,7 +394,7 @@
       <div class="clear-price-board" aria-label="CLSVR料金表">
         <article class="clear-price-card price-massage">
           <div class="clear-price-head">
-            <span class="clear-price-icon" aria-hidden="true">手</span>
+            <span class="clear-price-icon clear-price-photo" aria-hidden="true"><img src="public/images/services/massage.png" alt=""></span>
             <div>
               <small>からだをゆるめる</small>
               <h3>もみほぐし</h3>
@@ -385,7 +411,7 @@
 
         <article class="clear-price-card price-life">
           <div class="clear-price-head">
-            <span class="clear-price-icon" aria-hidden="true">家</span>
+            <span class="clear-price-icon clear-price-photo" aria-hidden="true"><img src="public/images/services/lifestyle-tools.png" alt=""></span>
             <div>
               <small>家のちょっと困ったに</small>
               <h3>暮らしサポート</h3>
@@ -406,7 +432,7 @@
 
         <article class="clear-price-card price-wasp">
           <div class="clear-price-head">
-            <span class="clear-price-icon" aria-hidden="true">蜂</span>
+            <span class="clear-price-icon clear-price-photo" aria-hidden="true"><img src="public/images/services/wasp-trouble.png" alt=""></span>
             <div>
               <small>無理せず早めに相談</small>
               <h3>蜂駆除</h3>
@@ -418,7 +444,7 @@
 
         <article class="clear-price-card price-area">
           <div class="clear-price-head">
-            <span class="clear-price-icon" aria-hidden="true">車</span>
+            <span class="clear-price-icon clear-price-photo" aria-hidden="true"><img src="public/images/car/clsvr-car.png" alt=""></span>
             <div>
               <small>周南市から出張</small>
               <h3>出張エリア料金</h3>
@@ -436,7 +462,7 @@
 
         <article class="clear-price-card price-set">
           <div class="clear-price-head">
-            <span class="clear-price-icon" aria-hidden="true">贈</span>
+            <span class="clear-price-icon clear-price-photo is-contain" aria-hidden="true"><img src="public/images/ui/request-paper.svg" alt=""></span>
             <div>
               <small>まとめて頼むと分かりやすい</small>
               <h3>お得セットプラン</h3>
@@ -487,29 +513,20 @@
       <p class="footer-contact-note">Instagram @MURAOKA184</p>
       <div class="footer-social-links" aria-label="SNS・連絡先">
         <a class="footer-social-button instagram" data-contact-link="instagram" href="https://www.instagram.com/MURAOKA184/" target="_blank" rel="noopener" aria-label="Instagram @MURAOKA184">
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <rect x="4" y="4" width="16" height="16" rx="5"></rect>
-            <circle cx="12" cy="12" r="3.5"></circle>
-            <circle cx="17" cy="7" r="1"></circle>
-          </svg>
+          <img src="public/images/icons/instagram.svg" alt="">
         </a>
         <a class="footer-social-button facebook" data-contact-link="facebook" href="https://www.facebook.com/share/17HUpYhaP9/" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M14 8h3V4h-3c-3 0-5 2-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.6.4-1 1-1Z"></path>
-          </svg>
+          <img src="public/images/icons/facebook.svg" alt="">
         </a>
-        <a class="footer-social-button line" data-contact-link="line" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener" aria-label="公式LINE">
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M12 4c-4.4 0-8 2.8-8 6.3 0 3.1 2.8 5.7 6.6 6.2l-.2 2.1c0 .4.4.6.7.4l3.1-2.2c3.4-.7 5.8-3.2 5.8-6.1C20 6.8 16.4 4 12 4Z"></path>
-            <path d="M7.6 9v3h2.1M10.8 9v3M12.3 12V9l2 3V9M16.3 9h-1.4v3h1.4M14.9 10.5h1.2"></path>
-          </svg>
+        <a class="footer-social-button line" data-contact-link="line" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener" aria-label="公式LINE">
+          <img src="public/images/icons/line.svg" alt="">
         </a>
       </div>
     </div>
   </footer>
 
   <div class="floating-consult" aria-label="LINE相談">
-    <a class="floating-line-button" href="https://line.me/R/ti/p/%40171ltzff" target="_blank" rel="noopener">
+    <a class="floating-line-button" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener">
       <span class="floating-paw" aria-hidden="true"></span>
       LINEで相談
     </a>
@@ -524,7 +541,7 @@
     window.CLSVR_CONTACT_LINKS = {
       instagram: "https://www.instagram.com/MURAOKA184/",
       facebook: "https://www.facebook.com/share/17HUpYhaP9/",
-      line: "https://line.me/R/ti/p/%40171ltzff",
+      line: "https://lin.ee/lGfoS76",
       phone: "tel:09083622386"
     };
   </script>
