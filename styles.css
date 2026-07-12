@@ -77,3 +77,16 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 .rare-cat-date,.rare-cat-note{font-size:1rem;line-height:1.65}
 .rare-cat-validity{font-size:1.02rem}
 @media(max-width:560px){.cat-staff-bubble{max-width:min(300px,calc(100vw - 20px));padding:13px 15px;font-size:.94rem}.rare-cat-date,.rare-cat-note{font-size:.86rem}.rare-cat-validity{font-size:.9rem}}
+
+/* Larger fixed header and touch-safe cat button. */
+.site-header{min-height:86px;padding-top:12px;padding-bottom:12px}
+.brand img{width:70px;height:52px;object-fit:contain}
+.brand strong{font-size:1.35rem}
+.brand small{font-size:.78rem}
+.header-phone{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:9px 16px;color:#fff;background:var(--green-dark);border-radius:6px;font-weight:900}
+.header-phone-icon{font-size:1.25rem;line-height:1}
+.header-phone-mobile{display:none}
+.cat-logo-button,.cat-logo-button img,.js-secret-logo{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+.cat-logo-button:focus:not(:focus-visible){outline:none;box-shadow:var(--shadow)}
+.cat-logo-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+@media(max-width:560px){.site-header{min-height:74px;padding:8px 12px}.brand{min-width:0}.brand img{width:58px;height:48px}.brand strong{font-size:1.08rem}.brand small{font-size:.67rem}.header-phone{min-width:54px;min-height:44px;padding:8px 11px}.header-phone-number{display:none}.header-phone-mobile{display:inline}.header-phone-icon{font-size:1.15rem}}
