@@ -6,6 +6,9 @@ const dateInputs = document.querySelectorAll('input[type="date"]');
 const secretLogos = document.querySelectorAll(".js-secret-logo");
 const catLogoButton = document.querySelector(".cat-logo-button");
 const catStaffBubble = document.getElementById("cat-staff-bubble");
+const rareCatOverlay = document.getElementById("rare-cat-overlay");
+const rareCatClose = rareCatOverlay?.querySelector(".rare-cat-close");
+const rareCatDate = document.getElementById("rare-cat-date");
 const storeEntry = document.getElementById("store-entry");
 const storeEntryGuide = storeEntry?.querySelector(".store-entry-guide");
 const storeEntryOpenGreeting = document.getElementById("store-entry-open-greeting");
@@ -44,16 +47,16 @@ const secretLogoSources = ["logo-secret-calico.webp"];
 const allLogoSources = [...logoVariantSources, ...secretLogoSources];
 const defaultLogoSource = logoVariantSources[0];
 const logoMessages = {
-  "logo-black.webp": ["少し休んでいくニャ", "無理しすぎないでニャ"],
-  "logo-lightgray.webp": ["今日はゆっくり整えるニャ", "休む時間も大切だニャ"],
-  "logo-beige.webp": ["ひと息ついてからで大丈夫ニャ", "深呼吸していくニャ"],
-  "logo-bluegray.webp": ["肩の力を抜くニャ", "あせらなくて大丈夫ニャ"],
-  "logo-brown.webp": ["その作業、相談してニャ", "小さな困りごとも聞くニャ"],
-  "logo-orange.webp": ["いい一日になりますようにニャ", "今日は少し運がいいニャ"],
-  "logo-gray.webp": ["ちゃんと休む時間を作るニャ", "頑張りすぎ注意だニャ"],
-  "logo-darkbrown.webp": ["秘密基地へようこそニャ", "また来てほしいニャ"],
-  "logo-orange-black.webp": ["自分時間も大切にするニャ", "用事は分けても大丈夫ニャ"],
-  "logo-secret-calico.webp": ["レア演出だニャ", "秘密を見つけたニャ", "今日は運がいいニャ"]
+  "logo-black.webp": ["蜂の巣は、近づかずにご相談くださいニャ", "写真1枚から相談できますニャ"],
+  "logo-lightgray.webp": ["巣の場所が分からなくても大丈夫ですニャ", "まずは状況を教えてくださいニャ"],
+  "logo-beige.webp": ["相談だけでも大丈夫ですニャ", "分かる範囲で送ってくださいニャ"],
+  "logo-bluegray.webp": ["作業前に料金をご案内しますニャ", "高い場所の巣も無理をしないでくださいニャ"],
+  "logo-brown.webp": ["暮らしの困りごともご相談くださいニャ", "もみほぐしの相談も受け付けていますニャ"],
+  "logo-orange.webp": ["LINEなら写真を送るだけですニャ", "お急ぎの時は電話でも大丈夫ですニャ"],
+  "logo-gray.webp": ["蜂を叩いたり、水をかけたりしないでくださいニャ", "安全な場所から確認してくださいニャ"],
+  "logo-darkbrown.webp": ["CLSVRが山口県内へ伺いますニャ", "周南市を拠点に動いていますニャ"],
+  "logo-orange-black.webp": ["ホームページの相談もできますニャ", "小さなご相談も歓迎ですニャ"],
+  "logo-secret-calico.webp": ["レア猫ですニャ。今日も安全第一ですニャ", "見つけてくれてありがとうニャ"]
 };
 
 let secretTapCount = 0;
@@ -61,7 +64,7 @@ let secretResetTimer;
 let logoSwitchTimer;
 let logoDrawUnlockTimer;
 let logoDrawActive = false;
-let nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
+let nextLogoDrawCount = 5 + Math.floor(Math.random() * 6);
 let catLogoTapTimer;
 let catBubbleTimer;
 let storeEntryTimer;
@@ -215,8 +218,9 @@ const showLogoMessage = (source, isSecret) => {
 };
 
 const drawLogoSource = () => {
-  const secretRate = secretTapCount >= 100 ? 0.05 : 0.015;
-  const isSecret = Math.random() < secretRate;
+  // Static-site production odds: one rare result per 100,000,000 completed draws.
+  // A server-side shared counter is required to guarantee a fixed number of winners nationwide.
+  const isSecret = Math.random() < 1 / 100000000;
 
   return {
     isSecret,
@@ -225,6 +229,27 @@ const drawLogoSource = () => {
       : logoVariantSources[Math.floor(Math.random() * logoVariantSources.length)]
   };
 };
+
+const showRareCatOverlay = () => {
+  if (!rareCatOverlay) return;
+  const now = new Date();
+  if (rareCatDate) {
+    rareCatDate.textContent = `当選日時：${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日 ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+  }
+  rareCatOverlay.hidden = false;
+  window.requestAnimationFrame(() => rareCatOverlay.classList.add("is-visible"));
+};
+
+const closeRareCatOverlay = () => {
+  if (!rareCatOverlay) return;
+  rareCatOverlay.classList.remove("is-visible");
+  window.setTimeout(() => { rareCatOverlay.hidden = true; }, 240);
+};
+
+rareCatClose?.addEventListener("click", closeRareCatOverlay);
+rareCatOverlay?.addEventListener("click", (event) => {
+  if (event.target === rareCatOverlay) closeRareCatOverlay();
+});
 
 const switchLogoSource = (source, isSecret) => {
   window.clearTimeout(logoSwitchTimer);
@@ -258,7 +283,7 @@ const activateLogoDraw = () => {
   if (logoDrawActive) return;
 
   logoDrawActive = true;
-  nextLogoDrawCount = 18 + Math.floor(Math.random() * 5);
+  nextLogoDrawCount = 5 + Math.floor(Math.random() * 6);
   window.clearTimeout(logoDrawUnlockTimer);
 
   const result = drawLogoSource();
@@ -267,6 +292,7 @@ const activateLogoDraw = () => {
   showLogoMessage(result.source, result.isSecret);
 
   if (result.isSecret) {
+    showRareCatOverlay();
     createFloatingPaw();
     window.setTimeout(createFloatingPaw, 240);
     window.setTimeout(createFloatingPaw, 520);
@@ -292,7 +318,6 @@ const handleSecretLogoTap = (event) => {
   }
 
   if (logoDrawActive) return;
-
   secretTapCount += 1;
   window.clearTimeout(secretResetTimer);
 
@@ -304,7 +329,7 @@ const handleSecretLogoTap = (event) => {
 
   secretResetTimer = window.setTimeout(() => {
     secretTapCount = 0;
-  }, 1400);
+  }, 2200);
 };
 
 secretLogos.forEach((logo) => {
