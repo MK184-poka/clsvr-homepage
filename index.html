@@ -3,32 +3,80 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="山口県周南市を拠点に、蜂の巣駆除・ハチ駆除に対応するCLSVRです。巣の写真を公式LINEへ送るだけで無料相談・概算見積もりができます。">
-  <meta name="keywords" content="山口県 蜂駆除,周南市 蜂駆除,蜂の巣駆除,ハチ駆除,スズメバチ,アシナガバチ,CLSVR">
+  <meta name="description" content="山口県周南市を拠点に、蜂駆除・蜂の巣の調査、駆除、撤去に出張対応するCLSVRです。アシナガバチ・スズメバチなど、巣の写真から無料相談・概算見積もりができます。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://clsvr-homepage.vercel.app/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="CLSVR">
-  <meta property="og:title" content="CLSVR | 山口県の蜂の巣駆除・ハチ駆除">
-  <meta property="og:description" content="蜂の巣を見つけたら、無理に近づかず写真を送ってご相談ください。山口県内へ出張対応します。">
+  <meta property="og:title" content="山口県の蜂駆除・蜂の巣駆除｜CLSVR">
+  <meta property="og:description" content="周南市を拠点に山口県内へ出張。蜂の巣の調査・駆除・撤去は、巣に近づかず写真を送ってご相談ください。">
   <meta property="og:url" content="https://clsvr-homepage.vercel.app/">
   <meta property="og:image" content="https://clsvr-homepage.vercel.app/public/images/works/wasp/wasp-before-after-01.jpg">
+  <meta property="og:image:alt" content="CLSVRが山口県内で対応した蜂の巣駆除の作業例">
   <meta name="twitter:card" content="summary_large_image">
-  <title>CLSVR | 山口県の蜂の巣駆除・ハチ駆除</title>
+  <meta name="twitter:title" content="山口県の蜂駆除・蜂の巣駆除｜CLSVR">
+  <meta name="twitter:description" content="周南市を拠点に山口県内へ出張。蜂の巣の調査・駆除・撤去は、写真から無料相談できます。">
+  <meta name="twitter:image" content="https://clsvr-homepage.vercel.app/public/images/works/wasp/wasp-before-after-01.jpg">
+  <title>山口県の蜂駆除・蜂の巣駆除｜周南市拠点のCLSVR</title>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://clsvr-homepage.vercel.app/#business",
-    "name": "CLSVR",
-    "url": "https://clsvr-homepage.vercel.app/",
-    "image": "https://clsvr-homepage.vercel.app/public/images/works/wasp/wasp-before-after-01.jpg",
-    "description": "山口県周南市を拠点に、蜂の巣駆除・ハチ駆除を行う出張サービスです。",
-    "telephone": "+81-90-8362-2386",
-    "address": {"@type":"PostalAddress","addressLocality":"周南市","addressRegion":"山口県","addressCountry":"JP"},
-    "areaServed": "山口県",
-    "sameAs": ["https://www.instagram.com/MURAOKA184/","https://lin.ee/lGfoS76"],
-    "makesOffer": {"@type":"Offer","itemOffered":{"@type":"Service","name":"蜂の巣駆除・ハチ駆除","serviceType":"蜂駆除・蜂の巣調査・撤去"}}
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://clsvr-homepage.vercel.app/#website",
+        "url": "https://clsvr-homepage.vercel.app/",
+        "name": "CLSVR",
+        "alternateName": "クルサヴァー",
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://clsvr-homepage.vercel.app/#business",
+        "name": "CLSVR",
+        "alternateName": "クルサヴァー",
+        "url": "https://clsvr-homepage.vercel.app/",
+        "image": "https://clsvr-homepage.vercel.app/public/images/works/wasp/wasp-before-after-01.jpg",
+        "description": "山口県周南市を拠点に、蜂駆除、蜂の巣の調査・駆除・撤去を行う出張サービスです。",
+        "telephone": "+81-90-8362-2386",
+        "priceRange": "10,000円から（出張料・追加作業料は別途）",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "周南市",
+          "addressRegion": "山口県",
+          "addressCountry": "JP"
+        },
+        "areaServed": [
+          {"@type": "AdministrativeArea", "name": "山口県"},
+          {"@type": "City", "name": "周南市"},
+          {"@type": "City", "name": "下松市"},
+          {"@type": "City", "name": "光市"},
+          {"@type": "City", "name": "防府市"}
+        ],
+        "sameAs": [
+          "https://www.instagram.com/MURAOKA184/",
+          "https://www.facebook.com/share/17HUpYhaP9/"
+        ],
+        "makesOffer": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": 10000,
+            "priceCurrency": "JPY"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://clsvr-homepage.vercel.app/#wasp-removal",
+            "name": "蜂駆除・蜂の巣駆除",
+            "alternateName": "ハチ駆除",
+            "serviceType": "蜂の巣の調査・駆除・撤去",
+            "provider": {"@id": "https://clsvr-homepage.vercel.app/#business"},
+            "areaServed": {"@type": "AdministrativeArea", "name": "山口県"}
+          }
+        }
+      }
+    ]
   }
   </script>
   <link rel="stylesheet" href="styles.css?v=20260712-wasp">
