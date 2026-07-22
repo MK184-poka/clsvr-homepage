@@ -482,7 +482,7 @@ if (caseGallery && caseSlides.length > 1) {
     if (!desktopCaseQuery.matches || motionQuery.matches) return;
     caseTimer = window.setInterval(() => {
       showCaseSlide((activeCaseIndex + 1) % caseSlides.length);
-    }, 5200);
+    }, 3000);
   };
 
   const updateCaseGallery = () => {
