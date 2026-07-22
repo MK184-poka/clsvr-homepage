@@ -33,6 +33,8 @@ const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const desktopCaseQuery = window.matchMedia("(min-width: 901px)");
 const caseGallery = document.querySelector(".case-grid");
 const caseSlides = Array.from(caseGallery?.querySelectorAll("figure") || []);
+const casePrevButton = caseGallery?.querySelector(".case-arrow-prev");
+const caseNextButton = caseGallery?.querySelector(".case-arrow-next");
 
 const logoStorageKey = "clsvr-logo-gacha-source";
 const logoVariantSources = [
@@ -468,10 +470,11 @@ if (caseGallery && caseSlides.length > 1) {
   let caseTimer;
 
   const showCaseSlide = (index) => {
-    activeCaseIndex = index;
+    activeCaseIndex = (index + caseSlides.length) % caseSlides.length;
     caseSlides.forEach((slide, slideIndex) => {
       const isActive = slideIndex === activeCaseIndex;
       slide.classList.toggle("is-active", isActive);
+      slide.classList.toggle("is-before", slideIndex < activeCaseIndex);
       slide.setAttribute("aria-hidden", isActive ? "false" : "true");
     });
   };
@@ -494,12 +497,19 @@ if (caseGallery && caseSlides.length > 1) {
     stopCaseAutoplay();
     caseSlides.forEach((slide) => {
       slide.classList.remove("is-active");
+      slide.classList.remove("is-before");
       slide.removeAttribute("aria-hidden");
     });
   };
 
   caseGallery.addEventListener("mouseenter", stopCaseAutoplay);
   caseGallery.addEventListener("mouseleave", startCaseAutoplay);
+  casePrevButton?.addEventListener("click", () => {
+    showCaseSlide(activeCaseIndex - 1);
+  });
+  caseNextButton?.addEventListener("click", () => {
+    showCaseSlide(activeCaseIndex + 1);
+  });
   desktopCaseQuery.addEventListener("change", updateCaseGallery);
   motionQuery.addEventListener("change", updateCaseGallery);
   updateCaseGallery();

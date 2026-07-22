@@ -122,16 +122,20 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 
 /* Mobile field-work gallery: compact horizontal swipe cards. */
 .case-swipe-hint{display:none}
+.case-arrow{display:none}
 @media(min-width:901px){
   .case-grid{position:relative;display:block;height:min(70vh,680px);min-height:520px;overflow:hidden;border-radius:6px;background:#253428}
-  .case-grid figure,.case-grid .case-feature{position:absolute;inset:0;width:100%;min-height:0;margin:0;opacity:0;visibility:hidden;transform:scale(1.015);transition:opacity 1s ease,transform 5.2s ease,visibility 0s linear 1s}
-  .case-grid figure:first-child{opacity:1;visibility:visible}
-  .case-grid.is-carousel-ready figure:first-child:not(.is-active){opacity:0;visibility:hidden}
-  .case-grid figure.is-active{z-index:1;opacity:1;visibility:visible;transform:scale(1);transition:opacity 1s ease,transform 5.2s ease,visibility 0s}
-  .case-grid img{height:100%;object-position:center}
+  .case-grid figure,.case-grid .case-feature{position:absolute;inset:0;width:100%;min-height:0;margin:0;visibility:visible;transform:translateX(100%);transition:transform .65s cubic-bezier(.22,.61,.36,1)}
+  .case-grid figure:first-child{transform:translateX(0)}
+  .case-grid figure.is-before{transform:translateX(-100%)}
+  .case-grid figure.is-active{z-index:1;transform:translateX(0)}
+  .case-grid img{height:100%;padding:0 72px;object-fit:contain;object-position:center;background:#101a12}
   .case-grid figcaption{padding:90px 34px 30px}
   .case-grid figcaption strong{font-size:clamp(1.5rem,2.2vw,2.2rem)}
   .case-grid figcaption span{max-width:720px;font-size:1rem}
+  .case-arrow{position:absolute;top:50%;z-index:4;display:grid;place-items:center;width:52px;height:72px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:6px;color:#fff;background:rgba(12,25,15,.72);font:700 2.4rem/1 system-ui;cursor:pointer;transform:translateY(-50%);transition:background .2s ease,transform .2s ease}
+  .case-arrow:hover,.case-arrow:focus-visible{background:rgba(235,159,28,.95);transform:translateY(-50%) scale(1.04)}
+  .case-arrow-prev{left:14px}.case-arrow-next{right:14px}
 }
 @media(max-width:560px){
   .cases{padding-right:0}
@@ -142,4 +146,5 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
   .case-grid figure,.case-grid .case-feature{flex:0 0 min(78vw,330px);width:min(78vw,330px);min-height:390px;scroll-snap-align:start;scroll-snap-stop:always}
   .case-grid img{height:390px}
   .case-grid figcaption{padding:52px 16px 16px}
+  .case-arrow{display:none}
 }
