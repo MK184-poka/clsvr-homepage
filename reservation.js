@@ -14,7 +14,7 @@ const serviceForms = {
 const serviceCopy = {
   wasp: ["蜂の巣駆除の<br>無料相談・見積もり依頼", "分かる範囲だけで大丈夫です。入力内容をLINEへ移し、写真を添えて相談できます。"],
   bodycare: ["出張もみほぐしの<br>ご相談・予約希望", "ご希望のコースや日時を入力すると、相談内容をまとめてLINEへ移せます。"],
-  lifestyle: ["暮らしの困りごとを<br>お気軽にご相談ください", "荷物移動・雨どい掃除・草抜きなど、対応できる内容と料金を確認してご案内します。"]
+  lifestyle: ["暮らし・その他のことを<br>お気軽にご相談ください", "暮らしのお困りごとのほか、ホームページ作成やAI活用などもご相談いただけます。"]
 };
 const serviceNotes = {
   wasp: ["巣には近づかないでください", ["叩かない", "水をかけない", "お子様・ペットを近づけない"]],
@@ -115,7 +115,7 @@ bindSimpleForm(serviceForms.bodycare, (data) => [
 ].join("\n"));
 
 bindSimpleForm(serviceForms.lifestyle, (data) => [
-  "【暮らしサポートのご相談】", "",
+  "【暮らし・その他のご相談】", "",
   "① ご相談内容", `・内容：${data.category}`, `・詳しい内容：${data.request}`, `・写真：${data.hasPhoto || "今のところなし"}`,
   "", "② 訪問先・希望日時", `・訪問エリア：${data.area}`, `・住所・目印：${data.address || "LINEで確認"}`,
   `・第1希望：${formatDateTime(data.date1)}`, `・第2希望：${formatDateTime(data.date2)}`,
