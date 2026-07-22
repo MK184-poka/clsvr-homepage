@@ -122,6 +122,17 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 
 /* Mobile field-work gallery: compact horizontal swipe cards. */
 .case-swipe-hint{display:none}
+@media(min-width:901px){
+  .case-grid{position:relative;display:block;height:min(70vh,680px);min-height:520px;overflow:hidden;border-radius:6px;background:#253428}
+  .case-grid figure,.case-grid .case-feature{position:absolute;inset:0;width:100%;min-height:0;margin:0;opacity:0;visibility:hidden;transform:scale(1.015);transition:opacity 1s ease,transform 5.2s ease,visibility 0s linear 1s}
+  .case-grid figure:first-child{opacity:1;visibility:visible}
+  .case-grid.is-carousel-ready figure:first-child:not(.is-active){opacity:0;visibility:hidden}
+  .case-grid figure.is-active{z-index:1;opacity:1;visibility:visible;transform:scale(1);transition:opacity 1s ease,transform 5.2s ease,visibility 0s}
+  .case-grid img{height:100%;object-position:center}
+  .case-grid figcaption{padding:90px 34px 30px}
+  .case-grid figcaption strong{font-size:clamp(1.5rem,2.2vw,2.2rem)}
+  .case-grid figcaption span{max-width:720px;font-size:1rem}
+}
 @media(max-width:560px){
   .cases{padding-right:0}
   .cases .section-heading{padding-right:20px;margin-bottom:18px}

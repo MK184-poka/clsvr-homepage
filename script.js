@@ -30,6 +30,9 @@ const fallbackImageSources = {
 const contactLinks = window.CLSVR_CONTACT_LINKS || {};
 const contactLinkAnchors = document.querySelectorAll("[data-contact-link]");
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const desktopCaseQuery = window.matchMedia("(min-width: 901px)");
+const caseGallery = document.querySelector(".case-grid");
+const caseSlides = Array.from(caseGallery?.querySelectorAll("figure") || []);
 
 const logoStorageKey = "clsvr-logo-gacha-source";
 const logoVariantSources = [
@@ -457,6 +460,49 @@ if (!motionQuery.matches && "IntersectionObserver" in window) {
   );
 
   revealTargets.forEach((target) => revealObserver.observe(target));
+}
+
+if (caseGallery && caseSlides.length > 1) {
+  caseGallery.classList.add("is-carousel-ready");
+  let activeCaseIndex = 0;
+  let caseTimer;
+
+  const showCaseSlide = (index) => {
+    activeCaseIndex = index;
+    caseSlides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeCaseIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+  };
+
+  const stopCaseAutoplay = () => window.clearInterval(caseTimer);
+  const startCaseAutoplay = () => {
+    stopCaseAutoplay();
+    if (!desktopCaseQuery.matches || motionQuery.matches) return;
+    caseTimer = window.setInterval(() => {
+      showCaseSlide((activeCaseIndex + 1) % caseSlides.length);
+    }, 5200);
+  };
+
+  const updateCaseGallery = () => {
+    if (desktopCaseQuery.matches) {
+      showCaseSlide(activeCaseIndex);
+      startCaseAutoplay();
+      return;
+    }
+    stopCaseAutoplay();
+    caseSlides.forEach((slide) => {
+      slide.classList.remove("is-active");
+      slide.removeAttribute("aria-hidden");
+    });
+  };
+
+  caseGallery.addEventListener("mouseenter", stopCaseAutoplay);
+  caseGallery.addEventListener("mouseleave", startCaseAutoplay);
+  desktopCaseQuery.addEventListener("change", updateCaseGallery);
+  motionQuery.addEventListener("change", updateCaseGallery);
+  updateCaseGallery();
 }
 
 setLogoSource(getStoredLogoSource());
