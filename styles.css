@@ -112,3 +112,23 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 .area-list span{border-color:#e5c45d;box-shadow:0 8px 20px rgba(94,64,8,.06)}
 @media(max-width:900px){.hero-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-summary>a,.hero-summary>div{min-height:88px}.hero-summary>:nth-child(2){border-right:0}.hero-summary>:nth-child(-n+2){border-bottom:1px solid #ead9a4}}
 @media(max-width:560px){.hero-content{padding-top:142px}.hero-summary{margin-bottom:18px}.hero-summary>a,.hero-summary>div{min-height:82px;padding:10px 11px}.hero-summary small{font-size:.66rem}.hero-summary strong{font-size:.93rem}.hero-summary span{font-size:.64rem}.hero-summary>a::after{display:none}.payment-methods{display:grid;grid-template-columns:1fr}.payment-methods span{justify-content:flex-start}}
+
+/* Consultation routes: LINE, web form, and phone. */
+.contact-route-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:min(920px,100%);margin:30px auto 0;text-align:left}
+.contact-route-grid a{display:flex;min-height:126px;padding:20px;flex-direction:column;justify-content:center;border:1px solid rgba(255,255,255,.42);border-radius:6px;background:rgba(255,255,255,.1);transition:background .2s ease,transform .2s ease}
+.contact-route-grid a:hover,.contact-route-grid a:focus-visible{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.contact-route-grid span{color:var(--yellow);font-size:.76rem;font-weight:900}.contact-route-grid strong{font-size:1.18rem}.contact-route-grid small{color:rgba(255,255,255,.72)}
+@media(max-width:760px){.contact-route-grid{grid-template-columns:1fr}.contact-route-grid a{min-height:100px}}
+
+/* Mobile field-work gallery: compact horizontal swipe cards. */
+.case-swipe-hint{display:none}
+@media(max-width:560px){
+  .cases{padding-right:0}
+  .cases .section-heading{padding-right:20px;margin-bottom:18px}
+  .case-swipe-hint{display:block;margin:0 20px 12px 0;color:rgba(255,255,255,.72);font-size:.78rem;font-weight:800;text-align:right}
+  .case-grid{display:flex;gap:12px;padding:0 20px 14px 0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .case-grid::-webkit-scrollbar{display:none}
+  .case-grid figure,.case-grid .case-feature{flex:0 0 min(78vw,330px);width:min(78vw,330px);min-height:390px;scroll-snap-align:start;scroll-snap-stop:always}
+  .case-grid img{height:390px}
+  .case-grid figcaption{padding:52px 16px 16px}
+}

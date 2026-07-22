@@ -3,184 +3,220 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CLSVRの予約フォームです。メニュー、出張エリア、希望日時を入力して公式LINEへ送信できます。">
+  <meta name="description" content="山口県の蜂の巣駆除・調査について、写真や状況を伝えられるCLSVRの無料相談・見積もり依頼フォームです。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://clsvr-homepage.vercel.app/reservation">
-  <title>CLSVR | 予約フォーム</title>
-  <link rel="stylesheet" href="styles.css?v=20260521-reservation">
+  <title>蜂の巣駆除の無料相談・見積もり依頼｜CLSVR</title>
+  <link rel="stylesheet" href="styles.css?v=20260722c">
+  <link rel="stylesheet" href="reservation.css?v=20260722c">
 </head>
 <body class="reservation-page">
-  <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="CLSVR トップへ">
-      <img class="brand-logo" src="logo-black.webp" alt="CLSVR ロゴ" width="56" height="38">
-      <span>
-        <strong>CLSVR</strong>
-        <small>予約フォーム</small>
-      </span>
+  <header class="site-header reservation-header">
+    <a class="brand" href="index.html" aria-label="CLSVR トップへ戻る">
+      <img src="logo-black.webp" alt="CLSVR" width="70" height="52">
+      <span><strong>CLSVR</strong><small>蜂の巣駆除・無料相談</small></span>
     </a>
-    <nav class="nav" aria-label="予約ページメニュー">
-      <a href="index.html#price">料金</a>
-      <a href="index.html#area">エリア</a>
-      <a href="index.html#booking">戻る</a>
-    </nav>
+    <div class="reservation-header-actions">
+      <a class="header-back" href="index.html"><span aria-hidden="true">←</span><span>ホームに戻る</span></a>
+      <a class="header-phone" href="tel:09083622386"><span aria-hidden="true">☎</span><span>電話する</span></a>
+    </div>
   </header>
 
-  <main class="reservation-page-main">
-    <section class="reservation-page-head">
-      <p class="section-label">CLSVR 予約フォーム</p>
-      <h1>ご希望内容を入力してください</h1>
-      <p>入力後、公式LINEに送る相談内容を整えます。最後に内容を確認して送信してください。</p>
+  <main class="reservation-main">
+    <section class="reservation-hero">
+      <div>
+        <p class="reservation-kicker">写真1枚から相談できます</p>
+        <h1 id="reservation-title">蜂の巣駆除の<br>無料相談・見積もり依頼</h1>
+        <p id="reservation-description">分かる範囲だけで大丈夫です。入力内容をLINEへ移し、写真を添えて相談できます。</p>
+        <div class="reservation-badges"><span>相談無料</span><span>山口県内対応</span><span>作業前に料金案内</span></div>
+      </div>
+      <aside class="reservation-safety" id="reservation-side-note">
+        <strong>巣には近づかないでください</strong>
+        <ul><li>叩かない</li><li>水をかけない</li><li>お子様・ペットを近づけない</li></ul>
+      </aside>
     </section>
 
-    <form class="reservation-form" id="line-reservation-form">
-      <section class="reservation-section">
-        <div class="reservation-heading">
-          <span>1</span>
-          <div>
-            <h3>メニューを選ぶ</h3>
-            <p>料金は目安です。内容確認後に正式な金額をご案内します。</p>
-          </div>
-        </div>
-        <div class="reservation-menu-grid">
-          <label class="reservation-choice reservation-choice-bodycare">
-            <input type="radio" name="menu" value="もみほぐし45分" data-price="3500" required>
-            <span><strong>もみほぐし45分</strong><small>短時間でリフレッシュ</small></span>
-            <b>3,500円</b>
-          </label>
-          <label class="reservation-choice reservation-choice-bodycare">
-            <input type="radio" name="menu" value="もみほぐし60分" data-price="4500">
-            <span><strong>もみほぐし60分</strong><small>一番人気の基本コース</small></span>
-            <b>4,500円</b>
-          </label>
-          <label class="reservation-choice reservation-choice-bodycare">
-            <input type="radio" name="menu" value="もみほぐし90分" data-price="6500">
-            <span><strong>もみほぐし90分</strong><small>しっかりケア</small></span>
-            <b>6,500円</b>
-          </label>
-          <label class="reservation-choice reservation-choice-life">
-            <input type="radio" name="menu" value="暮らしサポート" data-price="3000">
-            <span><strong>暮らしサポート</strong><small>草抜き・庭まわり・掃除・片付け・家具移動など<br>内容により追加料金あり</small></span>
-            <b>3,000円〜</b>
-          </label>
-          <label class="reservation-choice reservation-choice-wasp">
-            <input type="radio" name="menu" value="ハチ駆除" data-price="10000">
-            <span><strong>ハチ駆除</strong><small>状況確認後にご案内</small></span>
-            <b>10,000円〜</b>
-          </label>
-          <label class="reservation-choice reservation-choice-set">
-            <input type="radio" name="menu" value="自分時間30分プラン" data-price="4500">
-            <span><strong>自分時間30分プラン</strong><small>お得なセットプラン</small></span>
-            <b>4,500円</b>
-          </label>
-          <label class="reservation-choice reservation-choice-set">
-            <input type="radio" name="menu" value="自分時間60分プラン" data-price="7000">
-            <span><strong>自分時間60分プラン</strong><small>お得なセットプラン</small></span>
-            <b>7,000円</b>
-          </label>
-          <label class="reservation-choice reservation-choice-set">
-            <input type="radio" name="menu" value="全力フルサポートプラン" data-price="13500">
-            <span><strong>全力フルサポートプラン</strong><small>お得なセットプラン</small></span>
-            <b>13,500円</b>
-          </label>
-        </div>
-        <div class="reservation-extension" id="bodycare-extension" hidden>
-          <div>
-            <strong>延長時間</strong>
-            <small>15分ごとに +1,000円。もみほぐしメニューのみ選べます。</small>
-          </div>
-          <div class="reservation-extension-stepper" role="group" aria-label="延長時間">
-            <button type="button" id="extension-minus" aria-label="延長時間を15分減らす">−</button>
-            <output id="extension-time" name="extensionLabel" aria-live="polite">0分</output>
-            <button type="button" id="extension-plus" aria-label="延長時間を15分増やす">＋</button>
-          </div>
-          <span id="extension-price">延長なし</span>
-        </div>
-      </section>
-
-      <section class="reservation-section reservation-fields">
-        <div class="reservation-heading">
-          <span>2</span>
-          <div>
-            <h3>エリア・希望日時</h3>
-            <p>第2希望まであると調整しやすくなります。</p>
-          </div>
-        </div>
-        <label>
-          出張エリア
-          <select name="area" id="reservation-area" required>
-            <option value="" data-fee="0">選択してください</option>
-            <option value="周南市（徳山・新南陽） / 出張料500円" data-fee="500">周南市（徳山・新南陽） / 500円</option>
-            <option value="周南市（熊毛・鹿野）・下松市 / 出張料1,000円" data-fee="1000">周南市（熊毛・鹿野）・下松市 / 1,000円</option>
-            <option value="光市・防府市 / 出張料1,500円" data-fee="1500">光市・防府市 / 1,500円</option>
-            <option value="山口市・田布施町・平生町 / 出張料3,000円" data-fee="3000">山口市・田布施町・平生町 / 3,000円</option>
-            <option value="岩国市・柳井市・下関市・長門市・萩市・宇部市・山陽小野田市・美祢市など / 出張料9,000円（高速料金込み）" data-fee="9000">岩国市・柳井市・下関市・長門市・萩市・宇部市・山陽小野田市・美祢市など / 9,000円（高速料金込み）</option>
-            <option value="その他エリア / 要相談" data-fee="0">その他エリア / 要相談</option>
-          </select>
-        </label>
-        <div class="reservation-field-grid">
-          <label>
-            第1希望
-            <input type="datetime-local" name="date1" required>
-          </label>
-          <label>
-            第2希望
-            <input type="datetime-local" name="date2">
-          </label>
-        </div>
-      </section>
-
-      <section class="reservation-section reservation-fields">
-        <div class="reservation-heading">
-          <span>3</span>
-          <div>
-            <h3>お客様情報</h3>
-            <p>連絡に必要な内容だけ入力してください。</p>
-          </div>
-        </div>
-        <div class="reservation-field-grid">
-          <label>
-            お名前
-            <input type="text" name="name" autocomplete="name" required>
-          </label>
-          <label>
-            電話番号
-            <input type="tel" name="phone" autocomplete="tel" placeholder="例：090-1234-5678" required>
-          </label>
-        </div>
-        <label>
-          住所・目印
-          <input type="text" name="address" autocomplete="street-address" placeholder="例：周南市〇〇町、駐車場あり" required>
-        </label>
-        <label>
-          備考
-          <input type="text" name="note" placeholder="例：肩こり、庭の草抜き、駐車場の有無など">
-        </label>
-      </section>
-
-      <section class="reservation-summary" aria-live="polite">
-        <div>
-          <span>メニュー</span>
-          <strong id="reservation-menu-price">未選択</strong>
-        </div>
-        <div>
-          <span>出張料</span>
-          <strong id="reservation-travel-fee">未選択</strong>
-        </div>
-        <div>
-          <span>合計目安</span>
-          <strong id="reservation-total-price">メニューとエリアを選択</strong>
-        </div>
-        <p>赤の9,000円エリアは高速料金込みです。その他の地域もお気軽にご相談ください。</p>
-      </section>
-
-      <p class="reservation-status" id="reservation-status" aria-live="polite"></p>
-      <div class="reservation-actions">
-        <button class="button primary" type="submit">公式LINEへ送る</button>
-        <a class="button secondary" href="tel:09083622386">電話で予約する</a>
+    <section class="service-selector" aria-labelledby="service-selector-title">
+      <div><p>ご相談メニュー</p><h2 id="service-selector-title">ご希望の内容を選んでください</h2></div>
+      <div class="service-selector-buttons" role="tablist" aria-label="相談内容">
+        <button type="button" role="tab" aria-selected="true" data-service="wasp"><span>蜂の巣駆除</span><small>調査・見積もり・駆除</small></button>
+        <button type="button" role="tab" aria-selected="false" data-service="bodycare"><span>出張もみほぐし</span><small>ご自宅・宿泊先へ訪問</small></button>
+        <button type="button" role="tab" aria-selected="false" data-service="lifestyle"><span>暮らしの相談</span><small>荷物移動・雨どい掃除など</small></button>
       </div>
+    </section>
+
+    <section class="reservation-guide" id="wasp-guide" aria-label="相談の流れ">
+      <div><b>1</b><span><strong>状況を入力</strong><small>不明な項目は「分からない」でOK</small></span></div>
+      <div><b>2</b><span><strong>LINEへ移動</strong><small>入力内容が自動でまとまります</small></span></div>
+      <div><b>3</b><span><strong>写真を追加</strong><small>安全な距離から撮った写真を送信</small></span></div>
+    </section>
+
+    <form class="wasp-form" id="wasp-consultation-form">
+      <section class="form-section">
+        <div class="form-heading"><span>1</span><div><p>現在の状況</p><h2>分かる範囲で教えてください</h2></div></div>
+
+        <fieldset>
+          <legend>巣は見えていますか？ <em>必須</em></legend>
+          <div class="choice-grid choice-grid-3">
+            <label><input type="radio" name="nestStatus" value="巣が見えている" required><span>巣が見えている</span></label>
+            <label><input type="radio" name="nestStatus" value="蜂だけ飛んでいる"><span>蜂だけ飛んでいる</span></label>
+            <label><input type="radio" name="nestStatus" value="分からない"><span>分からない</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-grid">
+          <label class="field"><span>蜂の種類</span><select name="beeType"><option>分からない</option><option>アシナガバチ</option><option>スズメバチ</option><option>オオスズメバチ</option><option>ミツバチ</option><option>その他</option></select></label>
+          <label class="field"><span>巣の大きさ</span><select name="nestSize"><option>分からない</option><option>5cm未満</option><option>5〜10cm</option><option>10〜20cm</option><option>20〜30cm</option><option>30cm以上</option></select></label>
+          <label class="field"><span>地面からの高さ</span><select name="nestHeight"><option>分からない</option><option>2m未満</option><option>2〜3m</option><option>3〜5m</option><option>5m以上</option></select></label>
+          <label class="field"><span>巣の場所</span><select name="nestLocation"><option>分からない</option><option>軒下・屋根まわり</option><option>庭木・植木</option><option>物置・倉庫</option><option>換気口・壁のすき間</option><option>天井裏・床下</option><option>土の中</option><option>その他</option></select></label>
+        </div>
+
+        <label class="field"><span>状況の補足</span><textarea name="situation" rows="3" placeholder="例：玄関の軒下に巣があり、蜂が何匹も出入りしています"></textarea></label>
+
+        <div class="service-caution">
+          <strong>安全のためのお願い</strong>
+          <ul>
+            <li>巣に近づいたり、叩いたり、水や殺虫剤をかけたりしないでください。</li>
+            <li>お子様やペットが近づかないよう、離れた場所でお待ちください。</li>
+            <li>刺されて体調に異変がある場合は、駆除相談より先に医療機関へご相談ください。</li>
+          </ul>
+        </div>
+
+        <div class="photo-box">
+          <div><strong>写真があると概算を出しやすくなります</strong><p>ここでは写真の有無だけ確認します。送信後、LINEで写真を添付してください。</p></div>
+          <label class="photo-toggle"><input type="checkbox" name="hasPhoto" value="写真あり"><span>送れる写真があります</span></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form-heading"><span>2</span><div><p>場所・希望</p><h2>訪問先とご希望を教えてください</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>市町村 <em>必須</em></span><select name="area" required><option value="">選択してください</option><option>周南市</option><option>下松市</option><option>光市</option><option>防府市</option><option>山口市</option><option>岩国市</option><option>柳井市</option><option>田布施町</option><option>平生町</option><option>宇部市</option><option>山陽小野田市</option><option>下関市</option><option>長門市</option><option>萩市</option><option>美祢市</option><option>その他</option></select></label>
+          <label class="field"><span>町名・目印</span><input type="text" name="addressHint" placeholder="例：遠石3丁目、白い戸建て"></label>
+        </div>
+        <fieldset>
+          <legend>ご希望 <em>必須</em></legend>
+          <div class="choice-grid choice-grid-3">
+            <label><input type="radio" name="urgency" value="できれば今日" required><span>できれば今日</span></label>
+            <label><input type="radio" name="urgency" value="2〜3日以内"><span>2〜3日以内</span></label>
+            <label><input type="radio" name="urgency" value="まずは見積もり"><span>まずは見積もり</span></label>
+          </div>
+        </fieldset>
+        <div class="field-grid">
+          <label class="field"><span>第1希望日時</span><input type="datetime-local" name="date1"></label>
+          <label class="field"><span>第2希望日時</span><input type="datetime-local" name="date2"></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form-heading"><span>3</span><div><p>ご連絡先</p><h2>折り返しに必要な情報です</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>お名前 <em>必須</em></span><input type="text" name="customerName" autocomplete="name" required></label>
+          <label class="field"><span>電話番号 <em>必須</em></span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="090-1234-5678" required></label>
+        </div>
+        <label class="privacy-check"><input type="checkbox" name="privacy" required><span>入力内容を相談対応と連絡のために利用することに同意します。</span></label>
+      </section>
+
+      <section class="form-confirm">
+        <div><p>送信前の確認</p><h2>この内容をLINEへ移します</h2><p>LINEが開いたら内容を確認し、写真があれば追加して送信してください。フォーム入力だけでは相談は完了しません。</p></div>
+        <div class="form-actions">
+          <button class="button primary" type="submit">入力内容をLINEへ送る</button>
+          <a class="button secondary" href="tel:09083622386">急ぎの方は電話する</a>
+        </div>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </section>
     </form>
+
+    <form class="simple-service-form" id="bodycare-consultation-form" hidden>
+      <section class="form-section">
+        <div class="form-heading"><span>1</span><div><p>施術内容</p><h2>ご希望のコースを選んでください</h2></div></div>
+        <fieldset>
+          <legend>もみほぐしコース <em>必須</em></legend>
+          <div class="choice-grid choice-grid-3">
+            <label><input type="radio" name="course" value="45分 3,500円" required><span>45分<br>3,500円</span></label>
+            <label><input type="radio" name="course" value="60分 4,500円"><span>60分<br>4,500円</span></label>
+            <label><input type="radio" name="course" value="90分 6,500円"><span>90分<br>6,500円</span></label>
+          </div>
+        </fieldset>
+        <label class="field"><span>気になる箇所・ご希望</span><textarea name="request" rows="3" placeholder="例：肩と腰を中心に、力加減は弱めを希望"></textarea></label>
+        <div class="service-caution">
+          <strong>施術前にご確認ください</strong>
+          <ul>
+            <li>発熱・体調不良・強い痛みやしびれがある場合は事前にお知らせください。</li>
+            <li>飲酒後の施術はお受けできない場合があります。</li>
+            <li>本サービスはリラクゼーション目的で、医療行為・治療行為ではありません。</li>
+          </ul>
+        </div>
+      </section>
+      <section class="form-section">
+        <div class="form-heading"><span>2</span><div><p>訪問先・日時</p><h2>出張先とご希望日時</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>市町村 <em>必須</em></span><input type="text" name="area" placeholder="例：周南市" required></label>
+          <label class="field"><span>住所・宿泊先</span><input type="text" name="address" placeholder="詳細はLINEでの確認でも大丈夫です"></label>
+          <label class="field"><span>第1希望日時</span><input type="datetime-local" name="date1"></label>
+          <label class="field"><span>第2希望日時</span><input type="datetime-local" name="date2"></label>
+        </div>
+        <label class="privacy-check"><input type="checkbox" name="bedSpace" value="確認済み"><span>簡易ベッドを置けるスペースがあります。ベッドやソファーでの施術を希望する場合は、ご希望欄へご記入ください。</span></label>
+      </section>
+      <section class="form-section">
+        <div class="form-heading"><span>3</span><div><p>ご連絡先</p><h2>折り返しに必要な情報です</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>お名前 <em>必須</em></span><input type="text" name="customerName" autocomplete="name" required></label>
+          <label class="field"><span>電話番号 <em>必須</em></span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+        </div>
+        <label class="privacy-check"><input type="checkbox" name="privacy" required><span>入力内容を相談対応と連絡のために利用することに同意します。</span></label>
+      </section>
+      <section class="form-confirm"><div><p>送信前の確認</p><h2>入力内容をLINEへ移します</h2><p>LINEが開いたら内容を確認して送信してください。</p></div><div class="form-actions"><button class="button primary" type="submit">もみほぐしを相談する</button><a class="button secondary" href="tel:09083622386">電話で相談する</a></div><p class="form-status" aria-live="polite"></p></section>
+    </form>
+
+    <form class="simple-service-form" id="lifestyle-consultation-form" hidden>
+      <section class="form-section">
+        <div class="form-heading"><span>1</span><div><p>ご相談内容</p><h2>どんなことでお困りですか？</h2></div></div>
+        <fieldset>
+          <legend>内容 <em>必須</em></legend>
+          <div class="choice-grid lifestyle-choice-grid">
+            <label><input type="radio" name="category" value="荷物・家具の移動" required><span>荷物・家具の移動</span></label>
+            <label><input type="radio" name="category" value="雨どい掃除"><span>雨どい掃除</span></label>
+            <label><input type="radio" name="category" value="草抜き・庭まわり"><span>草抜き・庭まわり</span></label>
+            <label><input type="radio" name="category" value="片付け・掃除"><span>片付け・掃除</span></label>
+            <label><input type="radio" name="category" value="その他"><span>その他</span></label>
+          </div>
+        </fieldset>
+        <label class="field"><span>詳しい内容 <em>必須</em></span><textarea name="request" rows="4" placeholder="例：2階のタンスを1階へ移動したい" required></textarea></label>
+        <label class="photo-toggle standalone-photo-toggle"><input type="checkbox" name="hasPhoto" value="写真あり"><span>状況が分かる写真があります</span></label>
+        <div class="service-caution">
+          <strong>お見積もりについて</strong>
+          <ul>
+            <li>作業場所・荷物の大きさ・量が分かる写真があると、確認がスムーズです。</li>
+            <li>危険を伴う作業や専門資格が必要な内容は、お受けできない場合があります。</li>
+            <li>有料駐車場を利用する場合は、駐車料金をご相談することがあります。</li>
+          </ul>
+        </div>
+      </section>
+      <section class="form-section">
+        <div class="form-heading"><span>2</span><div><p>場所・日時</p><h2>訪問先とご希望日時</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>市町村 <em>必須</em></span><input type="text" name="area" placeholder="例：周南市" required></label>
+          <label class="field"><span>住所・目印</span><input type="text" name="address" placeholder="詳細はLINEでの確認でも大丈夫です"></label>
+          <label class="field"><span>第1希望日時</span><input type="datetime-local" name="date1"></label>
+          <label class="field"><span>第2希望日時</span><input type="datetime-local" name="date2"></label>
+        </div>
+      </section>
+      <section class="form-section">
+        <div class="form-heading"><span>3</span><div><p>ご連絡先</p><h2>折り返しに必要な情報です</h2></div></div>
+        <div class="field-grid">
+          <label class="field"><span>お名前 <em>必須</em></span><input type="text" name="customerName" autocomplete="name" required></label>
+          <label class="field"><span>電話番号 <em>必須</em></span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+        </div>
+        <label class="privacy-check"><input type="checkbox" name="privacy" required><span>入力内容を相談対応と連絡のために利用することに同意します。</span></label>
+      </section>
+      <section class="form-confirm"><div><p>送信前の確認</p><h2>入力内容をLINEへ移します</h2><p>LINEが開いたら内容を確認し、写真があれば追加して送信してください。</p></div><div class="form-actions"><button class="button primary" type="submit">暮らしの相談を送る</button><a class="button secondary" href="tel:09083622386">電話で相談する</a></div><p class="form-status" aria-live="polite"></p></section>
+    </form>
+
+    <section class="reservation-payment"><p>お支払い方法</p><div><span>現金</span><span>PayPay</span><span>クレジットカード</span></div><small>正式な料金は、状況確認後・作業前にご案内します。</small></section>
   </main>
 
-  <script src="reservation.js?v=20260521-reservation"></script>
+  <footer class="reservation-footer"><strong>CLSVR</strong><span>山口県周南市拠点・山口県内対応</span></footer>
+  <script src="reservation.js?v=20260722b"></script>
 </body>
 </html>

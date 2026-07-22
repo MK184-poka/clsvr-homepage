@@ -1,142 +1,124 @@
-const form = document.getElementById("line-reservation-form");
-const areaSelect = document.getElementById("reservation-area");
-const menuPrice = document.getElementById("reservation-menu-price");
-const travelFee = document.getElementById("reservation-travel-fee");
-const totalPrice = document.getElementById("reservation-total-price");
-const statusText = document.getElementById("reservation-status");
-const extensionBox = document.getElementById("bodycare-extension");
-const extensionMinus = document.getElementById("extension-minus");
-const extensionPlus = document.getElementById("extension-plus");
-const extensionTime = document.getElementById("extension-time");
-const extensionPrice = document.getElementById("extension-price");
+const form = document.getElementById("wasp-consultation-form");
+const statusText = document.getElementById("form-status");
 const lineOfficialAccountId = "%40171ltzff";
-const extensionUnitMinutes = 15;
-const extensionUnitPrice = 1000;
-const extensionMaxMinutes = 60;
-let extensionMinutes = 0;
-
-const yen = (value) => `${Number(value).toLocaleString("ja-JP")}円`;
-
-const selectedMenu = () => form?.querySelector('input[name="menu"]:checked');
-const selectedArea = () => areaSelect?.selectedOptions[0];
-const isBodycareMenu = (menu) => menu?.value?.startsWith("もみほぐし");
-const extensionFee = () => (extensionMinutes / extensionUnitMinutes) * extensionUnitPrice;
-const extensionLabel = () => (
-  extensionMinutes ? `${extensionMinutes}分（+${yen(extensionFee())}）` : "なし"
-);
+const serviceButtons = document.querySelectorAll("[data-service]");
+const waspGuide = document.getElementById("wasp-guide");
+const reservationTitle = document.getElementById("reservation-title");
+const reservationDescription = document.getElementById("reservation-description");
+const reservationSideNote = document.getElementById("reservation-side-note");
+const serviceForms = {
+  wasp: form,
+  bodycare: document.getElementById("bodycare-consultation-form"),
+  lifestyle: document.getElementById("lifestyle-consultation-form")
+};
+const serviceCopy = {
+  wasp: ["蜂の巣駆除の<br>無料相談・見積もり依頼", "分かる範囲だけで大丈夫です。入力内容をLINEへ移し、写真を添えて相談できます。"],
+  bodycare: ["出張もみほぐしの<br>ご相談・予約希望", "ご希望のコースや日時を入力すると、相談内容をまとめてLINEへ移せます。"],
+  lifestyle: ["暮らしの困りごとを<br>お気軽にご相談ください", "荷物移動・雨どい掃除・草抜きなど、対応できる内容と料金を確認してご案内します。"]
+};
+const serviceNotes = {
+  wasp: ["巣には近づかないでください", ["叩かない", "水をかけない", "お子様・ペットを近づけない"]],
+  bodycare: ["施術前に体調を確認します", ["医療行為ではありません", "力加減は施術中も調整できます", "簡易ベッドを置ける場所をご用意ください"]],
+  lifestyle: ["写真があるとご案内がスムーズです", ["作業場所と内容をお知らせください", "荷物の大きさや量もご記入ください", "作業前に料金をご案内します"]]
+};
 
 const formatDateTime = (value) => {
-  if (!value) return "未入力";
+  if (!value) return "希望なし";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-
   return new Intl.DateTimeFormat("ja-JP", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    weekday: "short",
-    hour: "2-digit",
-    minute: "2-digit"
+    month: "numeric", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit"
   }).format(date);
 };
 
-const totalLabel = () => {
-  const menu = selectedMenu();
-  const area = selectedArea();
-  const basePrice = menu ? Number(menu.dataset.price) : 0;
-  const optionPrice = isBodycareMenu(menu) ? extensionFee() : 0;
-  const fee = area ? Number(area.dataset.fee) : 0;
+const buildMessage = (data) => [
+  "【蜂の巣駆除のご相談】",
+  "",
+  "① 分かる範囲での状況",
+  `・巣の確認：${data.nestStatus}`,
+  `・蜂の種類：${data.beeType}`,
+  `・巣の大きさ：${data.nestSize}`,
+  `・高さ：${data.nestHeight}`,
+  `・場所：${data.nestLocation}`,
+  `・補足：${data.situation || "なし"}`,
+  `・写真：${data.hasPhoto || "今のところなし"}`,
+  "",
+  "② 訪問先・希望日時",
+  `・エリア：${data.area}`,
+  `・町名・目印：${data.addressHint || "未入力"}`,
+  `・対応希望：${data.urgency}`,
+  `・第1希望：${formatDateTime(data.date1)}`,
+  `・第2希望：${formatDateTime(data.date2)}`,
+  "",
+  "③ お客様情報",
+  `・お名前：${data.customerName}`,
+  `・電話番号：${data.phone}`,
+  "",
+  data.hasPhoto ? "このあと、状況が分かる写真を添付します。" : "写真が必要な場合は撮り方を教えてください。"
+].join("\n");
 
-  if (basePrice && fee) return `${yen(basePrice + optionPrice + fee)}〜`;
-  if (basePrice && area?.value) return "LINEで確認";
-  return "メニューとエリアを選択";
-};
-
-const updateSummary = () => {
-  const menu = selectedMenu();
-  const area = selectedArea();
-  const basePrice = menu ? Number(menu.dataset.price) : 0;
-  const optionPrice = isBodycareMenu(menu) ? extensionFee() : 0;
-  const fee = area ? Number(area.dataset.fee) : 0;
-  const showExtension = isBodycareMenu(menu);
-
-  if (!showExtension && extensionMinutes) {
-    extensionMinutes = 0;
-  }
-
-  if (extensionBox) extensionBox.hidden = !showExtension;
-  if (extensionTime) extensionTime.textContent = `${extensionMinutes}分`;
-  if (extensionPrice) extensionPrice.textContent = extensionMinutes ? `+${yen(extensionFee())}` : "延長なし";
-  if (extensionMinus) extensionMinus.disabled = !showExtension || extensionMinutes <= 0;
-  if (extensionPlus) extensionPlus.disabled = !showExtension || extensionMinutes >= extensionMaxMinutes;
-
-  menuPrice.textContent = menu ? `${menu.value} / ${yen(basePrice + optionPrice)}〜` : "未選択";
-  travelFee.textContent = area?.value ? (fee ? yen(fee) : "要相談") : "未選択";
-  totalPrice.textContent = totalLabel();
-};
-
-const setStatus = (message, type = "") => {
-  statusText.textContent = message;
-  statusText.className = `reservation-status ${type}`.trim();
-};
-
-const buildMessage = (data) => {
-  const menu = selectedMenu();
-
-  return [
-    "【CLSVR予約希望】",
-    "",
-    "■メニュー",
-    menu?.value || "未選択",
-    `延長：${isBodycareMenu(menu) ? extensionLabel() : "なし"}`,
-    "",
-    "■料金目安",
-    data.total,
-    "",
-    "■出張エリア",
-    data.area,
-    "",
-    "■希望日時",
-    `第1希望：${formatDateTime(data.date1)}`,
-    `第2希望：${formatDateTime(data.date2)}`,
-    "",
-    "■お客様情報",
-    `お名前：${data.name}`,
-    `電話番号：${data.phone}`,
-    `住所・目印：${data.address}`,
-    "",
-    "■備考",
-    data.note || "なし"
-  ].join("\n");
-};
-
-extensionMinus?.addEventListener("click", () => {
-  extensionMinutes = Math.max(0, extensionMinutes - extensionUnitMinutes);
-  updateSummary();
-});
-
-extensionPlus?.addEventListener("click", () => {
-  extensionMinutes = Math.min(extensionMaxMinutes, extensionMinutes + extensionUnitMinutes);
-  updateSummary();
-});
-
-form?.addEventListener("change", updateSummary);
-form?.addEventListener("input", updateSummary);
 form?.addEventListener("submit", (event) => {
   event.preventDefault();
-
   if (!form.reportValidity()) {
-    setStatus("未入力の必須項目があります。内容をご確認ください。", "is-error");
+    statusText.textContent = "未入力の必須項目があります。赤く表示された項目をご確認ください。";
+    statusText.className = "form-status is-error";
     return;
   }
 
   const data = Object.fromEntries(new FormData(form).entries());
-  data.total = totalLabel();
-
   const message = buildMessage(data);
-  const lineUrl = `https://line.me/R/oaMessage/${lineOfficialAccountId}/?${encodeURIComponent(message)}`;
-  setStatus("相談内容を送信しています…。公式LINEで内容を確認してください。", "is-success");
-  window.location.href = lineUrl;
+  statusText.textContent = "LINEを開きます。内容を確認し、写真があれば追加して送信してください。";
+  statusText.className = "form-status is-success";
+  window.location.href = `https://line.me/R/oaMessage/${lineOfficialAccountId}/?${encodeURIComponent(message)}`;
 });
 
-updateSummary();
+const switchService = (service) => {
+  Object.entries(serviceForms).forEach(([key, serviceForm]) => {
+    if (serviceForm) serviceForm.hidden = key !== service;
+  });
+  if (waspGuide) waspGuide.hidden = service !== "wasp";
+  serviceButtons.forEach((button) => button.setAttribute("aria-selected", String(button.dataset.service === service)));
+  if (reservationTitle) reservationTitle.innerHTML = serviceCopy[service][0];
+  if (reservationDescription) reservationDescription.textContent = serviceCopy[service][1];
+  if (reservationSideNote) {
+    const [heading, items] = serviceNotes[service];
+    reservationSideNote.innerHTML = `<strong>${heading}</strong><ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  }
+  document.querySelector(".service-selector")?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+serviceButtons.forEach((button) => button.addEventListener("click", () => switchService(button.dataset.service)));
+
+const bindSimpleForm = (serviceForm, messageBuilder) => {
+  serviceForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formStatus = serviceForm.querySelector(".form-status");
+    if (!serviceForm.reportValidity()) {
+      formStatus.textContent = "未入力の必須項目があります。内容をご確認ください。";
+      formStatus.className = "form-status is-error";
+      return;
+    }
+    const data = Object.fromEntries(new FormData(serviceForm).entries());
+    formStatus.textContent = "LINEを開きます。内容を確認して送信してください。";
+    formStatus.className = "form-status is-success";
+    window.location.href = `https://line.me/R/oaMessage/${lineOfficialAccountId}/?${encodeURIComponent(messageBuilder(data))}`;
+  });
+};
+
+bindSimpleForm(serviceForms.bodycare, (data) => [
+  "【出張もみほぐしのご相談】", "",
+  "① ご希望の施術内容", `・コース：${data.course}`, `・気になる箇所・希望：${data.request || "なし"}`,
+  "", "② 訪問先・希望日時", `・訪問エリア：${data.area}`, `・住所・宿泊先：${data.address || "LINEで確認"}`,
+  `・第1希望：${formatDateTime(data.date1)}`, `・第2希望：${formatDateTime(data.date2)}`,
+  `・簡易ベッドのスペース：${data.bedSpace || "要相談"}`,
+  "", "③ お客様情報", `・お名前：${data.customerName}`, `・電話番号：${data.phone}`
+].join("\n"));
+
+bindSimpleForm(serviceForms.lifestyle, (data) => [
+  "【暮らしサポートのご相談】", "",
+  "① ご相談内容", `・内容：${data.category}`, `・詳しい内容：${data.request}`, `・写真：${data.hasPhoto || "今のところなし"}`,
+  "", "② 訪問先・希望日時", `・訪問エリア：${data.area}`, `・住所・目印：${data.address || "LINEで確認"}`,
+  `・第1希望：${formatDateTime(data.date1)}`, `・第2希望：${formatDateTime(data.date2)}`,
+  "", "③ お客様情報", `・お名前：${data.customerName}`, `・電話番号：${data.phone}`,
+  data.hasPhoto ? "このあと、状況が分かる写真を添付します。" : "写真が必要な場合はお知らせください。"
+].join("\n"));
