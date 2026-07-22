@@ -90,3 +90,25 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 .cat-logo-button:focus:not(:focus-visible){outline:none;box-shadow:var(--shadow)}
 .cat-logo-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 @media(max-width:560px){.site-header{min-height:74px;padding:8px 12px}.brand{min-width:0}.brand img{width:58px;height:48px}.brand strong{font-size:1.08rem}.brand small{font-size:.67rem}.header-phone{min-width:54px;min-height:44px;padding:8px 11px}.header-phone-number{display:none}.header-phone-mobile{display:inline}.header-phone-icon{font-size:1.15rem}}
+
+/* Wasp-service overview: quick facts, clear pricing, and brighter accents. */
+.hero-content{width:min(900px,92%)}
+.hero-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:900px;margin:0 0 22px;overflow:hidden;background:rgba(255,255,255,.96);border:2px solid rgba(242,189,54,.9);border-radius:8px;box-shadow:0 18px 44px rgba(0,0,0,.2);color:var(--ink)}
+.hero-summary>a,.hero-summary>div{position:relative;display:flex;min-width:0;min-height:104px;padding:14px 16px;flex-direction:column;justify-content:center;border-right:1px solid #ead9a4}
+.hero-summary>:last-child{border-right:0}
+.hero-summary small{color:#9b4b14;font-size:.74rem;font-weight:900}
+.hero-summary strong{color:#173f24;font-size:clamp(1rem,1.45vw,1.26rem);line-height:1.35}
+.hero-summary span{color:var(--muted);font-size:.72rem;font-weight:700;line-height:1.5}
+.hero-summary>a::after{content:"›";position:absolute;right:10px;top:50%;color:var(--orange);font-size:1.35rem;font-weight:900;transform:translateY(-50%)}
+.hero-summary>a:hover{background:#fff4c9}
+.safety-strip{background:linear-gradient(90deg,#f5c438,#ffd968)}
+.price-section{background:linear-gradient(135deg,#fff 0%,#fff 57%,#fff8df 100%)}
+.price-plus{display:block;margin-top:8px;color:var(--green-dark);font-size:.42em;line-height:1.4}
+.payment-methods{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.payment-methods span{display:inline-flex;align-items:center;min-height:42px;padding:8px 14px;background:#fff;border:2px solid #efbe37;border-radius:6px;color:#3b311e;font-weight:900}
+.payment-methods span::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;margin-right:7px;color:#fff;background:var(--orange);border-radius:50%;font-size:.72rem}
+.price-factors{background:#fffaf0;border-color:#ead8a0;box-shadow:0 12px 32px rgba(94,64,8,.08)}
+.area-section{background:linear-gradient(135deg,#fff8df 0%,#f3ead0 100%)}
+.area-list span{border-color:#e5c45d;box-shadow:0 8px 20px rgba(94,64,8,.06)}
+@media(max-width:900px){.hero-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-summary>a,.hero-summary>div{min-height:88px}.hero-summary>:nth-child(2){border-right:0}.hero-summary>:nth-child(-n+2){border-bottom:1px solid #ead9a4}}
+@media(max-width:560px){.hero-content{padding-top:142px}.hero-summary{margin-bottom:18px}.hero-summary>a,.hero-summary>div{min-height:82px;padding:10px 11px}.hero-summary small{font-size:.66rem}.hero-summary strong{font-size:.93rem}.hero-summary span{font-size:.64rem}.hero-summary>a::after{display:none}.payment-methods{display:grid;grid-template-columns:1fr}.payment-methods span{justify-content:flex-start}}
