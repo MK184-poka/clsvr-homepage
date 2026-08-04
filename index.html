@@ -118,7 +118,7 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="CLSVR トップへ">
-      <img class="js-secret-logo" src="logo-black.webp" alt="CLSVR" width="58" height="40">
+      <img src="logo-black.webp" alt="CLSVR" width="58" height="40">
       <span><strong>CLSVR</strong><small>山口県の蜂の巣駆除</small></span>
     </a>
     <nav aria-label="主要メニュー">
@@ -201,9 +201,9 @@
     <section class="section other-services">
       <div class="section-heading"><p class="section-label">蜂駆除のほかにも</p><h2>こんなご相談も受け付けています</h2><p>蜂駆除を中心に、できる範囲で暮らしの困りごとをお手伝いします。</p></div>
       <div class="other-grid">
-        <article><img src="public/images/services/massage.png" alt="出張もみほぐし" width="1792" height="1024"><div><h3>出張もみほぐし</h3><p>ご自宅や宿泊先へ伺います。</p></div></article>
-        <article><img src="public/images/services/lifestyle-tools.png" alt="暮らしの相談" width="1792" height="1024"><div><h3>暮らしのご相談</h3><p>荷物移動・雨どい掃除など、内容を伺って対応します。</p></div></article>
-        <article><img src="public/images/services/web-support.png" alt="ホームページ作成やAI活用などの相談" width="1792" height="1024"><div><h3>その他ご相談</h3><p>ホームページ作成・AI活用などもご相談ください。</p></div></article>
+        <a class="service-card" href="bodycare.html"><img src="public/images/services/massage.png" alt="出張もみほぐし" width="1792" height="1024"><div><h3>出張もみほぐし</h3><p>ご自宅や宿泊先へ伺います。</p><span>詳しく見る ›</span></div></a>
+        <a class="service-card" href="lifestyle.html"><img src="public/images/services/lifestyle-tools.png" alt="暮らしの相談" width="1792" height="1024"><div><h3>暮らしのご相談</h3><p>鍵開錠・荷物移動など、内容を伺って対応します。</p><span>詳しく見る ›</span></div></a>
+        <a class="service-card" href="digital-support.html"><img src="public/images/services/web-support.png" alt="ホームページ作成やAI活用などの相談" width="1792" height="1024"><div><h3>その他ご相談</h3><p>ホームページ・AI・スマホやPCのご相談。</p><span>詳しく見る ›</span></div></a>
       </div>
     </section>
 
@@ -218,23 +218,8 @@
   </main>
 
   <footer class="footer"><div><strong>CLSVR</strong><p>山口県の蜂の巣駆除・暮らしの相談</p></div><div class="footer-links"><a href="https://www.instagram.com/MURAOKA184/" target="_blank" rel="noopener"><img src="public/images/icons/instagram.svg" alt="Instagram"></a><a href="https://www.facebook.com/share/17HUpYhaP9/" target="_blank" rel="noopener"><img src="public/images/icons/facebook.svg" alt="Facebook"></a><a href="https://lin.ee/lGfoS76" target="_blank" rel="noopener"><img src="public/images/icons/line.svg" alt="LINE"></a></div></footer>
-  <a class="floating-line" href="https://lin.ee/lGfoS76" target="_blank" rel="noopener">LINEで写真相談</a>
-  <button class="cat-logo-button" type="button" aria-label="猫のCLSVRアイコンを変更する">
-    <img class="cat-logo-button-img js-secret-logo" src="logo-black.webp" alt="" width="58" height="40" aria-hidden="true">
-  </button>
-  <div class="cat-staff-bubble" id="cat-staff-bubble" role="status" aria-live="polite"></div>
-  <div class="rare-cat-overlay" id="rare-cat-overlay" role="dialog" aria-modal="true" aria-labelledby="rare-cat-title" hidden>
-    <div class="rare-cat-card">
-      <button class="rare-cat-close" type="button" aria-label="レア演出を閉じる">×</button>
-      <p class="rare-cat-kicker">RARE CAT</p>
-      <img src="logo-secret-calico.webp" alt="CLSVRのレア猫" width="320" height="220">
-      <h2 id="rare-cat-title"><span>レア猫が出ました！</span></h2>
-      <p class="rare-cat-offer"><span>この画面をスクリーンショットして</span><span>ご提示いただくと</span><strong>ご依頼料金から5%割引</strong></p>
-      <p class="rare-cat-date" id="rare-cat-date"></p>
-      <p class="rare-cat-validity">割引の有効期限は当選から24時間です。</p>
-      <p class="rare-cat-note">ご予約・お見積もり時にスクリーンショットをお送りください。</p>
-    </div>
-  </div>
   <script src="script.js?v=20260712-wasp"></script>
+  <link rel="stylesheet" href="fortune-widget.css">
+  <script src="fortune-widget.js"></script>
 </body>
 </html>

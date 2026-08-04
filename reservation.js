@@ -9,17 +9,20 @@ const reservationSideNote = document.getElementById("reservation-side-note");
 const serviceForms = {
   wasp: form,
   bodycare: document.getElementById("bodycare-consultation-form"),
-  lifestyle: document.getElementById("lifestyle-consultation-form")
+  lifestyle: document.getElementById("lifestyle-consultation-form"),
+  digital: document.getElementById("digital-consultation-form")
 };
 const serviceCopy = {
   wasp: ["蜂の巣駆除の<br>無料相談・見積もり依頼", "分かる範囲だけで大丈夫です。入力内容をLINEへ移し、写真を添えて相談できます。"],
   bodycare: ["出張もみほぐしの<br>ご相談・予約希望", "ご希望のコースや日時を入力すると、相談内容をまとめてLINEへ移せます。"],
-  lifestyle: ["暮らし・その他のことを<br>お気軽にご相談ください", "暮らしのお困りごとのほか、ホームページ作成やAI活用などもご相談いただけます。"]
+  lifestyle: ["暮らしの困りごとを<br>お気軽にご相談ください", "鍵の開錠、荷物移動、雨どい掃除など、分かる範囲で状況をお知らせください。"],
+  digital: ["ホームページ・AI・機械のことを<br>一緒に整理します", "ホームページ作成やAI活用、スマホ・パソコンの設定や操作をご相談いただけます。"]
 };
 const serviceNotes = {
   wasp: ["巣には近づかないでください", ["叩かない", "水をかけない", "お子様・ペットを近づけない"]],
   bodycare: ["施術前に体調を確認します", ["医療行為ではありません", "力加減は施術中も調整できます", "簡易ベッドを置ける場所をご用意ください"]],
-  lifestyle: ["写真があるとご案内がスムーズです", ["作業場所と内容をお知らせください", "荷物の大きさや量もご記入ください", "作業前に料金をご案内します"]]
+  lifestyle: ["写真があるとご案内がスムーズです", ["作業場所と内容をお知らせください", "鍵開錠は本人確認が必要です", "作業前に料金をご案内します"]],
+  digital: ["パスワードは送らないでください", ["やりたいことをそのままご記入ください", "大切なデータは事前にバックアップ", "対応方法と料金を先にご案内します"]]
 };
 
 const formatDateTime = (value) => {
@@ -89,6 +92,9 @@ const switchService = (service) => {
 
 serviceButtons.forEach((button) => button.addEventListener("click", () => switchService(button.dataset.service)));
 
+const requestedService = new URLSearchParams(window.location.search).get("service");
+if (requestedService && serviceForms[requestedService]) switchService(requestedService);
+
 const bindSimpleForm = (serviceForm, messageBuilder) => {
   serviceForm?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -115,10 +121,19 @@ bindSimpleForm(serviceForms.bodycare, (data) => [
 ].join("\n"));
 
 bindSimpleForm(serviceForms.lifestyle, (data) => [
-  "【暮らし・その他のご相談】", "",
+  "【暮らしのご相談】", "",
   "① ご相談内容", `・内容：${data.category}`, `・詳しい内容：${data.request}`, `・写真：${data.hasPhoto || "今のところなし"}`,
   "", "② 訪問先・希望日時", `・訪問エリア：${data.area}`, `・住所・目印：${data.address || "LINEで確認"}`,
   `・第1希望：${formatDateTime(data.date1)}`, `・第2希望：${formatDateTime(data.date2)}`,
   "", "③ お客様情報", `・お名前：${data.customerName}`, `・電話番号：${data.phone}`,
   data.hasPhoto ? "このあと、状況が分かる写真を添付します。" : "写真が必要な場合はお知らせください。"
+].join("\n"));
+
+bindSimpleForm(serviceForms.digital, (data) => [
+  "【ホームページ・AI・機械のご相談】", "",
+  "① ご相談内容", `・内容：${data.category}`, `・詳しい内容：${data.request}`, `・画面写真：${data.hasPhoto || "今のところなし"}`,
+  "", "② 相談方法・希望日時", `・相談方法：${data.method}`, `・地域：${data.area || "未入力"}`,
+  `・第1希望：${formatDateTime(data.date1)}`, `・第2希望：${formatDateTime(data.date2)}`,
+  "", "③ お客様情報", `・お名前：${data.customerName}`, `・電話番号：${data.phone}`,
+  data.hasPhoto ? "このあと、困っている画面の写真を添付します。" : "必要な画面写真があればお知らせください。"
 ].join("\n"));
