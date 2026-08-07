@@ -61,6 +61,41 @@
 }
 @media(max-width:560px){
   .service-page .service-hero-content{width:calc(100% - 24px);margin:0 12px 24px;padding:0}
-  .service-page .service-hero h1{line-height:1.32}
+  .service-page .service-hero h1{font-size:clamp(1.75rem,7.8vw,2rem);line-height:1.42}
+  .service-page .service-hero h1 span{padding:.07em .22em .13em;border-radius:.48em}
   .service-page .service-lead{font-size:.94rem}
+}
+
+/* Softer text highlights and clear service snapshots. */
+.service-page .service-hero h1 span{padding:.08em .28em .15em;border-radius:.42em}
+.service-photo{position:relative;margin:0;align-self:center;overflow:hidden;border-radius:18px;box-shadow:var(--shadow)}
+.service-photo img{width:100%;height:100%;min-height:420px;object-fit:cover}
+.service-photo figcaption{position:absolute;right:12px;bottom:12px;padding:4px 10px;color:#fff;background:rgba(20,24,22,.72);border-radius:999px;font-size:.72rem;font-weight:800}
+.bodycare .service-hero::after{background:linear-gradient(90deg,rgba(43,18,26,.98) 0%,rgba(43,18,26,.92) 37%,rgba(43,18,26,.5) 60%,rgba(43,18,26,.12) 100%)}
+.lifestyle .service-hero::after{background:linear-gradient(90deg,rgba(15,54,31,.98) 0%,rgba(15,54,31,.92) 40%,rgba(15,54,31,.5) 64%,rgba(15,54,31,.12) 100%)}
+.digital .service-hero::after{background:linear-gradient(90deg,rgba(60,36,43,.98) 0%,rgba(60,36,43,.92) 40%,rgba(60,36,43,.5) 64%,rgba(60,36,43,.12) 100%)}
+.lifestyle .service-hero h1,.digital .service-hero h1{display:table;max-width:min(780px,100%);padding:.14em .38em .22em;background:var(--hero-panel);border-radius:.52em}
+.lifestyle .service-hero h1 span,.digital .service-hero h1 span{padding:0;background:transparent}
+.bodycare .service-photo img{object-position:center 42%}
+.service-photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-self:center}
+.service-photo-pair .service-photo img{min-height:420px}
+.visual-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;padding:0 clamp(18px,7vw,110px);background:var(--accent)}
+.visual-summary div{display:grid;gap:3px;padding:24px clamp(18px,3vw,38px);background:#fff}
+.visual-summary strong{color:var(--accent);font-size:1.05rem}
+.visual-summary span{color:var(--muted);font-size:.88rem}
+.price-note{margin:0 0 18px;color:var(--muted)}
+.lifestyle .price-card,.digital .price-card{border:2px solid color-mix(in srgb,var(--accent) 34%,white)}
+
+@media(max-width:900px){
+  .lifestyle .service-hero::after{background:linear-gradient(0deg,rgba(15,54,31,.98) 0%,rgba(15,54,31,.88) 48%,rgba(15,54,31,.22) 100%)}
+  .digital .service-hero::after{background:linear-gradient(0deg,rgba(60,36,43,.98) 0%,rgba(60,36,43,.88) 48%,rgba(60,36,43,.22) 100%)}
+  .service-photo img{min-height:0;aspect-ratio:4/3}
+  .service-photo-pair .service-photo img{min-height:0;aspect-ratio:3/4}
+  .visual-summary{grid-template-columns:1fr;padding:0 18px;background:transparent}
+  .visual-summary div{border-bottom:1px solid var(--line)}
+}
+
+@media(max-width:560px){
+  .service-photo-pair{gap:8px}
+  .service-photo-pair .service-photo figcaption{right:6px;bottom:6px;left:6px;text-align:center}
 }
