@@ -164,3 +164,21 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 @media(max-width:1100px){.other-grid .service-card{grid-template-columns:112px minmax(0,1fr);min-height:112px}}
 @media(max-width:900px){.other-grid .service-card{grid-template-columns:132px minmax(0,1fr);max-width:620px;min-height:132px}}
 @media(max-width:560px){.other-grid .service-card{grid-template-columns:104px minmax(0,1fr);min-height:104px;border-radius:12px}}
+
+/* Mobile conversion actions: keep the header compact and add a bottom tap bar. */
+.mobile-cta-bar{display:none}
+@media(max-width:560px){
+  body{padding-bottom:82px}
+  .site-header{gap:8px}
+  .header-line,.header-phone{flex:0 0 auto;white-space:nowrap}
+  .header-line{display:inline-flex;align-items:center;justify-content:center;min-width:52px;min-height:44px;padding:8px 10px;font-size:0}
+  .header-line::after{content:"予約";font-size:.82rem}
+  .floating-line{display:none}
+  .cat-logo-button{bottom:88px}
+  .cat-staff-bubble{bottom:172px}
+  .mobile-cta-bar{position:fixed;left:10px;right:10px;bottom:10px;z-index:80;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+  .mobile-cta-bar a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:8px;color:#fff;font-size:.9rem;font-weight:900;white-space:nowrap}
+  .mobile-cta-phone{background:var(--green-dark)}
+  .mobile-cta-line{background:#06c755}
+  .mobile-cta-reserve{color:#172316!important;background:var(--yellow)}
+}

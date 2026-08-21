@@ -136,3 +136,21 @@
   .area-list span,.area-list span:nth-of-type(5),.area-list p{grid-column:1}
   .area-list span{align-items:flex-start;flex-direction:column;gap:1px;padding:12px}
 }
+
+/* Mobile conversion actions: compact top buttons and fixed bottom contact bar. */
+.mobile-cta-bar{display:none}
+@media(max-width:560px){
+  body{padding-bottom:82px}
+  .service-header{gap:8px}
+  .service-brand{min-width:0}
+  .service-header-actions{flex:0 0 auto;gap:5px}
+  .header-cta,.service-header-phone{flex:0 0 auto;white-space:nowrap}
+  .header-cta{justify-content:center;min-width:52px;min-height:42px;padding:7px 10px;font-size:0}
+  .header-cta::after{content:"予約";font-size:.78rem}
+  .service-header-phone{min-width:52px}
+  .mobile-cta-bar{position:fixed;left:10px;right:10px;bottom:10px;z-index:80;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+  .mobile-cta-bar a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:8px;color:#fff;font-size:.9rem;font-weight:900;white-space:nowrap}
+  .mobile-cta-phone{background:var(--accent-dark)}
+  .mobile-cta-line{background:#06c755}
+  .mobile-cta-reserve{color:#1d251d!important;background:var(--warm)}
+}
