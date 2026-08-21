@@ -116,6 +116,8 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 .voice-card p{margin:0 0 18px;font-size:clamp(1rem,1.4vw,1.16rem);font-weight:800}
 .voice-card span{display:block;color:var(--muted);font-size:.86rem}
 .service-link-nav{gap:14px;font-size:.82rem;white-space:nowrap}
+.voice-card p,.section-heading>p:last-child,.price-copy>p{line-height:1.9;text-wrap:pretty}
+.contact-section h2 .heading-line{display:block}
 @media(max-width:900px){.hero-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-summary>a,.hero-summary>div{min-height:88px}.hero-summary>:nth-child(2){border-right:0}.hero-summary>:nth-child(-n+2){border-bottom:1px solid #ead9a4}}
 @media(max-width:560px){.hero-content{padding-top:142px}.hero-summary{margin-bottom:18px}.hero-summary>a,.hero-summary>div{min-height:82px;padding:10px 11px}.hero-summary small{font-size:.66rem}.hero-summary strong{font-size:.93rem}.hero-summary span{font-size:.64rem}.hero-summary>a::after{display:none}.payment-methods{display:grid;grid-template-columns:1fr}.payment-methods span{justify-content:flex-start}.voice-grid{grid-template-columns:1fr}}
 
