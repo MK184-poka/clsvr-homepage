@@ -85,6 +85,15 @@
 .visual-summary span{color:var(--muted);font-size:.88rem}
 .price-note{margin:0 0 18px;color:var(--muted)}
 .lifestyle .price-card,.digital .price-card{border:2px solid color-mix(in srgb,var(--accent) 34%,white)}
+.customer-voices{background:#fff}
+.voice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.voice-card{padding:clamp(22px,3vw,34px);background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 30px rgba(32,45,32,.08)}
+.voice-card p{margin:0 0 18px;font-size:clamp(1rem,1.4vw,1.16rem);font-weight:800}
+.voice-card span{display:block;color:var(--muted);font-size:.86rem}
+.service-nav{gap:14px;font-size:.8rem;white-space:nowrap}
+.service-header-actions{display:flex;align-items:center;gap:8px}
+.service-header-phone{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 15px;color:var(--accent);background:#fff;border:2px solid var(--accent);border-radius:6px;font-weight:900}
+.service-phone-mobile{display:none}
 
 @media(max-width:900px){
   .lifestyle .service-hero::after{background:linear-gradient(0deg,rgba(15,54,31,.98) 0%,rgba(15,54,31,.88) 48%,rgba(15,54,31,.22) 100%)}
@@ -98,4 +107,28 @@
 @media(max-width:560px){
   .service-photo-pair{gap:8px}
   .service-photo-pair .service-photo figcaption{right:6px;bottom:6px;left:6px;text-align:center}
+  .voice-grid{grid-template-columns:1fr}
+  .service-header-actions{gap:6px}
+  .service-header-phone{min-height:40px;padding:7px 10px;font-size:.78rem}
+  .service-phone-number{display:none}
+  .service-phone-mobile{display:inline}
+}
+
+/* Shared travel fee block for service pages. */
+.service-area-section{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,8vw,110px);background:linear-gradient(135deg,#fff8df 0%,#f3ead0 100%)}
+.service-area-section h2{margin-bottom:0}
+.area-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:10px}
+.area-list span{display:flex;align-items:center;gap:12px;min-height:58px;padding:10px 16px;background:#fff;border:1px solid #e5c45d;border-radius:8px;box-shadow:0 8px 20px rgba(94,64,8,.06);font-weight:800}
+.area-list span strong{flex:0 0 auto;min-width:74px;color:var(--accent);font-size:1.05rem}
+.area-list span:nth-of-type(5),.area-list p{grid-column:1/-1}
+.area-list p{margin:8px 0 0;color:var(--muted)}
+
+@media(max-width:900px){
+  .service-area-section{grid-template-columns:1fr}
+}
+
+@media(max-width:560px){
+  .area-list{grid-template-columns:1fr}
+  .area-list span,.area-list span:nth-of-type(5),.area-list p{grid-column:1}
+  .area-list span{align-items:flex-start;flex-direction:column;gap:1px;padding:12px}
 }

@@ -6,6 +6,9 @@ const waspGuide = document.getElementById("wasp-guide");
 const reservationTitle = document.getElementById("reservation-title");
 const reservationDescription = document.getElementById("reservation-description");
 const reservationSideNote = document.getElementById("reservation-side-note");
+const reservationBackLink = document.getElementById("reservation-back-link");
+const reservationBackLabel = document.getElementById("reservation-back-label");
+const reservationBrandLink = document.getElementById("reservation-brand-link");
 const serviceForms = {
   wasp: form,
   bodycare: document.getElementById("bodycare-consultation-form"),
@@ -23,6 +26,12 @@ const serviceNotes = {
   bodycare: ["施術前に体調を確認します", ["医療行為ではありません", "力加減は施術中も調整できます", "簡易ベッドを置ける場所をご用意ください"]],
   lifestyle: ["写真があるとご案内がスムーズです", ["作業場所と内容をお知らせください", "鍵開錠は本人確認が必要です", "作業前に料金をご案内します"]],
   digital: ["パスワードは送らないでください", ["やりたいことをそのままご記入ください", "大切なデータは事前にバックアップ", "対応方法と料金を先にご案内します"]]
+};
+const serviceReturnLinks = {
+  wasp: ["index.html", "蜂駆除ページに戻る"],
+  bodycare: ["bodycare.html", "もみほぐしページに戻る"],
+  lifestyle: ["lifestyle.html", "鍵開錠・便利屋ページに戻る"],
+  digital: ["digital-support.html", "その他相談ページに戻る"]
 };
 
 const formatDateTime = (value) => {
@@ -87,6 +96,10 @@ const switchService = (service) => {
     const [heading, items] = serviceNotes[service];
     reservationSideNote.innerHTML = `<strong>${heading}</strong><ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
   }
+  const [returnHref, returnLabel] = serviceReturnLinks[service] || serviceReturnLinks.wasp;
+  if (reservationBackLink) reservationBackLink.href = returnHref;
+  if (reservationBackLabel) reservationBackLabel.textContent = returnLabel;
+  if (reservationBrandLink) reservationBrandLink.href = returnHref;
   document.querySelector(".service-selector")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 

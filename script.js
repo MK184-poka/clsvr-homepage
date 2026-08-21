@@ -21,11 +21,11 @@ const greetings = [
   "本日も、<br>暮らしサポート受付中です。"
 ];
 const fallbackImageSources = {
-  "store-entry-bg": "public/images/entrance/entrance-main.png",
-  "store-entry-open-bg": "public/images/entrance/entrance-open.png",
-  "hero-store-art": "public/images/inside/shop-inside.png",
-  "world-photo": "public/images/inside/shop-inside.png",
-  "visit-photo": "public/images/car/clsvr-car.png"
+  "store-entry-bg": "public/images/entrance/entrance-main.jpg",
+  "store-entry-open-bg": "public/images/entrance/entrance-open.jpg",
+  "hero-store-art": "public/images/inside/shop-inside.jpg",
+  "world-photo": "public/images/inside/shop-inside.jpg",
+  "visit-photo": "public/images/car/clsvr-car.jpg"
 };
 const contactLinks = window.CLSVR_CONTACT_LINKS || {};
 const contactLinkAnchors = document.querySelectorAll("[data-contact-link]");
