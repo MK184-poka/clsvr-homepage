@@ -94,6 +94,7 @@
 .service-lead,.feature-copy p,.section-head>p:last-child,.voice-card p,.notice-card li{line-height:1.9;text-wrap:pretty}
 .service-section h2{max-width:14em}
 .section-head h2{max-width:16em}
+.lifestyle .menu-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .service-header-actions{display:flex;align-items:center;gap:8px}
 .service-header-phone{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 15px;color:var(--accent);background:#fff;border:2px solid var(--accent);border-radius:6px;font-weight:900}
 .service-phone-mobile{display:none}
