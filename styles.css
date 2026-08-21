@@ -183,8 +183,8 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
   .site-header .service-link-nav a{padding:12px 14px;border-bottom:1px solid var(--line);font-size:.92rem}
   .site-header .service-link-nav a:last-child{border-bottom:0}
   .floating-line{display:none}
-  .cat-logo-button{bottom:132px}
-  .cat-staff-bubble{bottom:216px}
+  .cat-logo-button{bottom:156px}
+  .cat-staff-bubble{bottom:240px}
   .mobile-cta-bar{position:fixed;left:10px;right:10px;bottom:10px;z-index:80;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
   .mobile-cta-bar a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:8px;color:#fff;font-size:.9rem;font-weight:900;white-space:nowrap}
   .mobile-cta-phone{background:var(--green-dark)}
