@@ -118,6 +118,7 @@
   .service-phone-mobile{display:inline}
   .other-card{grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px;min-height:128px;padding:10px;overflow:hidden;border-radius:12px}
   .other-card img{width:112px;height:108px;border-radius:10px;object-position:center}
+  .other-card img[src*="wasp-trouble"]{object-position:72% center}
   .other-card div{padding:0 6px 0 2px}
 }
 
