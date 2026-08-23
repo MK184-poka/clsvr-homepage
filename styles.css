@@ -167,7 +167,7 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 
 /* Match mobile card image spacing across the top page and service pages. */
 @media(max-width:560px){
-  .other-grid .service-card{grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px;min-height:128px;padding:10px;overflow:hidden;border-radius:12px}
+  .other-grid .service-card{grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px;min-height:120px;padding:6px 10px;overflow:hidden;border-radius:12px}
   .other-grid .service-card img{width:112px;height:108px;border-radius:10px;object-position:center}
   .other-grid .service-card img[src*="wasp-trouble"]{object-position:72% center}
   .other-grid .service-card div{padding:0 6px 0 2px}
