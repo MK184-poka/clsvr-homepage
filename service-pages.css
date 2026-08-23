@@ -116,6 +116,9 @@
   .service-header-phone{min-height:40px;padding:7px 10px;font-size:.78rem}
   .service-phone-number{display:none}
   .service-phone-mobile{display:inline}
+  .other-card{grid-template-columns:112px minmax(0,1fr);gap:12px;min-height:128px;padding:10px;border-radius:12px}
+  .other-card img{width:112px;height:108px;border-radius:10px}
+  .other-card div{padding:0 6px 0 2px}
 }
 
 /* Shared travel fee block for service pages. */
