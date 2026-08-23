@@ -165,6 +165,13 @@ h1,h2,h3{word-break:auto-phrase;line-break:strict;text-wrap:balance}
 @media(max-width:900px){.other-grid .service-card{grid-template-columns:132px minmax(0,1fr);max-width:620px;min-height:132px}}
 @media(max-width:560px){.other-grid .service-card{grid-template-columns:104px minmax(0,1fr);min-height:104px;border-radius:12px}}
 
+/* Match mobile card image spacing across the top page and service pages. */
+@media(max-width:560px){
+  .other-grid .service-card{grid-template-columns:112px minmax(0,1fr);gap:12px;min-height:128px;padding:10px;border-radius:12px}
+  .other-grid .service-card img{width:112px;height:108px;border-radius:10px}
+  .other-grid .service-card div{padding:0 6px 0 2px}
+}
+
 /* Mobile conversion actions: use the header for menu and the bottom bar for contact. */
 .mobile-menu-toggle{display:none}
 .mobile-cta-bar{display:none}
