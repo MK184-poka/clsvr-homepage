@@ -65,7 +65,7 @@
       <div class="service-selector-buttons" role="tablist" aria-label="相談内容">
         <button type="button" role="tab" aria-selected="true" data-service="wasp"><span>蜂の巣駆除</span><small>調査・見積もり・駆除</small></button>
         <button type="button" role="tab" aria-selected="false" data-service="bodycare"><span>出張もみほぐし</span><small>ご自宅・宿泊先へ訪問</small></button>
-        <button type="button" role="tab" aria-selected="false" data-service="lifestyle"><span>暮らしのご相談</span><small>鍵・荷物移動・雨どい掃除など</small></button>
+        <button type="button" role="tab" aria-selected="false" data-service="lifestyle"><span>暮らしのご相談</span><small>鍵・バッテリー上がり・荷物移動など</small></button>
         <button type="button" role="tab" aria-selected="false" data-service="digital"><span>その他ご相談</span><small>ホームページ・AI・スマホ・PC</small></button>
       </div>
     </section>
@@ -205,16 +205,18 @@
             <label><input type="radio" name="category" value="荷物・家具の移動"><span>荷物・家具の移動</span></label>
             <label><input type="radio" name="category" value="雨どい掃除"><span>雨どい掃除</span></label>
             <label><input type="radio" name="category" value="草抜き・庭まわり"><span>草抜き・庭まわり</span></label>
+            <label><input type="radio" name="category" value="バッテリー上がり・ジャンピング"><span>バッテリー上がり</span></label>
             <label><input type="radio" name="category" value="片付け・掃除"><span>片付け・掃除</span></label>
             <label><input type="radio" name="category" value="その他の暮らし相談"><span>その他</span></label>
           </div>
         </fieldset>
-        <label class="field"><span>詳しい内容 <em>必須</em></span><textarea name="request" rows="4" placeholder="例：2階のタンスを1階へ移動したい" required></textarea></label>
+        <label class="field"><span>詳しい内容 <em>必須</em></span><textarea name="request" rows="4" placeholder="例：車のバッテリーが上がって動かない、2階のタンスを1階へ移動したい" required></textarea></label>
         <label class="photo-toggle standalone-photo-toggle"><input type="checkbox" name="hasPhoto" value="写真あり"><span>状況が分かる写真があります</span></label>
         <div class="service-caution">
           <strong>お見積もりについて</strong>
           <ul>
             <li>作業場所・荷物の大きさ・量が分かる写真があると、確認がスムーズです。</li>
+            <li>バッテリー上がりは、車種・停車場所・安全に作業できる状況かを確認します。</li>
             <li>危険を伴う作業や専門資格が必要な内容は、お受けできない場合があります。</li>
             <li>有料駐車場を利用する場合は、駐車料金をご相談することがあります。</li>
           </ul>
